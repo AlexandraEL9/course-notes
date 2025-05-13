@@ -11,6 +11,24 @@
     - [Git Workflow Stages](#git-workflow-stages)
   - [Common Commands](#common-commands)
 
+- [Intro to Git and GitHub 2](#intro-to-git-and-github-2)
+  - [Git Branching](#git-branching)
+  - - [What is a Git Branch](#what-is-a-git-branch)
+  - - [Development in Branches](#development-in-branches)
+  - - [Common Git Branch Commands](#common-git-branch-commands)
+  - [Pull Requests](#pull-requests)
+  - - [What is a Pull Request?](#what-is-a-pull-request)
+  - - [Creating and Merging Pull Requests](#creating-and-merging-pull-requests)
+  - - [Fetching vs Pulling](#fetching-vs-pulling)
+  - [Forking Repositories](#forking-repositories)
+  - - [What is a Fork?](#what-is-a-fork)
+  - - [Syncing a Fork](#syncing-a-fork)
+  - [⚔️ Merge Conflicts](#merge-conflicts)
+  - - [What is a Merge Conflict?](#what-is-a-merge-conflict)
+  - - [How Merge Conflicts Occur](#how-merge-conflicts-occur)
+  - - [Resolving Merge Conflicts](#resolving-merge-conflicts)
+- [📄 README.md](#readmemd)
+
 ---
 
 ## Intro to Git and GitHub
@@ -98,3 +116,77 @@ git clone <url>       # Copy a remote repo to your machine
 | Push to remote        | `git push`                     |
 | Pull from remote      | `git pull`                     |
 | Clone repo            | `git clone <url>`              |
+
+---
+
+## Intro to Git and Github 2
+
+### Git Branching
+
+#### What is a Git Branch?
+A **branch** is a separate line of development. It's like a pointer to your latest commit, allowing you to work independently without affecting the main project. Changes are only merged into the main project when you choose to.
+
+#### Development in Branches
+- A new branch starts with the history of the parent branch.
+- New commits in the new branch are **isolated**.
+- To bring changes back to the parent, you must **merge**.
+
+#### Common Git Branch Commands
+> *(examples not listed in slide — add commands like `git branch`, `git checkout -b`, etc. if needed)*
+
+---
+
+### Pull Requests
+
+#### What is a Pull Request?
+A **pull request** is a way to propose changes from one branch to another, often used for collaboration and code review before merging.
+
+#### Creating and Merging Pull Requests
+- Pull requests are made through platforms like GitHub.
+- They are reviewed, discussed, and merged into the target branch.
+
+#### Fetching vs Pulling
+- `git fetch`: Updates your remote tracking branches, **does not merge**.
+- `git pull`: Fetches **and merges** changes into your current branch.
+
+---
+
+### Forking Repositories
+
+#### What is a Fork?
+A **fork** is a personal copy of someone else's repository. It's useful for suggesting changes to the original project without directly affecting it.
+
+#### Syncing a Fork
+To keep your fork updated:
+1. Fetch/pull from the original (upstream) repo
+2. Merge into your fork
+3. Push to your GitHub fork
+
+---
+
+### Merge Conflicts
+
+#### What is a Merge Conflict?
+A **merge conflict** occurs when changes from different branches conflict (e.g., edits to the same lines in a file). Git needs your help to resolve them manually.
+
+#### How Merge Conflicts Occur
+- Two branches edit the same file in different ways
+- Git cannot automatically determine which change to keep
+
+#### Resolving Merge Conflicts
+1. Open the file
+2. Look for conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
+3. Edit the file to keep the correct changes
+4. Add the file (`git add`) and commit
+
+---
+
+### README.md
+
+#### What is a README.md File?
+A **README** is often the first thing someone sees in your repository. It should include:
+- What the project does
+- Why it's useful
+- How to get started
+- Where to get help
+- Who maintains/contributes to it
