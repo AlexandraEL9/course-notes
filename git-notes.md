@@ -34,7 +34,7 @@ A **version control system (VCS)** is a system that tracks and manages changes t
 
 ---
 
-## ⚙️ Git Setup
+## Git Setup
 
 ### Installing Git
 Go to [git-scm.com](https://git-scm.com) and download Git for your operating system.
@@ -49,7 +49,7 @@ git config --global user.email "you@example.com"
 
 ---
 
-## 🗃️ Repositories
+## Repositories
 
 ### Local vs Remote
 - **Local repository**: your personal working copy.
@@ -88,7 +88,7 @@ git clone <url>       # Copy a remote repo to your machine
 
 ---
 
-## 🛠️ Common Commands
+## Common Commands
 
 | **Action**            | **Command**                    |
 |-----------------------|--------------------------------|
