@@ -1,15 +1,15 @@
 # Git and GitHub
-
-### 🧠 Intro to Git & GitHub(#intro-to-git--github)
-- [What is Version Control?](#what-is-version-control)
-- [Git vs GitHub](#git-vs-github)
-- [⚙️ Git Setup](#git-setup)
-  - [Installing Git](#installing-git)
-  - [Configuring Git](#configuring-git)
-- [🗃️ Repositories](#repositories)
-  - [Local vs Remote](#local-vs-remote)
-  - [Git Workflow Stages](#git-workflow-stages)
-- [🛠️ Common Commands](#common-commands)
+## 📚 Contents
+- [🧠 Intro to Git & GitHub](#intro-to-git--github)
+- - [What is Version Control?](#what-is-version-control)
+- - [Git vs GitHub](#git-vs-github)
+- - [⚙️ Git Setup](#git-setup)
+  - - [Installing Git](#installing-git)
+  - - [Configuring Git](#configuring-git)
+- - [🗃️ Repositories](#repositories)
+  - - [Local vs Remote](#local-vs-remote)
+  - - [Git Workflow Stages](#git-workflow-stages)
+- - [🛠️ Common Commands](#common-commands)
 
 ---
 
