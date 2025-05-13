@@ -1,6 +1,6 @@
 # Git and GitHub
 ## 📚 Contents
-- [🧠 Intro to Git & GitHub](#intro-to-git-and-github)
+- [🧠 Intro to Git and GitHub](#intro-to-git-and-github)
 - - [What is Version Control?](#what-is-version-control)
 - - [Git vs GitHub](#git-vs-github)
 - - [⚙️ Git Setup](#git-setup)
