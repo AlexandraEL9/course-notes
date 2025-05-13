@@ -13,7 +13,7 @@
 
 ---
 
-## 🧠 Intro to Git and GitHub
+## Intro to Git and GitHub
 
 ### What is Version Control?
 A **version control system (VCS)** is a system that tracks and manages changes to files.
