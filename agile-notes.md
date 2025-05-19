@@ -46,6 +46,7 @@
 ### Testing
 - Perform integration, system, and acceptance testing.
 - Identify and fix defects.
+- Validate that the software meets the requirements
 
 ### Integration
 - Combine components and test them together.
@@ -68,7 +69,7 @@ Values from the Agile Manifesto:
 ### What is Agile Methodology?
 - A flexible and iterative approach to software development.
 - Built on values rather than strict rules.
-- Includes frameworks like Scrum, Kanban, XP.
+- Includes frameworks like Scrum, Kanban, XP (Extreme Programming).
 
 ### Waterfall vs Agile
 **Waterfall:**
