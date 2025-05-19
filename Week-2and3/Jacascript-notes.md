@@ -83,6 +83,14 @@ Assignment 1: JavaScript
 console.log("Hello, world!");
 ```
 
+**Run the console in VSCode:**
+```bash
+node part1.js # runs console in terminal
+#OR
+#In Debug Console
+#Run > Start Debugging> Node.js
+```
+
 **Debugging**
 - Mistakes happen! Use the console to check for syntax errors and typos
 
@@ -100,6 +108,7 @@ console.log("Hello, world!");
 This is a
 multi-line comment
 */
+```
 
 ---
 
