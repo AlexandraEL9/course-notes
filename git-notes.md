@@ -33,6 +33,8 @@
 
 ## Intro to Git and GitHub
 
+**Git** is a **Version Control System** (VCS)
+
 ### What is Version Control?
 A **version control system (VCS)** is a system that tracks and manages changes to files.
 
@@ -190,3 +192,6 @@ A **README** is often the first thing someone sees in your repository. It should
 - How to get started
 - Where to get help
 - Who maintains/contributes to it
+
+---
+
