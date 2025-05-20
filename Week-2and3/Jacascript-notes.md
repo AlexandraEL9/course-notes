@@ -16,7 +16,7 @@
   - [Numbers and Input](#numbers-and-input)
   - [Casting Dta Types](#casting-data-types)
 
-- [Variables, Conditions & Functions](#Variables-Conditions-and-Functions)
+- [Variables, Conditions & Functions](#variables-conditions-and-functions)
   - [Using `let`](#using-let)
   - [Boolean Data Type](#boolean-data-type)
   - [Comparison Operators](#comparison-operators)
@@ -26,6 +26,20 @@
   - [Functions](#functions)
   - [Undefined vs Null](#undefined-vs-null)
   - [Scope](#scope)
+
+- [Arrays, Loops and Objects](#arrays-loops-and-objects)
+  - [Arrays](#arrays)
+    - [Array Basics](#array-basics)
+    - [push() and pop()](#push-and-pop)
+    - [slice() and splice()](#slice-and-splice)
+    - [shift() and unshift()](#shift-and-unshift)
+  - [Objects](#objects)
+    - [Nested Objects](#nested-objects)
+    - [Object Methods](#object-methods)
+  - [Loops](#loops)
+    - [For Loops](#for-loops)
+    - [While Loops](#while-loops)
+  - [const vs let](#const-vs-let)
 
 ---
 
@@ -383,4 +397,166 @@ console.log(outside); // "updated"
 🧠 Best practice: Declare variables in the smallest scope possible.
 
 ---
+
+## Arrays
+
+### Array Basics
+
+An array stores multiple values in a single variable.
+
+```js
+let fruit = ["apple", "plum", "cherry", "avocado"];
+console.log(fruit.length);   // 4
+console.log(fruit[0]);       // "apple"
+```
+
+Arrays use **zero-based indexing**, and `.length` returns the number of elements.
+
+---
+
+### push() and pop()
+
+- `push()` adds an item to the end of the array.
+- `pop()` removes the last item and returns it.
+
+```js
+fruit.push("banana");
+fruit.pop();
+```
+
+---
+
+### slice() and splice()
+
+- `slice(start, end)` returns a portion of the array.
+- `splice(start, deleteCount, items...)` modifies the array by adding/removing elements.
+
+```js
+fruit.slice(2); // returns from index 2 onward
+fruit.splice(1, 1); // removes 1 item at index 1
+fruit.splice(1, 0, "banana", "melon"); // adds 2 items at index 1
+```
+
+---
+
+### shift() and unshift()
+
+- `shift()` removes the **first** item from an array.
+- `unshift(item)` adds an item to the **beginning**.
+
+```js
+fruit.shift();
+fruit.unshift("strawberry");
+```
+
+---
+
+## Objects
+
+Objects store data in key-value pairs.
+
+```js
+const book = {
+  title: "Invisible Women",
+  author: "Caroline Criado-Perez",
+  year: 2019
+};
+console.log(book.title); // "Invisible Women"
+```
+
+---
+
+### Nested Objects
+
+Objects can contain other objects or arrays.
+
+```js
+let girl = {
+  name: "Ana",
+  age: 23,
+  friends: ["Mei", "Sabina", "Nuala"],
+  address: {
+    number: 123,
+    street: "Cambridge Road",
+    city: "London"
+  }
+};
+console.log(girl.address.city); // "London"
+```
+
+---
+
+### Object Methods
+
+A function inside an object is called a method.
+
+```js
+let girl = {
+  name: "Ana",
+  sayHello: function() {
+    console.log("Hola Amigas!");
+  }
+};
+
+girl.sayHello(); // "Hola Amigas!"
+```
+
+---
+
+## Loops
+
+### For Loops
+
+`for` loops run a block of code a specific number of times.
+
+```js
+for (let i = 1; i <= 10; i++) {
+  console.log(i);
+}
+```
+
+Use `for` loops to loop through arrays or repeat actions a fixed number of times.
+
+---
+
+### While Loops
+
+`while` loops continue as long as a condition is true.
+
+```js
+let countdown = 3;
+while (countdown > 0) {
+  console.log(countdown);
+  countdown--;
+}
+```
+
+🚨 Be careful of **infinite loops** – always modify the loop variable.
+
+---
+
+## const vs let
+
+You can modify the **contents** of an array or object declared with `const`, but you can't reassign the variable.
+
+```js
+const fruit = ["apple", "plum"];
+fruit.push("orange"); // ✅ allowed
+fruit = ["banana"];   // ❌ error
+```
+
+---
+
+## Recap
+
+✅ Use arrays to store data  
+✅ Use `push()`, `pop()`, `splice()`, `slice()` for manipulation  
+✅ Use `for` and `while` loops for repetition  
+✅ Create and use objects (including nested ones)  
+✅ Write and use object methods  
+✅ Understand `const` with reference types  
+
+📚 Further reading:
+- [MDN Array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+- [MDN Objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
 
