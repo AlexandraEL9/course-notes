@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM</title>
+  <link rel="stylesheet" href="intro.css" />
+</head>
+<body>
+  <h1>Hello Class</h1>
+  <div id="message">Hello👋🏽</div>
+  <div id="repeated-message"></div>
+
+  <h2>Currency Converter (GBP to EGP)</h2>
+  <label for="gbp-input">GBP Amount:</label>
+  <input
+    type="number"
+    id="gbp-input"
+    placeholder="Enter Amount"
+    onchange="convertCurrency()" />
+  <button onclick="convertCurrency()">Convert</button>
+  <p>EGP Amount: <span id="egp-output"></span></p>
+
+  <h2>Create an element with JS</h2>
+  <p>This paragraph is written in the HTML</p>
+
+  <h2>Meal Spices</h2>
+  <button onclick="generateSpice()">Provide Spices</button>
+  <ul id="spice-list"></ul>
+
+  <script src="intro.js"></script>
+</body>
+</html>

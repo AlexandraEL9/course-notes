@@ -41,6 +41,13 @@
     - [While Loops](#while-loops)
   - [const vs let](#const-vs-let)
 
+- [The DOM Part 1](#the-dom-part-1)
+  - [JavaScript Web Apps](#javascript-web-apps)
+  - [Just Enough HTML and CSS](#just-enough-html-and-css)
+  - [Output Text to a Web Page](#output-text-to-a-webpage)
+  - [Create and Modify HTML Elements](#create-and-modify-html-elements)
+  - [DOM Events](#dom-events)
+
 ---
 
 ## Introduction to JavaScript
@@ -559,4 +566,138 @@ fruit = ["banana"];   // ❌ error
 📚 Further reading:
 - [MDN Array Methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
 - [MDN Objects](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
+
+---
+
+## The DOM Part 1
+## JavaScript Web Apps
+
+**What is the DOM?**
+- The **Document Object Model** (DOM) lets JavaScript read/write web page content.
+- Enables interactivity by linking JavaScript with HTML elements.
+
+---
+
+## 📝 Outputting Text
+
+### `document.write()`
+```js
+document.write("Hello 👋")
+```
+- Adds text directly to the page.
+- **Not recommended** for precise control — better methods exist.
+
+---
+
+## 🔤 Just Enough HTML
+
+- **HTML (HyperText Markup Language)** structures web content.
+- Uses **tags** like `<h1>` or `<p>` for meaning and layout.
+- In **CodePen**, we can write minimal HTML to get started.
+
+---
+
+## 🔎 DOM: Read/Write Text
+
+### Example:
+```html
+<div id="message">Hello 👋</div>
+```
+
+### JS:
+```js
+document.getElementById("message").textContent = "New message!";
+```
+- Use `getElementById()` to select an element.
+- Use `textContent` to update its text.
+
+---
+
+## 🖱️ DOM Events
+
+- Events run code **when something happens** (e.g., button click).
+- Example:
+
+```html
+<button onclick="convertCurrency()">Convert</button>
+
+<input type="number" onchange="convertCurrency()">
+```
+
+### JavaScript:
+```js
+function convertCurrency() {
+  // do something
+}
+```
+
+---
+
+## 🏗️ Creating HTML Elements
+
+### JavaScript:
+```js
+let heading = document.createElement("h1");
+heading.textContent = "Hello World!";
+document.body.appendChild(heading);
+```
+
+- `createElement()` creates new elements.
+- `appendChild()` adds them to the page.
+
+---
+
+## 🎨 Just Enough CSS
+
+- Use **CSS** to style HTML.
+- You can target:
+  - **Tags** (`body {}`)
+  - **Classes** (`.my-class {}`)
+  - **IDs** (`#my-id {}`)
+
+### Example:
+```css
+p {
+  color: red;
+  font-family: Helvetica;
+}
+```
+
+---
+
+## 🎨 Update Styles with JavaScript
+
+### Example:
+```js
+document.body.style.backgroundColor = "red";
+```
+
+- Select elements and modify their style directly in JS.
+
+---
+
+## ✅ Recap: You Can Now
+- Use basic HTML & CSS to build and style a page.
+- Use the **DOM** to:
+  - Read and write text
+  - Respond to events
+  - Create and append elements
+  - Change styles with JavaScript
+
+---
+
+## 🔗 Useful References
+- [CodePen Autocomplete](https://blog.codepen.io/documentation/autocomplete)
+- [MDN DOM Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
+- [MDN HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [MDN CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+---
+
+## 🔍 `textContent` vs `innerText` vs `innerHTML`
+| Property      | Description |
+|---------------|-------------|
+| `textContent` | Fastest and safest (plain text only) |
+| `innerText`   | Affects visible text only, respects CSS |
+| `innerHTML`   | Inserts HTML (can be a security risk) |
 
