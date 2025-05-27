@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 2 - Question 2 Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #333;
+        }
+        button, input {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Assignment 2 - Question 2.3: DOM Events Demo</h1>
+
+
+  <button onclick="handleClick()">Click Me (onclick)</button>
+
+  <br><br>
+
+  <input type="text" onchange="handleChange()" placeholder="Type and click outside (onchange)" />
+
+  <br><br>
+  
+  <p onmouseover="showHoverMessage()" style="cursor: pointer; background-color: #e0f7fa; padding: 10px;">
+        Hover over this paragraph to trigger <code>onmouseover</code>.
+    </p>
+
+  <hr>
+
+  <script src="question2.js"></script>
+</body>
+</html>
