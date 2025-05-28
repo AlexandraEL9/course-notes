@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    /* Language and Environment */
+    "target": "es2016",                            /* Set the JavaScript language version. */
+
+    /* Modules */
+    "module": "commonjs",                          /* Use CommonJS modules (Node.js). */
+
+    /* Interop Constraints */
+    "esModuleInterop": true,                       /* Enable default imports from CommonJS. */
+    "forceConsistentCasingInFileNames": true,      /* Enforce consistent file naming casing. */
+
+    /* Type Checking */
+    "strict": true,                                /* Enable all strict type checks. */
+
+    /* Completeness */
+    "skipLibCheck": true                           /* Skip type checking .d.ts files. */
+  }
+
+  // "files": [
+  //   "worked"
+  // ]
+  // The "files" array is commented out to avoid referencing missing files.
+}
