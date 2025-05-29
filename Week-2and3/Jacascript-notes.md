@@ -823,14 +823,14 @@ localStorage.setItem("todos", JSON.stringify(todos));
 
 ### Quick HTML Element Reference
 
-<input>, <label>, <p>, <div>, <h1>–<h6>, <ul>, <li>, <select>, <option>, <button>
+`<input>`, `<label>`, `<p>`, `<div>`, `<h1>–<h6>`, `<ul>`, `<li>`, `<select>`, `<option>`, `<button>`
 
 ---
 
 ### Useful CSS Properties
+
 ```css
 
-color: teal;
 background-color: lavender;
 font-family: 'Arial', sans-serif;
 text-align: center;
