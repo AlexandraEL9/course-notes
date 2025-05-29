@@ -48,6 +48,23 @@
   - [Create and Modify HTML Elements](#create-and-modify-html-elements)
   - [DOM Events](#dom-events)
 
+- [The DOM Part 2](#the-dom-part-2)
+  - [Working With Collections](#working-with-collections)
+  - [Nested Elements](#nested-elements)
+  - [Event Listeners](#event-listeners)
+  - [Timers](#timers)
+  - [Traversing th DOM](#traversing-the-dom)
+  - [Local Storage](#local-storage)
+
+- [Intro to TypeScript](#intro-to-typescript)
+  - [Understanding Typescript](#understanding-typescript)
+  - [Installing & Setting Up](#installing-setting-up)
+  - [Syntax & Usage](#syntax-usage)
+    - [Types](#types)
+    - [Functions](#functions)
+    - [Interfaces](#interfaces)
+    - [Type Assertions](#type-assertions)
+
 ---
 
 ## Introduction to JavaScript
@@ -701,3 +718,269 @@ document.body.style.backgroundColor = "red";
 | `innerText`   | Affects visible text only, respects CSS |
 | `innerHTML`   | Inserts HTML (can be a security risk) |
 
+---
+## The DOM: Part 2
+
+### Working with Collections
+
+`getElementsByTagName()`
+
+- Selects all elements with a given tag.
+
+- Returns a live HTMLCollection.
+
+```js
+let paragraphs = document.getElementsByTagName('p');
+for (let p of paragraphs) {
+  p.style.color = 'blue';
+}
+```
+
+`getElementsByClassName()`
+
+- Selects elements with a specific class name.
+
+- Useful when elements have different tags but the same styling need.
+
+```js
+let highlights = document.getElementsByClassName('highlight');
+for (let h of highlights) {
+  h.style.fontWeight = 'bold';
+}
+```
+
+---
+
+### Nested Elements
+
+Select elements *within* another element
+
+```js
+const list = document.getElementById("fruit-list");
+const items = list.getElementsByTagName("li");
+for (let item of items) {
+  item.textContent += " 🍓";
+}
+```
+
+---
+
+### Event Listeners
+
+Respond to user actions (like clicks, form submits).
+
+`addEventListener()`
+```js
+button.addEventListener("click", function () {
+  alert("Button clicked!");
+});
+```
+
+You can also change elements directly:
+```js
+title.style.color = "green";
+```
+
+---
+
+### Timers
+
+Use `setTimeout()` to deley code execution
+```js
+setTimeout(() => {
+  alert("This shows after 1 second!");
+}, 1000);
+```
+
+---
+
+### Traversing the DOM - `classList`
+
+Use `classList.add()` and `classList.remove()` to apply or remove styles.
+```js
+element.classList.add("highlighted");
+element.classList.remove("hidden");
+```
+
+---
+
+### Local Storage
+
+Persist data in the browser across sessions.
+
+```js
+localStorage.setItem("name", "Alex");
+let storedName = localStorage.getItem("name");
+```
+
+Store objects with JSON:
+```js
+let todos = ["Task 1", "Task 2"];
+localStorage.setItem("todos", JSON.stringify(todos));
+```
+
+---
+
+### Quick HTML Element Reference
+
+<input>, <label>, <p>, <div>, <h1>–<h6>, <ul>, <li>, <select>, <option>, <button>
+
+---
+
+### Useful CSS Properties
+```css
+
+color: teal;
+background-color: lavender;
+font-family: 'Arial', sans-serif;
+text-align: center;
+text-decoration: underline;
+```
+
+---
+
+## Intro to TypeScript
+
+### Understanding TypeScript?
+
+- A *typed* superset of JavaScript.
+
+- Adds *static types* and features that enhance:
+
+- - Code reliability
+
+- - Maintainability
+
+- - Developer productivity
+
+TypeScript code is *transpiled to JavaScript*, which runs in browsers, Node.js, Deno, etc.
+
+#### Benefits over JavaScript
+
+✅ Static Typing: Type errors caught at compile time.
+
+✅ Type Safety: Fewer runtime bugs.
+
+✅ Improved maintainability: Interfaces, types, and better structure.
+
+✅ Better developer tooling: Autocompletion, refactoring tools, etc.
+
+### Who Uses TypeScript?
+Used by major companies and open-source projects due to its structure and safety features.
+
+---
+
+### Installing & Setting Up
+
+#### Install TypeScript
+
+- Project Level:
+```bash
+npm install typescript --save-dwv
+```
+
+- Golbal install *(recommended for CLI usage):
+```bash
+npm install -g typescript
+```
+
+#### Create a TypeScript Project
+```bash
+mkdir typescript-project && cd typescript-project
+npm init
+npm install typescript --save-dev
+tsc --init
+```
+- Creates `tsconfig.json to configure TypeScript compiler options.
+
+---
+
+### Syntax & Usage
+
+#### Types
+
+🔹 **Primitive Types**
+string, number, boolean, null, undefined, symbol, bigint
+
+🔸 **Complex Types**
+Objects, arrays, functions, user-defined types
+
+🔹 **Union & Intersection Types**
+Union (|): multiple possible types
+
+Intersection (&): combine multiple types
+
+🔸 **Tuples**
+-  Fixed-length arrays with specified types
+```ts
+let user: [string, number] = ["Alice", 30];
+```
+
+🔹 **Enums**
+Named constants
+
+```ts
+Copy
+Edit
+enum Color { Red, Green, Blue }
+```
+
+---
+
+#### Functions
+
+- Typed arguments and return values
+```ts
+function greet(name: string, place?: string): string {
+  return `Hello ${name}, I love ${place}`;
+}
+```
+- **Optionam Parameters: `place?`
+- **Default Parameters**:
+```ts
+function greet(name = "person") {...}
+```
+
+#### Interfaces
+
+- Define the **shape of objects**
+```ts
+interface Person {
+  name: string;
+  age: number;
+  city?: string;
+}
+```
+- Used for:
+- - Code consistency
+
+- - Autocompletion
+
+- - Compile-time safety
+
+#### Interface vs Type Alias
+
+| Feature       | Interface          | Type Alias          |
+| ------------- | ------------------ | ------------------- |
+| Extends       | ✅ Yes              | ❌ Not directly      |
+| Implements    | ✅ Yes (with class) | ❌ No                |
+| Complex Types | ❌ No               | ✅ Yes (e.g. unions) |
+
+---
+
+#### Type Assertions
+
+Tell the compiler to treat a variable as a specific type
+
+```ts
+let someValue: any = "hello";
+let strLength: number = (someValue as string).length;
+```
+
+Useful when:
+
+  - Working with any
+
+  - Parsing JSON
+
+  - Overriding type inference
