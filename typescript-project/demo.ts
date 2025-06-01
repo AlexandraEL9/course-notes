@@ -1,3 +1,12 @@
+// Primitive types
+const age : number = 20;
+const firstName: string = "Alex";
+const isStudent: boolean = true;
+
+console.log(age); // 20
+console.log(firstName); // "Alex"
+console.log(isStudent); // true
+
 // Array Types
 const numbers: number[] = [1, 2, 3, 4, 5];
 
@@ -27,7 +36,9 @@ const person2: NameAndAge = {
 }
 
 // Tuple Types
-const tuple: [string, number] = ['Test',58]
+const tuple: [string, number, string, number] = ['Leila', 25, 'John', 52]; // Tuple with mixed types
+
+const coordinates: [number, number] = [10, 17]; // Tuple representing latitude and longitude
 
 // Enum Types
 enum Colour {
@@ -44,6 +55,29 @@ enum ColourPalette {
 }
 
 const faveColour2: ColourPalette = ColourPalette.red;
+
+// intersection types
+type User = {
+    id: number;
+    name: string;
+};
+
+type NamePlusAge = { firstName: string } & { age: number };
+ const person4: NamePlusAge = {
+     firstName: "Alice",
+     age: 28
+};
+
+type PersonalInfo = { firstName: string; age: number};
+type ContactInfo = { email: string; phone: number};
+
+const employee: PersonalInfo & ContactInfo = {
+    firstName: "John",
+    age: 30,
+    email: "johndon@gemai.com",
+    phone: 1234567890,
+};
+
 
 
 // Function Types
