@@ -265,6 +265,12 @@ Unlike `const`, you can update a `let` variable’s value.
 let score = 10;
 score = 15;
 console.log(score); // Outputs 15
+
+let score2 = 85;
+console.log("initial score: " + score);
+
+score2 = 92
+console.log("updated score " + score2);
 ```
 
 🧠 Use `const` unless you specifically need to reassign a variable.
@@ -876,9 +882,15 @@ Used by major companies and open-source projects due to its structure and safety
 
 - Project Level:
 ```bash
-npm install typescript --save-dwv
+npm install typescript --save-dev
 ```
 
+```ts
+tsc --init
+// OR
+npx tsc --init
+
+// OR
 - Golbal install *(recommended for CLI usage):
 ```bash
 npm install -g typescript
@@ -935,7 +947,7 @@ function greet(name: string, place?: string): string {
   return `Hello ${name}, I love ${place}`;
 }
 ```
-- **Optionam Parameters: `place?`
+- **Optionam Parameters**: `place?`
 - **Default Parameters**:
 ```ts
 function greet(name = "person") {...}
