@@ -83,6 +83,7 @@
 - Relationships exist between tables
 
 - EER Diagrams show table structure and relations
+- - *(EER = Enhanced Entity Relationship)*
 
 **Example:**
 
@@ -116,8 +117,8 @@
 SELECT column1, column2 FROM table_name;
 ```
 - `SELECT *` selects all columns (✔ easy, ✘ bad practice)
-- Use table aliases for cleaner syntax:
 
+- Use table aliases for cleaner syntax:
 ```sql
 SELECT p.first_name, p.last_name
 FROM person p;
@@ -213,7 +214,7 @@ SELECT DISTINCT p.first_name
 FROM person p;
 ```
 
-#### Filtering Tesults: WHERE
+#### Filtering Results: WHERE
 
 ```sql
 SELECT p.surname

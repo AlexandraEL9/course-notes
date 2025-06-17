@@ -65,6 +65,17 @@
     - [Interfaces](#interfaces)
     - [Type Assertions](#type-assertions)
 
+- [Exceptions and Debugging](#exceptions-and-debugging)
+  - [Exceptions](#exceptions)
+    - [try...catch](#try-catch)
+    - [Custom Exceptions](#custom-exceptions)
+  - [Debugging](#debugging)
+  - [Techniques](#techniques)
+  - [Logging](#logging)
+  - [The debugger keyword](#the-debugger-keyword)
+  - [Breakpoints](#breakpoints)
+  - [Chrome DevToold Summary](#chrome-devtools-summary)
+
 ---
 
 ## Introduction to JavaScript
@@ -359,6 +370,32 @@ if (choice === "books") {
 
 Functions let us group reusable code into named blocks.
 
+### Anatomy of a simple function
+```js
+//function keyword         function name {
+    // codeblock to be run in curly braces
+// }
+// call the function
+
+                             // further example
+//function keyword  function name {
+    function          greet() {
+    // codeblock to be run in curly braces
+    console.log("Hello!");
+// } 
+    }
+// call the function
+greet();
+```
+| Part              | Example            | Purpose                                   |
+| ----------------- | ------------------ | ----------------------------------------- |
+| `function`        | `function`         | Keyword that declares a function          |
+| Function name     | `greet`            | Used to identify and call the function    |
+| Parentheses `()`  | `()`               | Empty here – no input values (parameters) |
+| Curly braces `{}` | `{ ... }`          | Wrap the block of code that will run      |
+| Function body     | `console.log(...)` | Code that runs when you call the function |
+| Function call     | `greet();`         | Executes the function                     |
+
 ### Declaring a Function:
 ```js
 function greet() {
@@ -372,6 +409,8 @@ greet(); // Outputs "Hello!"
 ```
 
 ### Functions with Parameters:
+Sometimes a function needs specific info to perform a task.
+Parameters act like variables
 ```js
 function greet(name) {
   return `Hello, ${name}!`;
@@ -996,3 +1035,100 @@ Useful when:
   - Parsing JSON
 
   - Overriding type inference
+
+---
+
+## Exceptions and Debugging
+
+### Exceptions
+
+**What is an Exception?**
+- an unexpected event (like an error) that interrupts the normal flow of a program
+- i JS we 'handle' them to prevent app crashes and allow *graceful failure*
+
+**Common JS Error types**
+| Error Type       | Description                                                    |
+| ---------------- | -------------------------------------------------------------- |
+| `SyntaxError`    | Bad syntax, like missing a bracket                             |
+| `ReferenceError` | Using a variable that doesn't exist                            |
+| `TypeError`      | Using the wrong data type (e.g., calling a method on a number) |
+| `RangeError`     | Value out of range (e.g., invalid array length)                |
+
+
+### try...catch
+
+```js
+try {
+  // code to run
+} catch (error) {
+  console.error("Something went wrong:", error);
+}
+```
+
+✅ Use sparingly – don’t overuse try...catch
+✅ Be specific with error types
+✅ Always log errors for debugging
+✅ Consider fallback actions or recovery if possible
+
+### Custom Exceptions
+
+- you can create and throw your own errors
+
+```js
+throw new ERROR("This is a custom error message");
+```
+
+**Application**
+Write a safeDivide(num, denom) function:
+
+Use try...catch
+
+Throw error if denom is 0
+
+Return result if valid
+
+Log error if caught
+```js
+
+```
+
+## Debugging
+**What is Debugging?**
+
+- The process of finding and fixing bugs in your code.
+
+- Makes code more reliable and easier to maintain.
+
+### Techniques
+
+#### Logging
+```js
+console.log("Variable value:", myVar);
+console.error("Something broke:", err);
+```
+
+#### The debugger Keyword
+```js
+function checkSomething(x) {
+  debugger;  // pauses execution here
+  return x + 1;
+}
+```
+
+#### Breakpoints
+- In Chrome DevTools
+  - You can pause execution at a line in the browser.
+  - Inspect variables, step through code line-by-line.
+
+#### Chrome DevTools Summary
+
+| Tool        | What it Does                       |
+| ----------- | ---------------------------------- |
+| Console     | View logs & interact with JS       |
+| Sources     | Step through code, set breakpoints |
+| Elements    | Inspect/edit HTML + CSS            |
+| Network     | Monitor requests/responses         |
+| Performance | Profile code speed & efficiency    |
+
+---
+
