@@ -1044,7 +1044,7 @@ Useful when:
 
 **What is an Exception?**
 - an unexpected event (like an error) that interrupts the normal flow of a program
-- i JS we 'handle' them to prevent app crashes and allow *graceful failure*
+- in JS we 'handle' them to prevent app crashes and allow *graceful failure*
 
 **Common JS Error types**
 | Error Type       | Description                                                    |
@@ -1081,15 +1081,33 @@ throw new ERROR("This is a custom error message");
 **Application**
 Write a safeDivide(num, denom) function:
 
-Use try...catch
+  - Use try...catch
+  - Throw error if denom is 0
+  - Return result if valid
+  - Log error if caught
 
-Throw error if denom is 0
-
-Return result if valid
-
-Log error if caught
 ```js
+// create the function
+function safeDivide(numerator, denominator) {
+  try {
+    // check if denominator is 0
+    if (denominator === 0) {
+      // if it is 0, throw the custom error- the one we anticipate
+      throw new Error("Cannot divide by zero");
+    }
+    // if valid, return the result of the division
+    return numerator / denominator;
 
+  } catch (error) {
+    // this is called IF error is thrown
+    // log error message to console
+    console.log("Error:", error.message);
+  }
+
+}
+// test calls to see behaviour
+console.log(safeDivide(10, 2));
+console.log(safeDivide(10, 0));
 ```
 
 ## Debugging
@@ -1108,6 +1126,8 @@ console.error("Something broke:", err);
 ```
 
 #### The debugger Keyword
+- acts like a breakpoint embedded in code
+- pauses ...
 ```js
 function checkSomething(x) {
   debugger;  // pauses execution here
