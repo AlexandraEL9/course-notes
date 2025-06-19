@@ -1106,8 +1106,8 @@ function safeDivide(numerator, denominator) {
 
 }
 // test calls to see behaviour
-console.log(safeDivide(10, 2));
-console.log(safeDivide(10, 0));
+//console.log(safeDivide(10, 2));
+//console.log(safeDivide(10, 0));
 ```
 
 ## Debugging
