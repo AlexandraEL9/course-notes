@@ -76,6 +76,20 @@
   - [Breakpoints](#breakpoints)
   - [Chrome DevToold Summary](#chrome-devtools-summary)
 
+
+- [JEST Testing](#jest-testing)
+1. [Introduction to Testing](#introduction-to-testing)
+2. [Types of Testing](#types-of-testing)
+3. [Using Jest](#using-jest)
+4. [Writing Tests in Jest](#writing-tests-in-jest)
+5. [Test-Driven Development (TDD)](#test-driven-development-tdd)
+6. [Asynchronous Testing](#asynchronous-testing)
+7. [Mocking in Jest](#mocking-in-jest)
+8. [Snapshot Testing](#snapshot-testing)
+9. [Code Coverage](#code-coverage)
+10. [Best Practices](#best-practices)
+11. [Other Testing Frameworks](#other-testing-frameworks)
+
 ---
 
 ## Introduction to JavaScript
@@ -1151,4 +1165,343 @@ function checkSomething(x) {
 | Performance | Profile code speed & efficiency    |
 
 ---
+
+## JEST Testing
+
+### Introduction to Testing
+
+Testing in software development evaluates an application to ensure it meets requirements, works as expected, and is free from defects.
+
+### Benefits:
+- **Validation and Verification** 
+  - *Validation:* the software does what its supposed to
+  - *Verification:* the software is built to specification and designs (requirements, design, user expectations)
+- **Quality Assurance**
+  - improve quality of software - detecting defects early - reliable, stable, performs as expected under various conditions
+- **Risk Reduction**
+  - identify and fix defects before release of software to users- reduces risk of failures/ errors - builds confidence of stakeholders
+
+---
+
+### Types of Testing
+
+#### Unit Testing
+Tests individual components or functions in isolation.
+
+#### Integration Testing
+Tests the interaction between units/modules.
+
+#### End-to-End Testing
+Tests the complete flow of an application from the user’s perspective.
+
+---
+
+## Using Jest
+
+**Jest** is a JavaScript testing framework by Facebook.
+
+### Key Features:
+- Test isolation
+  - runs tests in parallel - ensuring test environments are isolated to avoid side effects
+- Snapshot testing
+  - create snapshots of application output and automatically compare during tests
+- Mocking and spies
+  - mocking functions, modules, timers- simulate complex dependencies during tests
+
+### Install:
+```bash
+npm install --save-dev jest
+```
+
+### Add script to `package.json`:
+```json
+"scripts": {
+  "test": "jest"
+}
+```
+
+---
+
+### Writing Tests in Jest
+
+- create a directory called **tests** and put a test file (e.g. sum.test.js)
+
+```js
+// sum.js
+// function 1
+function sum(a, b) {
+    return a + b;
+}
+
+// multiply function
+function multiply(a, b) {
+    return a * b;
+}
+
+// subtract function
+function subtract(a, b) {
+    return a - b;
+}
+
+function divide(a, b) {
+    return a / b;
+}
+
+module.exports = { sum, multiply, subtract, divide };
+// exports the four functions (sum, multiply, subtract, and divide) so they can be used in other files
+```
+
+```js
+//sum.test.js
+ 
+// import the sum, multiply, subtract, and divide functions from another file so they can be used in your test file.
+const { sum, multiply, subtract, divide } = require('../src/sum');
+
+// addition
+test("adds 1 + 2 to equal 3", () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+
+#### Basic Syntax:
+```js
+test("adds 1 + 2 to equal 3", () => {
+  expect(sum(1, 2)).toBe(3);
+});
+```
+#### Anatomy of the Test
+| Part                      | Explanation       | Layman's phrasing (narrative)         |
+| ------------------------- | ---------------- | --------------------------------- |
+| `test(...)`               | A **Jest function** that defines a single test. It takes two arguments: the test name and the logic. | *This is a Jest test to check something specific.*     |
+| `"adds 1 + 2 to equal 3"` | A **description** of what you're testing — shown in the test results.                                | *If we add 1 and 2, does it equal 3?*                  |
+| `() => { ... }`           | A **callback function** that runs the test — contains your test code.                                | *Let's run the test and see if the result is correct.* |
+| `expect(...)`             | An **assertion** — tells Jest what you expect the outcome to be.                                     | *I expect this to happen...*                           |
+| `sum(1, 2)`               | The **function being tested** — you're passing in test values.                                       | *...the sum of 1 and 2...*                             |
+| `.toBe(3)`                | A **matcher** — checks if the result is exactly 3 (`===`).                                           | *...should be exactly 3 (in both value and type).*     |
+
+
+
+#### Common Matchers:
+- `toBe()`
+- `toBeTruthy()` / `toBeFalsy()`
+- `toContain()`
+- `toHaveLength()`
+- `toBeGreaterThan()`
+
+#### Example: tobe()
+```js
+function multiply(a, b) {
+  return a * b;
+}
+
+// Test
+test("multiplies 2 and 3 to equal 6", () => {
+  expect(multiply(2, 3)).toBe(6);
+});
+```
+| Part               | Explanation                                     | Layman's phrasing                 |
+| ------------------ | ----------------------------------------------- | --------------------------------- |
+| `test(...)`        | Defines the test.                               | *Let's test something.*           |
+| `"5 is exactly 5"` | Describes the test being run.                   | *We're checking that 5 equals 5.* |
+| `() => { ... }`    | The test code block.                            | *Run the test logic.*             |
+| `expect(5)`        | The actual value you're testing.                | *I expect 5...*                   |
+| `.toBe(5)`         | Checks that the value is exactly 5 using `===`. | *...to be exactly 5.*             |
+
+
+#### Example: toBeTruthy() / toBeFalsy()
+`toBeTruthy()` and `toBeFalsy()` can be confusing at first because they don’t mean strictly true or false, but rather if a value acts truthy or falsy in JavaScript logic.
+
+In JavaScript, some values automatically behave like true (truthy) or false (falsy) when used in conditions:
+
+**Truthy examples:**
+- true
+
+- "hello" (non-empty strings)
+
+- 1, -10, 3.14 (non-zero numbers)
+
+- {} (objects), [] (arrays)
+
+**Falsy examples:**
+- false
+
+- 0
+
+- "" (empty string)
+
+- null
+
+- undefined
+
+- NaN
+
+```js
+test("true is truthy", () => {
+  expect(true).toBeTruthy();
+});
+
+test("0 is falsy", () => {
+  expect(0).toBeFalsy();
+});
+```
+| Part            | Explanation                                                | Layman's phrasing             |
+| --------------- | ---------------------------------------------------------- | ----------------------------- |
+| `expect(true)`  | Testing a truthy value.                                    | *I expect true...*            |
+| `.toBeTruthy()` | Asserts that the value is truthy (not false, 0, '', etc.). | *...to count as 'true-ish'.*  |
+| `expect(0)`     | Testing a falsy value.                                     | *I expect zero...*            |
+| `.toBeFalsy()`  | Asserts that the value is falsy.                           | *...to count as 'false-ish'.* |
+
+**Example: Check a user typed something**
+
+So let's say you're testing a form input:
+```js
+function hasInput(value) {
+  return !!value; // returns true if there's something, false if empty
+}
+```
+You want to check if the function correctly returns true (truthy) when the user types something, and false (falsy) when they don't.
+```js
+test("has input returns truthy for non-empty string", () => {
+  expect(hasInput("hello")).toBeTruthy();
+});
+
+test("has input returns falsy for empty string", () => {
+  expect(hasInput("")).toBeFalsy();
+});
+```
+
+#### Example: toContain()
+```js
+test("array contains 2", () => {
+  expect([1, 2, 3]).toContain(2);
+});
+```
+| Part                | Explanation                                 | Layman's phrasing                  |
+| ------------------- | ------------------------------------------- | ---------------------------------- |
+| `expect([1, 2, 3])` | Testing an array.                           | *I expect this list \[1, 2, 3]...* |
+| `.toContain(2)`     | Checks if the array contains the value `2`. | *...to contain the number 2.*      |
+
+#### Example: toHaveLength()
+```js
+test("string has length 5", () => {
+  expect("Hello").toHaveLength(5);
+});
+```
+| Part               | Explanation                              | Layman's phrasing              |
+| ------------------ | ---------------------------------------- | ------------------------------ |
+| `expect("Hello")`  | Testing a string.                        | *I expect the word "Hello"...* |
+| `.toHaveLength(5)` | Checks that it has exactly 5 characters. | *...to have 5 letters.*        |
+
+#### Example: toBeGreaterThan()
+```js
+test("10 is greater than 5", () => {
+  expect(10).toBeGreaterThan(5);
+});
+```
+| Part                  | Explanation                    | Layman's phrasing         |
+| --------------------- | ------------------------------ | ------------------------- |
+| `expect(10)`          | The number being tested.       | *I expect 10...*          |
+| `.toBeGreaterThan(5)` | Checks if it's greater than 5. | *...to be bigger than 5.* |
+
+---
+
+### Test-Driven Development (TDD)
+
+TDD is writing tests before writing the code.
+
+#### Red-Green-Refactor Cycle:
+1. **Red:** Write a failing test.
+2. **Green:** Write code to make it pass.
+3. **Refactor:** Clean up code while keeping test green.
+
+---
+
+## Asynchronous Testing
+
+Used for testing Promises, async/await, and callbacks.
+
+### With Promises:
+```js
+return fetchData().then(data => {
+  expect(data).toBe("Hello");
+});
+```
+
+### With Async/Await:
+```js
+test("async test", async () => {
+  const data = await fetchData();
+  expect(data).toBe("Hello");
+});
+```
+
+---
+
+## Mocking in Jest
+
+### `jest.fn()`
+Creates a mock function.
+```js
+const mockFn = jest.fn();
+mockFn("arg");
+expect(mockFn).toHaveBeenCalled();
+```
+
+### `jest.mock()`
+Mocks an entire module.
+```js
+jest.mock('./api');
+api.fetchData.mockResolvedValue("Mock Data");
+```
+
+---
+
+## Snapshot Testing
+
+Captures output and compares it with a saved version.
+
+```js
+test("renders correctly", () => {
+  const tree = renderer.create(<MyComponent />).toJSON();
+  expect(tree).toMatchSnapshot();
+});
+```
+
+---
+
+## Code Coverage
+
+Measure how much of your code is tested.
+
+### Run with coverage:
+```bash
+npx jest --coverage
+```
+
+### Types of Coverage:
+- Statement
+- Branch
+- Function
+- Line
+
+---
+
+## Best Practices
+
+- Keep tests small and focused
+- Use descriptive names
+- DRY: eliminate redundant setup
+
+---
+
+## Other Testing Frameworks
+
+- **Mocha** – flexible and customizable
+- **Jasmine** – BDD style
+- **AVA** – fast and minimalist
+- **QUnit** – used with jQuery
+- **Tape** – simple and TAP-compliant
+
+---
+
 
