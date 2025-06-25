@@ -587,6 +587,28 @@ girl.sayHello(); // "Hola Amigas!"
 ---
 
 ## Loops
+A loop is a way to **repeat a set of instructions multiple times** — either a specific number of times or while a condition is true.
+
+Instead of repeating code like this:
+```js
+console.log("Hi");
+console.log("Hi");
+console.log("Hi");
+```
+You can write:
+```js
+for (let i = 0; i < 3; i++) {
+  console.log("Hi");
+}
+```
+
+### Types of Loops
+| Loop Type    | Description                                              |
+| ------------ | -------------------------------------------------------- |
+| `for` loop   | Repeat a block of code a set number of times             |
+| `while` loop | Keep looping **while a condition is true**               |
+| `do...while` | Like `while`, but always runs the code **at least once** |
+
 
 ### For Loops
 
@@ -597,14 +619,42 @@ for (let i = 1; i <= 10; i++) {
   console.log(i);
 }
 ```
+```js
+for (let i = 1; i <= 5; i++) {
+  console.log(i);  // prints 1 to 5
+}
+```
+**What's happening:**
+- `let i = 1` - the starting value
+- `i <= 5` - loop condition (keep going while true)
+- ` `i++` - increase `i` by 1 each time
+
+### Anatomy of a `for` loop
+| Part              | Explanation    | Layman’s phrasing (narrative)    |
+| ----------------- | -------------- | -------------------------------- |
+| `for (...)`       | The **loop keyword** — tells JavaScript to repeat something using specific rules. | *Let’s repeat something several times, using the rules inside.* |
+| `let i = 0`       | **Initialisation** — creates a variable (`i`) and sets its starting value.        | *Start counting from 0.*                                        |
+| `i < 5`           | **Condition** — as long as this is `true`, the loop keeps going.                  | *Keep looping as long as `i` is less than 5.*                   |
+| `i++`             | **Update** — runs after each loop; increases `i` by 1 so we move toward stopping. | *Add 1 to the counter each time.*                               |
+| `{ ... }`         | **Loop body** — the code inside the curly braces runs each time the loop repeats. | *Do this over and over again.*                                  |
+| `console.log(i);` | An **example action** — this line runs each time the loop repeats.                | *Print the current number (`i`) each time.*                     |
+
+
 
 Use `for` loops to loop through arrays or repeat actions a fixed number of times.
 
 ---
 
 ### While Loops
+A while loop is a way to repeat a block of code as long as a condition is true.
 
-`while` loops continue as long as a condition is true.
+You use it when:
+
+- You don’t know exactly how many times to loop.
+
+Y- ou want to keep looping until something changes.
+
+- `while` loops continue as long as a condition is true.
 
 ```js
 let countdown = 3;
@@ -613,8 +663,37 @@ while (countdown > 0) {
   countdown--;
 }
 ```
+```js
+let i = 1;
+while (i <= 5) {
+  console.log(i);
+  i++;
+}
+```
+This prints numbers 1 to 5 — same output as a for loop, but the structure is more flexible.
+
+#### Anatomy of a `while` loop
+| Part             | Explanation                                                                   | Layman’s phrasing (narrative)                    |
+| ---------------- | ----------------------------------------------------------------------------- | ------------------------------------------------ |
+| `let i = 1`      | **Initialisation** — sets the starting point **before** the loop begins.      | *Start counting from 1.*                         |
+| `while (i <= 5)` | **Condition** — checks if the loop should keep going.                         | *Keep looping while `i` is 5 or less.*           |
+| `{ ... }`        | **Loop body** — contains the code to run on each loop.                        | *Do this every time the condition is true.*      |
+| `console.log(i)` | **Example task** — prints the current value of `i`.                           | *Say the number out loud.*                       |
+| `i++`            | **Update** — increases `i` to eventually stop the loop (must be done inside). | *Add 1 to the counter so we don’t loop forever.* |
+
 
 🚨 Be careful of **infinite loops** – always modify the loop variable.
+
+#### Comparison: For vs While loops
+| Feature               | `for` loop                                       | `while` loop                                         |
+| --------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| Structure             | All parts (start, condition, update) in one line | Parts are separated (init above, update inside loop) |
+| Best for              | When you **know how many times** to loop         | When you **don’t know how many times** to loop       |
+| Condition checked     | Before each loop                                 | Before each loop                                     |
+| Update position       | In loop definition (`for (...; ...; update)`)    | Inside the loop body                                 |
+| Simpler for counting  | ✅ Yes — great for counting                       | Can be used, but requires manual setup               |
+| Risk of infinite loop | Low (if written correctly)                       | Higher — you must remember to update manually        |
+
 
 ---
 
@@ -1418,7 +1497,19 @@ TDD is writing tests before writing the code.
 
 ## Asynchronous Testing
 
-Used for testing Promises, async/await, and callbacks.
+- Used for testing Promises, async/await, and callbacks.
+- involves checking the behavior of code that doesn't execute
+immediately
+- is common in JavaScript, especially when working with external resources
+like APIs, databases, or file systems.
+
+**Asynchronous Testing:** Jest ensures that tests wait for asynchronous operations to
+complete before making assertions, allowing for accurate validation of code that relies on
+delayed or background processes.
+**Testing Strategies:** To test asynchronous code in Jest, developers use techniques like
+waiting for Promises to resolve, employing async/await to pause execution until the
+asynchronous operation completes, and using Jest's mocking capabilities to simulate
+asynchronous behavior, thereby allowing tests to be isolated from external dependencies.
 
 ### With Promises:
 ```js
