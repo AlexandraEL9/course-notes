@@ -401,14 +401,17 @@ Functions let us group reusable code into named blocks.
 // call the function
 greet();
 ```
-| Part              | Example            | Purpose                                   |
-| ----------------- | ------------------ | ----------------------------------------- |
-| `function`        | `function`         | Keyword that declares a function          |
-| Function name     | `greet`            | Used to identify and call the function    |
-| Parentheses `()`  | `()`               | Empty here – no input values (parameters) |
-| Curly braces `{}` | `{ ... }`          | Wrap the block of code that will run      |
-| Function body     | `console.log(...)` | Code that runs when you call the function |
-| Function call     | `greet();`         | Executes the function                     |
+
+**Anatomy of a basic function**
+| Part            | Explanation                                                 | Layman’s Phrasing                               |
+| --------------- | ----------------------------------------------------------- | ----------------------------------------------- |
+| `function`      | Keyword that tells JavaScript you're creating a function    | *I'm making a reusable mini-program*            |
+| `greet`         | The **function name** — how you refer to it later           | *I'll call this one ‘greet’*                    |
+| `()`            | Empty parentheses (no parameters yet)                       | *This function doesn’t need any extra info yet* |
+| `{ ... }`       | The **function body** — the code that runs when you call it | *Do this when the function is used*             |
+| `console.log()` | Example of an action the function performs                  | *Say “Hello!”*                                  |
+| `greet();`      | **Calling** the function (this runs the code inside)        | *Now run that mini-program*                     |
+
 
 ### Declaring a Function:
 ```js
@@ -425,6 +428,7 @@ greet(); // Outputs "Hello!"
 ### Functions with Parameters:
 Sometimes a function needs specific info to perform a task.
 Parameters act like variables
+Parameters are like input variables you pass into a function so it can work with different values each time it's called.
 ```js
 function greet(name) {
   return `Hello, ${name}!`;
@@ -434,6 +438,196 @@ const message = greet("Alex");
 console.log(message);
 ```
 
+```js
+function greetUser(name) {
+  console.log(`Hello, ${name}!`);
+}
+
+greetUser("Asha");
+greetUser("Jamie");
+```
+This function greets a person by name. You give it a name, and it prints a personalised message like:
+
+- “Hello, Asha!”
+
+- “Hello, Jamie!”
+
+**Anatomy of a function with parameters**
+| Part                       | Explanation                                                        | Layman’s Phrasing                                |
+| -------------------------- | ------------------------------------------------------------------ | ------------------------------------------------ |
+| `function greetUser(name)` | The function takes a parameter called `name`                       | *Hey function, expect a name when you’re called* |
+| `name` (in brackets)       | This is a **parameter** — a placeholder for the value passed in    | *This is the info I need to do my job*           |
+| `` `Hello, ${name}!` ``    | Uses **template literals** to include the parameter in the message | *Say Hello to whoever was passed in*             |
+| `greetUser("Asha")`        | Calling the function and passing `"Asha"` as the argument          | *Call the function using “Asha” as the name*     |
+| `greetUser("Jamie")`       | You can reuse the function with different values                   | *Now say hello to “Jamie”*                       |
+
+**Real-world Analogy:**
+A function with a parameter is like a custom cake order:
+
+- Function: “MakeCake(flavour)”
+
+- Parameter: “Chocolate”, “Vanilla”, “Lemon”
+
+The baker follows the same recipe but uses your input flavour
+```js
+function MakeCake(flavour) {
+  console.log(`Cake order: ${flavour}`);
+}
+MakeCake("Chocolate");
+MakeCake("Vanilla");
+MakeCake("Lemon");
+```
+This function works like a cake shop: you tell it what flavour you want, and it "prints the receipt" for that order using your input.
+| Part                           | Explanation                                                        | Layman's Phrasing                             |
+| ------------------------------ | ------------------------------------------------------------------ | --------------------------------------------- |
+| `function MakeCake(flavour)`   | Defines a function that expects **one input** (called `flavour`)   | *Create a cake using the flavour you tell me* |
+| `{ console.log(...) }`         | This is the code that runs each time the function is called        | *Print out the order details*                 |
+| `` `Cake order: ${flavour}` `` | A **template string** — it includes the flavour inside the message | *Say what flavour the customer chose*         |
+| `MakeCake("Chocolate")`        | Calls the function with `"Chocolate"` as the flavour               | *Bake a chocolate cake*                       |
+| `MakeCake("Vanilla")`          | Reuses the same function with a different input                    | *Bake a vanilla cake*                         |
+| `MakeCake("Lemon")`            | Reuses it again — no need to rewrite the function                  | *Bake a lemon cake*                           |
+
+
+### Functions with multiple parameters
+
+**Example: Cake shop taking flavour and size**
+```js
+function makeCake(flavour, size) {
+  console.log(`Cake order: a ${size} ${flavour} cake.`);
+}
+
+makeCake("Chocolate", "large");
+makeCake("Vanilla", "small");
+```
+
+This function lets you customise two parts of the cake order: the flavour and the size.
+
+You can use this approach for anything that needs more than one input — like a name + age, price + tax, or colour + shape.
+
+
+
+**Anatomy:**
+| Part                              | Explanation                                                        | Layman’s Phrasing                              |
+| --------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------- |
+| `function makeCake(...)`          | Function definition with **two parameters** inside the parentheses | *Expect two pieces of info: flavour and size*  |
+| `flavour, size`                   | Parameters — placeholders for the inputs you'll pass in            | *I need both what kind of cake and how big*    |
+| `` `a ${size} ${flavour} cake` `` | Template string combining both inputs                              | *Build the cake description using both values* |
+| `makeCake("Chocolate", "large")`  | Function call with arguments `"Chocolate"` and `"large"`           | *Make a large chocolate cake*                  |
+| `makeCake("Vanilla", "small")`    | Another function call with different arguments                     | *Make a small vanilla cake*                    |
+
+### Functions with RETURN values
+A return tells the function to send a value back to wherever it was called from.
+Unlike console.log, which just shows something on screen, return gives you something to use or store.
+```js
+function add(a, b) {
+  return a + b;
+}
+
+let result = add(3, 4);
+console.log(result); // 7
+```
+This function adds two numbers and gives back the answer so you can use it or store it.
+
+**Anatomy of a function with a return**
+| Part                     | Explanation                                                    | Layman’s Phrasing                          |
+| ------------------------ | -------------------------------------------------------------- | ------------------------------------------ |
+| `function add(a, b)`     | Function with two input parameters                             | *This function needs two numbers*          |
+| `return a + b;`          | **Returns** the sum back to where the function was called from | *Give back the total of those two numbers* |
+| `let result = add(3, 4)` | The result is **stored** in a variable called `result`         | *Store the answer so we can use it later*  |
+| `console.log(result)`    | Print the result to the console                                | *Show the final answer: 7*                 |
+
+❗ **Why use return instead of console.log?**
+| `console.log()`                         | `return`                                       |
+| --------------------------------------- | ---------------------------------------------- |
+| Just **displays** something             | Actually **sends data back** from the function |
+| Doesn’t let you use the value elsewhere | You **can store or reuse** the returned value  |
+| Great for testing/debugging             | Essential for calculations & logic flow        |
+
+**Cake example**
+```js
+function buildCake(flavour, size) {
+  return `You ordered a ${size} ${flavour} cake.`;
+}
+
+let message = buildCake("lemon", "medium");
+console.log(message); // You ordered a medium lemon cake.
+```
+
+**Side-by-Side Comparison: return vs console.log only**
+| Function Type           | With `return`                             | Without `return` (just `console.log`)             |
+| ----------------------- | ----------------------------------------- | ------------------------------------------------- |
+| **Code**                | `return result;`                          | `console.log(result);`                            |
+| **Gives a value back?** | ✅ Yes — gives a result that can be reused | ❌ No — just displays something                    |
+| **Can be stored/used?** | ✅ Yes — in variables, calculations, etc.  | ❌ No — the value disappears after it's printed    |
+| **Purpose**             | 🧠 Produce and give back a value          | 🗣️ Show something on screen (good for debugging) |
+| **Result**              | You get the value to work with            | You only *see* the value — you can't reuse it     |
+
+Use return when you want to use or store the value later
+
+Use console.log() when you just want to see what’s happening (debugging or user feedback)
+
+### Adding Logic in functions
+We add logic inside functions so the function can make decisions, do calculations, or process input before giving back an answer.
+
+🧠 The purpose of logic in functions:
+✅ To make the function smart and flexible
+
+✅ So it can respond differently based on what it’s given
+
+✅ To keep code reusable and tidy
+
+Logic goes inside the curly braces { } — that's the function body.
+```js
+function example(input) {
+  // 🧠 logic goes here
+  if (input > 10) { // if the number inputted is greater than 10
+    return "Big number!"; // return "Big Number"
+  } else {                // else
+    return "Small number."; //return small number
+  }
+}
+let result = example(78);     // so if we input 78
+console.log(result); // should log "Big number!"
+```
+The function runs the logic when it’s called, then uses return to give back the result.
+
+**Example: Cake Shop**
+```js
+function getCakePrice(size, flavour) {  // usual function creation
+  let basePrice;  // declares a variable for the value to be stored in once logic is run
+
+  // logic to set base price by size
+  if (size === "small") {
+    basePrice = 10;
+  } else if (size === "medium") {
+    basePrice = 15;
+  } else if (size === "large") {
+    basePrice = 20;
+  } else {
+    return "Invalid size";
+  }
+
+  // logic to adjust price for fancy flavours
+  if (flavour === "chocolate" || flavour === "red velvet") {
+    basePrice += 5;
+  }
+
+  return `The price for a ${size} ${flavour} cake is £${basePrice}.`;
+}
+
+// Examples:
+console.log(getCakePrice("medium", "vanilla"));     // £15
+console.log(getCakePrice("large", "chocolate"));    // £25
+console.log(getCakePrice("small", "red velvet"));   // £15
+```
+🧠 What’s happening:
+- You pass in size and flavour.
+
+- Logic chooses a base price based on size.
+
+- If the flavour is fancier, it adds £5.
+
+- The function then returns a complete message.
 ---
 
 ## Undefined vs Null
@@ -684,6 +878,7 @@ This prints numbers 1 to 5 — same output as a for loop, but the structure is m
 
 🚨 Be careful of **infinite loops** – always modify the loop variable.
 
+
 #### Comparison: For vs While loops
 | Feature               | `for` loop                                       | `while` loop                                         |
 | --------------------- | ------------------------------------------------ | ---------------------------------------------------- |
@@ -694,6 +889,48 @@ This prints numbers 1 to 5 — same output as a for loop, but the structure is m
 | Simpler for counting  | ✅ Yes — great for counting                       | Can be used, but requires manual setup               |
 | Risk of infinite loop | Low (if written correctly)                       | Higher — you must remember to update manually        |
 
+### Do...While Loops
+A do...while loop is a loop that:
+
+✅ Always runs the code at least once, then
+🔁 keeps running while a condition is true.
+
+```js
+let i = 1;
+do {
+  console.log(i);
+  i++;
+} while (i <= 5);
+```
+Even if i started at 100, the loop body would still run once before checking the condition.
+**Example:**
+A menu prompt where you always want to show the menu once, even if the user exits immediately:
+```js
+let choice;
+do {
+  choice = prompt("Enter a number, or type 'exit' to quit:");
+} while (choice !== "exit");
+```
+
+#### Anatomy of a `do...while` loop
+| Part              | Explanation                                                                     | Layman’s phrasing (narrative)                        |
+| ----------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `let i = 1`       | **Initialisation** — sets up your counter **before** the loop starts.           | *Start counting from 1.*                             |
+| `do { ... }`      | **Loop body** — this code runs **first**, even before the condition is checked. | *Do this action at least once, no matter what.*      |
+| `console.log(i)`  | **Task to repeat** — this line runs inside the loop.                            | *Say the number.*                                    |
+| `i++`             | **Update** — increase the counter so the loop can eventually stop.              | *Move one step closer to stopping.*                  |
+| `while (i <= 5);` | **Condition** — checked *after* running the loop body at least once.            | *Should we do that again? Only if `i` is 5 or less.* |
+
+
+**Comparison table: `for` vs `while` vs `do...while`**
+| Feature                  | `for` loop                       | `while` loop                     | `do...while` loop                    |
+| ------------------------ | -------------------------------- | -------------------------------- | ------------------------------------ |
+| Runs code at least once? | ❌ No (only if condition is true) | ❌ No (only if condition is true) | ✅ Yes (runs once before checking)    |
+| Structure                | All-in-one line                  | Condition first, body second     | Body first, condition last           |
+| Condition checked        | Before loop                      | Before loop                      | After loop body                      |
+| Best for                 | Known number of loops            | Unknown number, with pre-check   | When the task must run at least once |
+| Update position          | In loop header                   | Inside loop body                 | Inside loop body                     |
+| Risk of infinite loop    | Low if written well              | Medium                           | Medium–High if condition never false |
 
 ---
 
