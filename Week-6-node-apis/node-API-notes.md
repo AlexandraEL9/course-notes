@@ -37,6 +37,10 @@
 
 - Useful for building everything from simple sites to full-scale backend systems.
 
+- Node.js is a free, open source tool that lets you run JavaScript outside the web browser.
+
+- With Node.js, you can build fast and scalable applications like web servers, APIs, tools, and more.
+
 **What is an API**
 - API = Application Programming Interface
 - A set of rules that lets software systems communicate.
@@ -198,7 +202,7 @@ app.delete('/delete-user/:id', (req, res) => {
 #### What is Middleware?
 Middleware functions run during the request-response lifecycle and can:
 
-- Intercept & modify requests
+- Request Interception: Intercept & modify requests
 - Add or modify responses
 - Control request flow or handle errors
 
@@ -215,6 +219,8 @@ app.use(express.json()); // Parse JSON in request body
 - Request Body Parsing
 - Security (e.g. cors, rate limiting)
 
+**Examples**
+
 ```bash
 npm install morgan
 ```
@@ -227,7 +233,6 @@ app.use(morgan('dev'));
 Centralised error handler:
 
 ```js
-
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({ message: 'Something went wrong!' });
@@ -237,9 +242,11 @@ app.use((err, req, res, next) => {
 
 #### Authentication vs Authorization
 
-- Authentication: Confirms identity (e.g., login)
+- Authentication: Confirms/ verifies identity (e.g., login- username and password)
 
-- Authorization: Confirms access rights (e.g., admin vs user)
+- Authorization: Confirms access rights/ what you're allowed to do (e.g., admin vs user)
+
+on a shop site you may use authentication to access certain info/ features like your own personal wishlist/ order history but that doesn't mean you can access, say, the database in the back end/ add prodicts etc.
 
 **Example:** A logged-in user (authenticated) may not have permission to delete users (authorized).
 
@@ -293,7 +300,7 @@ app.post('/create-user', (req, res) => {
         return res.status(500).json({ message: 'Database error' });
       }
       res.status(201).json({ message: `${name} created successfully` });
-    }
+    
   );
 });
 ```

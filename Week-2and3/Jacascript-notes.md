@@ -90,6 +90,13 @@
 10. [Best Practices](#best-practices)
 11. [Other Testing Frameworks](#other-testing-frameworks)
 
+- [OOP in Javascript](#oop-in-javascript)
+  - [What is OOP?](#what-is-oop)
+  - [Objects & Classes](#objects-classes)
+  - [Encapsulation](#encapsulation)
+  - [Inheritance](#inheritance)
+  - [Polymorphism](#polymorphism)
+
 ---
 
 ## Introduction to JavaScript
@@ -838,6 +845,82 @@ for (let i = 1; i <= 5; i++) {
 Use `for` loops to loop through arrays or repeat actions a fixed number of times.
 
 ---
+### `for...in` and `for...of` loops
+ especially useful for working with objects and arrays.
+
+ #### For...in loop
+ Used to loop through the keys (property names) of an object.
+ ```js
+ const user = {
+  name: "Alex",
+  age: 40,
+  city: "Manchester"
+};
+
+for (let key in user) {
+  console.log(key);           // name, age, city
+  console.log(user[key]);     // Alex, 40, Manchester
+}
+```
+
+**Anatomy of a `for...in`**
+| Part           | Explanation                                         | Layman’s phrasing                  |
+| -------------- | --------------------------------------------------- | ---------------------------------- |
+| `for (let key` | Declare a loop variable that will hold the key name | *Let’s look at each key in turn*   |
+| `in user)`     | Go through each **key** in the object               | *Loop through the object's labels* |
+| `user[key]`    | Use bracket notation to get the value by key        | *Get the value for each key name*  |
+
+#### `for...of` loops
+Used to loop through the values of an iterable, like arrays, strings, or sets.
+
+**Example: Array**
+```js
+const colors = ["red", "green", "blue"];
+
+for (let color of colors) {
+  console.log(color);  // red, green, blue
+}
+```
+
+**Example: String**
+```js
+for (let char of "Hi") {
+  console.log(char);  // H, i
+}
+```
+
+#### Anatomy of a `for..in` loop
+| Part                | Explanation                           | Layman’s phrasing                       |
+| ------------------- | ------------------------------------- | --------------------------------------- |
+| `for (let item`     | Declare a variable to hold each value | *Let’s go through each item one by one* |
+| `of iterable)`      | The thing you're looping through      | *Look through the array/string/etc.*    |
+| `console.log(item)` | Use the value directly                | *Do something with each item*           |
+
+**Comparison: `for...in` vs `for...of`**
+| Feature           | `for...in`                    | `for...of`                                     |
+| ----------------- | ----------------------------- | ---------------------------------------------- |
+| Loops over        | **Keys** (property names)     | **Values** of iterable objects                 |
+| Best for          | Objects                       | Arrays, strings, sets, NodeLists, etc.         |
+| Output            | Keys (e.g. `"name"`, `"age"`) | Values (e.g. `"Alex"`, `40`)                   |
+| Accessing values  | Use `object[key]`             | Use the `item` variable directly               |
+| Use with objects? | ✅ Yes                         | ❌ Not directly (throws error on plain objects) |
+| Use with arrays?  | ✅ Yes, but gives indexes      | ✅ Yes, gives actual values                     |
+
+### Loop Control: break and continue
+Use these to control the flow inside a loop.
+
+- break: exit the loop early
+
+- continue: skip to the next iteration
+```js
+for (let i = 1; i <= 5; i++) {
+  if (i === 3) continue;  // skip 3
+  if (i === 5) break;     // stop at 4
+  console.log(i);
+}
+```
+
+---
 
 ### While Loops
 A while loop is a way to repeat a block of code as long as a condition is true.
@@ -931,6 +1014,8 @@ do {
 | Best for                 | Known number of loops            | Unknown number, with pre-check   | When the task must run at least once |
 | Update position          | In loop header                   | Inside loop body                 | Inside loop body                     |
 | Risk of infinite loop    | Low if written well              | Medium                           | Medium–High if condition never false |
+
+
 
 ---
 
@@ -1831,5 +1916,162 @@ npx jest --coverage
 - **Tape** – simple and TAP-compliant
 
 ---
+
+## OOP in JavaScript
+
+## Learning Objectives
+By the end of this session, you should be able to:
+- Understand Object-Oriented Programming (OOP) concepts.
+- Practice OOP in JavaScript using objects, classes, and principles.
+
+---
+
+## What is OOP?
+OOP stands for **Object-Oriented Programming**. It's a paradigm based on **objects** that contain **data (properties)** and **behavior (methods)**.
+
+### Key Principles of OOP
+| Principle      | Explanation |
+|----------------|-------------|
+| **Encapsulation** | Bundling data and methods together; restricts access to internal details. |
+| **Abstraction**   | Hides complexity and shows only relevant parts to the user. |
+| **Inheritance**   | One class can inherit the properties and methods of another. |
+| **Polymorphism**  | Same method name can behave differently on different classes. |
+
+---
+
+## Objects and Classes
+
+### What is an Object?
+An object is a structure that holds data and behavior as key-value pairs.
+
+### Why Classes?
+Instead of writing out 100 similar objects manually, we use **classes** to create **multiple instances**.
+
+### Syntax Example:
+```js
+class Student {
+  constructor(first_name, last_name) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+  }
+
+  greet() {
+    return `Hello, ${this.first_name} ${this.last_name}`;
+  }
+}
+
+const student1 = new Student("Alice", "Adams");
+console.log(student1.greet()); // Hello, Alice Adams
+```
+
+---
+
+## Encapsulation
+
+Encapsulation = Variables + Methods inside a single unit (a class).
+
+### Why it's useful:
+- Reduces complexity
+- Increases security
+- Improves maintainability
+
+### Example with Private Fields (ES6+):
+```js
+class Person {
+  #age; // private field
+
+  constructor(name, age) {
+    this.name = name;
+    this.#age = age;
+  }
+
+  getAge() {
+    return this.#age;
+  }
+}
+
+const person = new Person("Alice", 30);
+console.log(person.getAge()); // 30
+// console.log(person.#age); ❌ Error: private field
+```
+
+---
+
+##  Inheritance
+
+Inheritance allows a class to use properties and methods from another class.
+
+### Example:
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  makeSound() {
+    return "Some sound";
+  }
+}
+
+class Dog extends Animal {
+  makeSound() {
+    return "Bark";
+  }
+}
+
+const pet = new Dog("Rover");
+console.log(pet.makeSound()); // Bark
+```
+
+---
+
+## Polymorphism
+
+Polymorphism allows the **same method name** to behave differently depending on the class.
+
+### Example:
+```js
+class Shape {
+  calculateArea() {
+    return 0;
+  }
+}
+
+class Circle extends Shape {
+  calculateArea() {
+    return "π × r²";
+  }
+}
+
+class Square extends Shape {
+  calculateArea() {
+    return "side × side";
+  }
+}
+```
+
+---
+
+## ✏️ Exercise
+
+1. Create a `Car` class with:
+    - make
+    - model
+    - year
+    - a method: `display_car_info()`
+
+2. Create an `ElectricCar` subclass that adds:
+    - batteryCapacity (kWh)
+    - method: `estimate_range()` (5 km per kWh)
+
+---
+
+## Summary
+
+- OOP helps us **organise**, **reuse**, and **extend** code.
+- Use **classes** and **inheritance** to reduce duplication.
+- Use **encapsulation** and **abstraction** for clean APIs.
+- Use **polymorphism** to allow flexible method reuse.
+
 
 
