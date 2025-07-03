@@ -11,10 +11,12 @@
   - [Constants](#constants)
   - [Concatenation](#concatenation)
   - [Interpolation](#interpolation)
+  - [Operators](#operators)
   - [Data Types](#data-types)
   - [User Input with Prompt()](user-input-with-prompt)
   - [Numbers and Input](#numbers-and-input)
   - [Casting Dta Types](#casting-data-types)
+  - [Data Type Methods](#data-type-methods)
 
 - [Variables, Conditions & Functions](#variables-conditions-and-functions)
   - [Using `let`](#using-let)
@@ -235,6 +237,102 @@ console.log(`Hello, ${name}!`);
 
 ---
 
+## Operators
+**Operators** are special symbols or keywords that perform operations on values (operands).
+For example: `+`, `-`, `=`, `===`, `&&`
+
+### Types of operators 
+| Operator Type          | Description                | Example             |
+| ---------------------- | -------------------------- | ------------------- |
+| **Arithmetic**         | Math operations            | `5 + 2`             |
+| **Assignment**         | Assign values to variables | `x = 10`            |
+| **Comparison**         | Compare two values         | `a === b`           |
+| **Logical**            | Combine boolean values     | `a && b`            |
+| **String**             | Work with text strings     | `'Hi' + ' there'`   |
+| **Unary**              | Work with a single operand | `typeof x`          |
+| **Ternary**            | Shorthand for `if/else`    | `condition ? a : b` |
+| **Bitwise** (advanced) | Operate on bits            | `a & b`             |
+
+### Arithmetic Operators
+Perform basic maths operations
+| Operator | Description         | Example  | Result |
+| -------- | ------------------- | -------- | ------ |
+| `+`      | Addition            | `5 + 2`  | `7`    |
+| `-`      | Subtraction         | `5 - 2`  | `3`    |
+| `*`      | Multiplication      | `5 * 2`  | `10`   |
+| `/`      | Division            | `10 / 2` | `5`    |
+| `%`      | Modulus (remainder) | `10 % 3` | `1`    |
+| `**`     | Exponentiation      | `2 ** 3` | `8`    |
+
+**TASK- Predict the Output:**
+```js
+console.log(6 + 3); //9
+console.log(10 % 4); //2
+console.log(2 ** 4); //2*2*2*2 16
+```
+
+### Assignment Operators
+Used to assign or update values in variables
+| Operator | Example  | Equivalent To   |
+| -------- | -------- | --------------- |
+| `=`      | `x = 5`  | Assign 5 to `x` |
+| `+=`     | `x += 2` | `x = x + 2`     |
+| `-=`     | `x -= 3` | `x = x - 3`     |
+| `*=`     | `x *= 4` | `x = x * 4`     |
+| `/=`     | `x /= 2` | `x = x / 2`     |
+
+**TASK-What's the final value of x?**
+```js
+let x = 10; // 10 
+x += 5; // 15 (10 + 5)
+x *= 2; // 30 (15 * 2)
+console.log(x); // 30
+```
+
+### String Operators
+JS uses + to join strings (concatenation)
+```js
+let greeting = "Hello" + " " + "world!";
+console.log(greeting); // "Hello world!"
+```
+You can also use `+=` to append to strings:
+```js
+let text = "I like ";
+text += "JavaScript!";
+console.log(text); // "I like JavaScript!"
+```
+
+### Ternary Operator
+Shorthand `if...else`
+```js
+condition ? value_if_true : value_if_false
+```
+**Example**
+```js
+let age = 20;
+let message = age >= 18 ? "Adult" : "Minor";
+console.log(message); // "Adult"
+```
+
+**Task: What will be the grade?**
+```js
+let score = 75;
+let grade = score >= 70 ? "Pass" : "Fail";
+console.log(grade); // "Pass"
+```
+
+### Summary Table:
+| Type       | Example      | Result/Use                    |
+| ---------- | ------------ | ----------------------------- |
+| Arithmetic | `4 + 2`      | `6`                           |
+| Assignment | `x += 2`     | Adds 2 to `x`                 |
+| Comparison | `a === b`    | Strict equality               |
+| Logical    | `a && b`     | AND operation                 |
+| String     | `"Hi" + "!"` | `"Hi!"`                       |
+| Ternary    | `a ? b : c`  | If a is true, return b else c |
+
+---
+
 ## Data Types
 
 - String: "text"
@@ -281,6 +379,254 @@ console.log(result);
 
 - `Number(value)` converts to a number
 - `String(value)` converts to a string
+
+## Data-Type Methods
+JavaScript data types like strings, arrays, objects, and numbers come with built-in methods — these are like mini-tools you can use to work with the data.
+
+### String methods
+Strings are sequences of characters. Methods help you inspect, change, or extract parts of strings.
+
+| Method           | What it does                        | Example                                   |
+| ---------------- | ----------------------------------- | ----------------------------------------- |
+| `.length`        | Returns number of characters        | `"hello".length` → `5`                    |
+| `.toUpperCase()` | Converts to uppercase               | `"hi".toUpperCase()` → `"HI"`             |
+| `.toLowerCase()` | Converts to lowercase               | `"HI".toLowerCase()` → `"hi"`             |
+| `.includes()`    | Checks if a string contains another | `"cat".includes("a")` → `true`            |
+| `.indexOf()`     | Finds position of a substring       | `"hello".indexOf("e")` → `1`              |
+| `.slice()`       | Extracts a part of the string       | `"hello".slice(1, 4)` → `"ell"`           |
+| `.trim()`        | Removes whitespace from ends        | `"  hi  ".trim()` → `"hi"`                |
+| `.replace()`     | Replaces part of a string           | `"apples".replace("p", "b")` → `"abbles"` |
+
+#### Examples
+
+1. `length`
+- Purpose: Get the number of characters in a string (including spaces and punctuation).
+
+` Syntax:`
+```js
+string.length
+```
+
+`Example:`
+```js
+const name = "Alex";
+console.log(name.length); // 4
+```
+📝 Notes:
+- It's a property, not a method — no parentheses ().
+- Includes all characters.
+
+`TASK:`
+Create a string variable with your favourite food.
+Log how many characters are in it using .length.
+```js
+const faveFood = "Lasagna";
+console.log(faveFood.length);  // should log 7
+```
+
+2. `toUpperCase`
+- Purpose: Convert all characters to uppercase.
+
+` Syntax:`
+```js
+string.toUpperCase()
+```
+
+`Example:`
+```js
+const greeting = "hello";
+console.log(greeting.toUpperCase()); // "HELLO"
+
+```
+📝 Notes:
+- Doesn’t change the original string unless you reassign it.
+
+`TASK:`
+Write a string with a short sentence.
+Log the uppercase version of it.
+```js
+const mySentence = "a sentence to make uppercase";
+console.log(mySentence.toUpperCase()); // "A SENTENCE TO MAKE UPPERCASE"
+```
+
+3 . `toLowerCase`
+- Purpose: Convert all characters to lowercase.
+
+` Syntax:`
+```js
+string.toLowerCase()
+```
+
+`Example:`
+```js
+const shout = "WATCH OUT!";
+console.log(shout.toLowerCase()); // "watch out!"
+```
+
+📝 Notes:
+- Useful for comparing input like usernames, emails, etc.
+
+`TASK:`
+Create a variable with a loud, shouty word.
+Use .toLowerCase() to calm it down.
+```js
+const mySentence = "WHAT ON EARTH ARE YOU DOING";
+console.log(mySentence.toLowerCase()); // "what on earth are you doing"
+```
+
+4 . `includes`
+- Purpose: Check if a string contains a specific substring.
+
+` Syntax:`
+```js
+string.includes(searchString)
+
+```
+
+`Example:`
+```js
+const phrase = "I love chocolate";
+console.log(phrase.includes("choc")); // true
+```
+
+📝 Notes:
+- Case-sensitive.
+- Returns a boolean (true or false).
+
+`TASK:`
+Write a sentence and check if it includes the word "love".
+```js
+const mySentence = "I love my rabbits, Pancake and Pretzel!";
+console.log(mySentence.includes("love")); // true
+```
+
+5 . `slice`
+- Extract part of a string without changing the original.
+
+` Syntax:`
+```js
+string.slice(startIndex, endIndex)
+```
+
+`Example:`
+```js
+const word = "JavaScript";
+console.log(word.slice(0, 4)); // "Java"
+```
+
+📝 Notes:
+- `endIndex` is not included.
+- If you skip `endIndex`, it goes to the end.
+- Accepts negative indexes too.
+
+`TASK:`
+Create a string "Caterpillar" and slice it to get just "pillar".
+```js
+const myString = "catterpillar";
+console.log(myString.slice(6)); 
+```
+
+6 . `trim()`
+- Removes whitespace (spaces, tabs, line breaks) from both the start and end of a string.
+
+` Syntax:`
+```js
+string.trim()
+```
+
+`Example:`
+```js
+const messy = "   tidy up!   ";
+const clean = messy.trim();
+console.log(clean); // "tidy up!"
+```
+
+📝 Notes:
+- It doesn’t affect the middle of a string.
+- Often used to clean up user input or pasted text.
+
+`TASK:`
+Create a string "Caterpillar" and slice it to get just "pillar".
+```js
+let input = "   hello world   ";
+console.log(input.trim());
+```
+
+#### Challenge
+You’ve been given a coded message. Your job is to:
+
+- Clean it up (remove leading/trailing spaces).
+
+- Make it shout-worthy (uppercase).
+
+- Check if it contains the word "SECRET".
+
+- Slice out just the secret word from the sentence.
+
+- Log the final message and info to the console.
+
+```js
+let rawMessage = "   there's a secret hidden in plain sight.  ";
+
+// Step 1: Trim whitespace
+let trimmedMessage = rawMessage.trim();
+
+// Step 2: Convert to uppercase
+let upperCased = trimmedMessage.toUpperCase();
+
+// Step 3: Check if it includes the word "SECRET"
+let included = upperCased.includes("SECRET");
+
+// Step 4: Slice out the word "SECRET" from the sentence
+let sliced = upperCased.slice(10, 17);
+
+// Step 5: Log your final message and info
+console.log("Cleaned Message:", upperCased);
+console.log("Contains SECRET?", included);
+console.log("Extracted Word:", sliced);
+```
+
+
+
+### Array Methods
+Arrays hold lists of values. These methods let you add, remove, search, or loop over items.
+| Method        | What it does                            | Example                            |
+| ------------- | --------------------------------------- | ---------------------------------- |
+| `.length`     | Number of items in array                | `[1, 2, 3].length` → `3`           |
+| `.push()`     | Adds item to end                        | `arr.push(4)` → adds 4 to end      |
+| `.pop()`      | Removes last item                       | `arr.pop()` → removes last         |
+| `.shift()`    | Removes first item                      | `arr.shift()` → removes first      |
+| `.unshift()`  | Adds item to start                      | `arr.unshift(0)` → adds 0 at start |
+| `.includes()` | Checks if value is in array             | `[1,2,3].includes(2)` → `true`     |
+| `.indexOf()`  | Finds index of value                    | `[1,2,3].indexOf(2)` → `1`         |
+| `.slice()`    | Copies part of the array                | `arr.slice(1,3)` → `[2,3]`         |
+| `.splice()`   | Adds/removes items at specific index    | `arr.splice(1,1)` → removes 1 item |
+| `.map()`      | Transforms each item, returns new array | `arr.map(x => x*2)`                |
+| `.filter()`   | Returns new array with matching items   | `arr.filter(x => x > 2)`           |
+| `.forEach()`  | Runs a function for each item           | `arr.forEach(x => console.log(x))` |
+| `.join()`     | Turns array into string with separator  | `[1,2,3].join("-")` → `"1-2-3"`    |
+
+### Object Methods
+Objects store key–value pairs. Methods help you explore, loop, or modify them.
+| Method                | What it does                         | Example                                  |
+| --------------------- | ------------------------------------ | ---------------------------------------- |
+| `Object.keys(obj)`    | Returns array of keys                | `Object.keys({a:1, b:2})` → `["a", "b"]` |
+| `Object.values(obj)`  | Returns array of values              | `Object.values({a:1, b:2})` → `[1, 2]`   |
+| `Object.entries(obj)` | Returns array of \[key, value] pairs | `Object.entries({a:1})` → `[["a", 1]]`   |
+| `hasOwnProperty()`    | Checks if key exists in object       | `obj.hasOwnProperty("a")` → `true`       |
+
+### Number Methods (and Math)
+JavaScript numbers don’t have many methods, but you use the Math object for common tasks.
+| Method / Property | What it does                        | Example                          |
+| ----------------- | ----------------------------------- | -------------------------------- |
+| `.toFixed(n)`     | Rounds number to `n` decimal places | `(3.1415).toFixed(2)` → `"3.14"` |
+| `Math.round()`    | Rounds to nearest whole number      | `Math.round(4.6)` → `5`          |
+| `Math.floor()`    | Rounds down                         | `Math.floor(4.9)` → `4`          |
+| `Math.ceil()`     | Rounds up                           | `Math.ceil(4.1)` → `5`           |
+| `Math.random()`   | Random number between 0 and 1       | `Math.random()` → `0.36` (etc.)  |
+| `Math.max(…)`     | Finds highest                       | `Math.max(1,5,3)` → `5`          |
+
+
 
 ---
 
@@ -436,6 +782,13 @@ greet(); // Outputs "Hello!"
 Sometimes a function needs specific info to perform a task.
 Parameters act like variables
 Parameters are like input variables you pass into a function so it can work with different values each time it's called.
+
+**Parameters vs Arguments**
+| Term          | Example                 | What it Means                                         |
+| ------------- | ----------------------- | ----------------------------------------------------- |
+| **Parameter** | `animal`, `name`        | The **placeholder** inside the function definition    |
+| **Argument**  | `"Rabbit"`, `"Pancake"` | The **actual value** passed when calling the function |
+
 ```js
 function greet(name) {
   return `Hello, ${name}!`;
@@ -635,6 +988,44 @@ console.log(getCakePrice("small", "red velvet"));   // £15
 - If the flavour is fancier, it adds £5.
 
 - The function then returns a complete message.
+
+#### Function TASKS!
+
+1. Check if a number is Even or odd
+```js
+// Write a function called checkEvenOdd that takes one number
+// add logs whether it is even or odd
+
+function checkEvenOdd(number) {
+  if (number % 2 === 0) {
+    console.log(`${number} is even`);
+  } else {
+    console.log(`${number} is odd`);
+  }
+}
+checkEvenOdd(7); // should log: "7 is odd"
+checkEvenOdd(4); // should log: "4 is even"
+```
+
+2. Shout a message!
+```js
+// Write a function shout that takes a message (string)
+// and logs it in ALL CAPS with an exclamation mark.
+function shout(message) {
+  // use string method .toUpperCase() to turn letters to uppercase
+  console.log(message.toUpperCase() + "!");
+}
+
+shout("hello");  // "HELLO!"
+shout("good luck");  // "GOOD LUCK!"
+```
+
+2. Double each number in an arrary
+```js
+// Write a function doubleNumbers that takes an array of numbers
+// and logs each number doubled.
+
+doubleNumbers([1, 2, 3]); // should log: 2, 4, 6
 ---
 
 ## Undefined vs Null
