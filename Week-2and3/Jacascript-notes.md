@@ -586,6 +586,80 @@ console.log("Contains SECRET?", included);
 console.log("Extracted Word:", sliced);
 ```
 
+Patient Wait times challenge
+```js
+const patientTimes = [3, 2, 1, 2, 6];
+
+function minTime(patientTimes) {
+  // asc order
+  patientTimes.sort((a, b) => a - b); //[1, 2, 3, 3, 6]
+
+  let totalWaitTime = 0;
+  let currentWaitTime = 0;
+
+  // loop through the ordered patient times
+  for (let i = 0; i < patientTimes.length - 1; i++) {
+    currentWaitTime += patientTimes[i];
+    totalWaitTime += currentWaitTime;
+  }
+  return totalWaitTime;
+}
+console.log(minTime(patientTimes));
+```
+```js
+// Use the string "CodeFirstGirls" and only take a part of it: "Girls". The turn
+// the word "Girls" into "G-i-r-l-s".
+
+//define string
+let string = "CodeFirstGirls";
+// Extract Girls from the string using .slice
+let partString = string.slice(9);
+
+// split the girls letters with .split
+let letters = partString.split("");
+
+// join back together with hyphens with .join()
+let result = letters.join("-");
+
+console.log(result);
+```
+```js
+// TASK 2 (copy-paste this task in the dialog window to share with the student)
+// Spice Girls ("Wannabe")
+// '''
+// Yo, I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+// I wanna really, really, really wanna zigazig ah"
+// '''
+// Count how many times the word "really" appears in the Spice Girls lyrics.
+// NB: it is entirely up to you whether to write function or just write script
+// in the console.
+
+// input/ define/ declare lyrics
+let lyrics = `
+Yo, I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+I wanna really, really, really wanna zigazig ah"
+`;
+console.log(lyrics);
+// split into words - .split
+let words = lyrics.split(" ");
+
+// use map to replace commas with nothing
+words = words.map((w) => w.replace(",", ""));
+console.log(words);
+//use .filter to filter out 'really' and us .length to count them
+let result = words.filter((word) => word === "really").length;
+
+console.log(result);
+```
+
 
 
 ### Array Methods
