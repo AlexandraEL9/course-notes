@@ -26,6 +26,7 @@
   - [Logical Operators](#logical-operators)
   - [Else If Statements](#else-if-statements)
   - [Functions](#functions)
+    - [Function Expressions](#function-expressions)
   - [Undefined vs Null](#undefined-vs-null)
   - [Scope](#scope)
 
@@ -680,14 +681,287 @@ Arrays hold lists of values. These methods let you add, remove, search, or loop 
 | `.forEach()`  | Runs a function for each item           | `arr.forEach(x => console.log(x))` |
 | `.join()`     | Turns array into string with separator  | `[1,2,3].join("-")` → `"1-2-3"`    |
 
+### Array Methods
+
+`forEach`, `map`, `filter`, `reduce`
+These are **array methods** — they aren’t “loops” in the traditional sense, but they let you loop through arrays in a clean and modern way.
+
+They are often used instead of `for` or `for...of` loops.
+
+#### forEach
+Run a function once for each item in an array.
+✅ Use it when you want to do something with each item, but don’t need a new array.
+
+**Example:**
+```js
+const animals = ["rabbit", "dog", "cat"];
+
+animals.forEach(function(animal) {
+  console.log(animal);
+});
+```
+
+**Anatomy of a forEach:**
+| Part                   | Explanation                     | Layman’s phrasing                  |
+| ---------------------- | ------------------------------- | ---------------------------------- |
+| `animals.forEach(...)` | Calls `.forEach()` on the array | *Go through each item in the list* |
+| `animal =>`            | Function to run on each item    | *For every item, do this...*       |
+| `console.log(animal)`  | Action to run for each item     | *Print the current animal*         |
+
+
+#### map()
+Create a new array by changing each item in the original array.
+✅ Use it when you want to transform each value.
+**Example:**
+```js
+const numbers = [1, 2, 3];
+
+const doubled = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubled); // [2, 4, 6]
+```
+
+**Anatomy**
+| Part               | Explanation                        | Layman’s phrasing                    |
+| ------------------ | ---------------------------------- | ------------------------------------ |
+| `numbers.map(...)` | Calls `.map()` on the array        | *Go through each number in the list* |
+| `function(num)`    | A function that runs once per item | *For each number, run this function* |
+| `return num * 2`   | Sends back the new value           | *Double the number and return it*    |
+| `doubled`          | Stores the result (new array)      | *Save the new changed list*          |
+✅ Always returns a new array, same length as the original.
+
+#### .filter
+Create a new array containing only the items that pass a test.
+
+**Example:**
+```js
+const scores = [50, 80, 40, 100];
+
+const passing = scores.filter(function(score) {
+  return score >= 60;
+});
+
+console.log(passing); // [80, 100]
+```
+
+**Anatomy:**
+| Part                 | Explanation                                     | Layman’s phrasing                     |
+| -------------------- | ----------------------------------------------- | ------------------------------------- |
+| `scores.filter(...)` | Calls `.filter()` on the array                  | *Go through each score in the list*   |
+| `function(score)`    | A function that runs once per score             | *For each score, use this function*   |
+| `return score >= 60` | Test: keep only scores that pass this condition | *Return true if it’s a passing score* |
+| `passing`            | Stores the result (new array of passing scores) | *Save only the passing scores*        |
+✅ Returns a new array, which may be shorter than the original.
+
+#### .reduce()
+Take an array and reduce it to one value (a number, string, object, etc.) by running a function on each item.
+
+✅ Use it when you want to:
+
+- Add up numbers
+- Combine values
+- Build a single result from a list
+
+**Example: add numbers in an array**
+```js
+const numbers = [1, 2, 3, 4];
+
+const total = numbers.reduce(function(accumulator, current) {
+  return accumulator + current;
+});
+
+console.log(total); // 10
+```
+⚙️ How It Works Step by Step
+With [1, 2, 3, 4]:
+
+Step 1: acc = 1, current = 2 → returns 3
+
+Step 2: acc = 3, current = 3 → returns 6
+
+Step 3: acc = 6, current = 4 → returns 10
+
+So total is 10.
+
+
+**Anatomy**
+| Part                             | Explanation                                               | Layman’s phrasing                  |
+| -------------------------------- | --------------------------------------------------------- | ---------------------------------- |
+| `numbers.reduce(...)`            | Calls `.reduce()` on the array                            | *Work through the whole list*      |
+| `function(accumulator, current)` | A function with two parameters:                           | *Keep track of the total as we go* |
+| `accumulator`                    | The running total (starts with the first item by default) | *What we’ve built up so far*       |
+| `current`                        | The current item in the loop                              | *The number we’re on right now*    |
+| `return accumulator + current`   | Add the current number to the total                       | *Add it to the running total*      |
+| `total`                          | Stores the final result                                   | *This is the final sum*            |
+
+**example: Starting value**
+You can set your own starting value for the accumulator:
+```js
+const total = numbers.reduce(function(acc, curr) {
+  return acc + curr;
+}, 0); // 0 is the starting value
+```
+
+**Examples**
+```js
+// Combine strings
+const words = ["I", "love", "coding"];
+const sentence = words.reduce(function(acc, word) {
+  return acc + " " + word;
+});
+// "I love coding"
+
+// Count total length
+const names = ["Alex", "Sam"];
+const totalLength = names.reduce(function(acc, name) {
+  return acc + name.length;
+});
+// 8
+```
+
+**Summary Table**
+| Method    | Returns     | Use For...                             |
+| --------- | ----------- | -------------------------------------- |
+| `forEach` | ❌ Nothing   | Doing something with each item         |
+| `map`     | ✅ New array | Changing each item                     |
+| `filter`  | ✅ New array | Keeping only items that pass a test    |
+| `reduce`  | ✅ One value | Turning the whole array into one thing |
+
+#### find()
+- Returns the first element that passes a test
+- If no match is found, it returns undefined
+
+**Example:**
+```js
+// find() first matching element
+let numbers = [3, 7, 11, 18, 21];
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+let firstEven = numbers.find(isEven);
+console.log(firstEven); // 18
+```
+✅ find() will return the first value in the array that passes the test.
+
+#### findIndex()
+- Returns the index of the first element that passes a test
+- If no match is found, it returns -1
+
+**Example:**
+```js
+// find() index of first matching element
+let words = ["apple", "banana", "plum"];
+
+function longerThanFive(word) {
+  return word.length > 5;
+}
+
+let index = words.findIndex(longerThanFive);
+console.log(index); // 1 (banana)
+```
+✅ findIndex() gives you the index (position) of the first match.
+
+**Compare: `find()` vs `findIndex()`**
+| Method        | Returns      | If no match? |
+| ------------- | ------------ | ------------ |
+| `find()`      | First value  | `undefined`  |
+| `findIndex()` | Index number | `-1`         |
+
+**Practice tasks**
+```js
+// predict the output
+let ages = [8, 15, 21, 32, 14];
+
+function isAdult(age) {
+  return age >= 18;
+}
+
+let adult = ages.find(isAdult);
+let adultIndex = ages.findIndex(isAdult);
+
+console.log(adult);       // 21, 32
+console.log(adultIndex);  // 2, 3
+```
+
+```js
+// write own code
+let people = [
+  { name: "Alice", age: 22 },
+  { name: "Bob", age: 17 },
+  { name: "Charlie", age: 30 }
+];
+// a find function to return 1st person over 25
+function challenge25(person) {
+  return person.age > 25;
+}
+let firstChallenge25 = people.find(challenge25);
+console.log(firstChallenge25);
+// a find index function to return the index of the first person under 18
+function challenge18(person) {
+  return person.age < 18;
+}
+let challenge18Index = people.findIndex(challenge18);
+console.log(challenge18Index);
+```
+
 ### Object Methods
 Objects store key–value pairs. Methods help you explore, loop, or modify them.
+A method is just a function stored as a value inside an object.
 | Method                | What it does                         | Example                                  |
 | --------------------- | ------------------------------------ | ---------------------------------------- |
 | `Object.keys(obj)`    | Returns array of keys                | `Object.keys({a:1, b:2})` → `["a", "b"]` |
 | `Object.values(obj)`  | Returns array of values              | `Object.values({a:1, b:2})` → `[1, 2]`   |
 | `Object.entries(obj)` | Returns array of \[key, value] pairs | `Object.entries({a:1})` → `[["a", 1]]`   |
 | `hasOwnProperty()`    | Checks if key exists in object       | `obj.hasOwnProperty("a")` → `true`       |
+
+**Basic Structure**
+```js
+const dog = {
+  name: "Scout",
+  speak: function() {
+    console.log("Woof!");
+  }
+};
+
+dog.speak(); // "Woof!"
+```
+**Explanation**
+
+- speak is a method of the dog object.
+- It's defined like a property, but the value is a function.
+- We call it with dog.speak() — just like we’d access a normal property, but we add () to run it.
+
+✅ Object Properties vs Methods
+| Name     | Example       | What it does                  |
+| -------- | ------------- | ----------------------------- |
+| Property | `dog.name`    | Stores a value                |
+| Method   | `dog.speak()` | Performs an action (function) |
+
+**Practice**
+```js
+const robot = {
+  model: "T1000",
+  greet: function() {
+    console.log(`Beep! I am model ${robot.model}!`);
+  }
+};
+
+robot.greet(); // "Beep! I am model T1000"
+```
+```js
+const game = {
+  title: "tic tac toe",
+  start: function() {
+    console.log(`Starting the game: ${title}`)
+  }
+};
+game.start();
+```
+
 
 ### Number Methods (and Math)
 JavaScript numbers don’t have many methods, but you use the Math object for common tasks.
@@ -1100,6 +1374,67 @@ shout("good luck");  // "GOOD LUCK!"
 // and logs each number doubled.
 
 doubleNumbers([1, 2, 3]); // should log: 2, 4, 6
+```
+
+### Function Expressions
+A **function expression** is when you create a function and *assign it to a variable*.
+
+It’s a way to **store a function like a value**, so you can reuse or pass it around later.
+
+**Syntax:**
+```js
+const sayHello = function() {
+  console.log("Hello!");
+};
+sayHello();
+```
+
+**Anatomy of a Function Expression:**
+| Part                   | Explanation                                          | Layman’s Phrasing                            |
+| ---------------------- | ---------------------------------------------------- | -------------------------------------------- |
+| `const sayHello =`     | Declare/ create the variable in which to store the function   | *This is a variable called sayHello. It shall/ will be'*              |
+| `function()`           | Anonymous function (no name here!)                   | *a function with no parameters* |
+| `{ console.log(...) }` | The function body — runs when the variable is called | *This is what the function does*             |
+| `sayHello();`          | Calling the function using the variable name         | *Run the code saved in this variable*        |
+✏️ Note: Unlike function declarations, function expressions don’t get hoisted — meaning you can’t call them before they're defined.
+
+**Comparison:  Function Declaration vs Expression**
+| Feature              | Function Declaration                    | Function Expression                |
+| -------------------- | --------------------------------------- | ---------------------------------- |
+| Syntax               | `function greet() { ... }`              | `const greet = function() { ... }` |
+| Name                 | Has a name                              | Often anonymous                    |
+| Hoisted?             | ✅ Yes – can be used before it's defined | ❌ No – must be defined first       |
+| Can be stored/passed | ❌ Not directly                          | ✅ Yes – treat as a value           |
+
+**Example: Function Expression that greets a user
+```js
+const greetUser = function(name) {
+  console.log(`Hello, ${name}!`);
+};
+
+greetUser("Asha");  // Hello, Asha!
+greetUser("Jamie"); // Hello, Jamie!
+```
+
+**TASK: Write your own function expression**
+✏️ Task:
+Write a function expression called doubleIt that:
+Takes one number
+Returns double the number
+Call it with the number 6 and store the result in a variable called output
+Log output to the console
+```js
+//Write a function expression called doubleIt that:
+//Takes one number
+const doubleIt = function(number) {
+//Returns double the number
+  return number * 2;
+}
+//Call it with the number 6 and store the result in a variable called output
+let result = doubleIt(6);
+//Log output to the console
+console.log(result);
+```
 ---
 
 ## Undefined vs Null
@@ -1480,7 +1815,155 @@ do {
 | Update position          | In loop header                   | Inside loop body                 | Inside loop body                     |
 | Risk of infinite loop    | Low if written well              | Medium                           | Medium–High if condition never false |
 
+### Break and Continue
 
+### Loop Helpers
+
+`forEach`, `map`, `filter`, `reduce`
+These are **array methods** — they aren’t “loops” in the traditional sense, but they let you loop through arrays in a clean and modern way.
+
+They are often used instead of `for` or `for...of` loops.
+
+#### forEach
+Run a function once for each item in an array.
+✅ Use it when you want to do something with each item, but don’t need a new array.
+
+**Example:**
+```js
+const animals = ["rabbit", "dog", "cat"];
+
+animals.forEach(function(animal) {
+  console.log(animal);
+});
+```
+
+**Anatomy of a forEach:**
+| Part                   | Explanation                     | Layman’s phrasing                  |
+| ---------------------- | ------------------------------- | ---------------------------------- |
+| `animals.forEach(...)` | Calls `.forEach()` on the array | *Go through each item in the list* |
+| `animal =>`            | Function to run on each item    | *For every item, do this...*       |
+| `console.log(animal)`  | Action to run for each item     | *Print the current animal*         |
+
+
+#### map()
+Create a new array by changing each item in the original array.
+✅ Use it when you want to transform each value.
+**Example:**
+```js
+const numbers = [1, 2, 3];
+
+const doubled = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubled); // [2, 4, 6]
+```
+
+**Anatomy**
+| Part               | Explanation                        | Layman’s phrasing                    |
+| ------------------ | ---------------------------------- | ------------------------------------ |
+| `numbers.map(...)` | Calls `.map()` on the array        | *Go through each number in the list* |
+| `function(num)`    | A function that runs once per item | *For each number, run this function* |
+| `return num * 2`   | Sends back the new value           | *Double the number and return it*    |
+| `doubled`          | Stores the result (new array)      | *Save the new changed list*          |
+✅ Always returns a new array, same length as the original.
+
+#### .filter
+Create a new array containing only the items that pass a test.
+
+**Example:**
+```js
+const scores = [50, 80, 40, 100];
+
+const passing = scores.filter(function(score) {
+  return score >= 60;
+});
+
+console.log(passing); // [80, 100]
+```
+
+**Anatomy:**
+| Part                 | Explanation                                     | Layman’s phrasing                     |
+| -------------------- | ----------------------------------------------- | ------------------------------------- |
+| `scores.filter(...)` | Calls `.filter()` on the array                  | *Go through each score in the list*   |
+| `function(score)`    | A function that runs once per score             | *For each score, use this function*   |
+| `return score >= 60` | Test: keep only scores that pass this condition | *Return true if it’s a passing score* |
+| `passing`            | Stores the result (new array of passing scores) | *Save only the passing scores*        |
+✅ Returns a new array, which may be shorter than the original.
+
+#### .reduce()
+Take an array and reduce it to one value (a number, string, object, etc.) by running a function on each item.
+
+✅ Use it when you want to:
+
+- Add up numbers
+- Combine values
+- Build a single result from a list
+
+**Example: add numbers in an array**
+```js
+const numbers = [1, 2, 3, 4];
+
+const total = numbers.reduce(function(accumulator, current) {
+  return accumulator + current;
+});
+
+console.log(total); // 10
+```
+⚙️ How It Works Step by Step
+With [1, 2, 3, 4]:
+
+Step 1: acc = 1, current = 2 → returns 3
+
+Step 2: acc = 3, current = 3 → returns 6
+
+Step 3: acc = 6, current = 4 → returns 10
+
+So total is 10.
+
+
+**Anatomy**
+| Part                             | Explanation                                               | Layman’s phrasing                  |
+| -------------------------------- | --------------------------------------------------------- | ---------------------------------- |
+| `numbers.reduce(...)`            | Calls `.reduce()` on the array                            | *Work through the whole list*      |
+| `function(accumulator, current)` | A function with two parameters:                           | *Keep track of the total as we go* |
+| `accumulator`                    | The running total (starts with the first item by default) | *What we’ve built up so far*       |
+| `current`                        | The current item in the loop                              | *The number we’re on right now*    |
+| `return accumulator + current`   | Add the current number to the total                       | *Add it to the running total*      |
+| `total`                          | Stores the final result                                   | *This is the final sum*            |
+
+**example: Starting value**
+You can set your own starting value for the accumulator:
+```js
+const total = numbers.reduce(function(acc, curr) {
+  return acc + curr;
+}, 0); // 0 is the starting value
+```
+
+**Examples**
+```js
+// Combine strings
+const words = ["I", "love", "coding"];
+const sentence = words.reduce(function(acc, word) {
+  return acc + " " + word;
+});
+// "I love coding"
+
+// Count total length
+const names = ["Alex", "Sam"];
+const totalLength = names.reduce(function(acc, name) {
+  return acc + name.length;
+});
+// 8
+```
+
+**Summary Table**
+| Method    | Returns     | Use For...                             |
+| --------- | ----------- | -------------------------------------- |
+| `forEach` | ❌ Nothing   | Doing something with each item         |
+| `map`     | ✅ New array | Changing each item                     |
+| `filter`  | ✅ New array | Keeping only items that pass a test    |
+| `reduce`  | ✅ One value | Turning the whole array into one thing |
 
 ---
 
