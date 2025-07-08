@@ -128,30 +128,6 @@ You’ll be using:
 
 ---
 
-## Assignment Overview
-
-Assignment 1: JavaScript
-
-- Released after the first session via the #announcements channel on Slack.
-
-- 2 questions:
-
- - 1 creative coding question
-
- - 1 research question (with 3 sub-topics)
-
-- Worth 44 marks total
-
-- Focused on:
-
- - Code quality
-
- - Creativity
-
- - Use of JavaScript concepts (from all 6 lessons)
-
- - Practical and readable code
-
 ---
 
 ## Strings and Output
@@ -1944,7 +1920,6 @@ console.log(`Highest Price: £${highest.toFixed(2)}`);
 // "Lowest Price: £7.50"
 // "Highest Price: £12.00"
 ```
-
 
 ---
 

@@ -137,6 +137,29 @@ Source: [Refactoring Guru Design Patterns Catalog](https://refactoring.guru/desi
 - Identify the main system components.
 - Consider architecture and key implementation decisions.
 
+Required features, possible issues, tools/ tech
+
+open for set period of time - timer
+vote opens at time (not before)
+-vot closes at set time (non after)
+display of options
+only vote once
+result calculation
+Accessibility
+
+POSSIBLE ISSUES
+app crashing - data loss
+time zone issues
+concurrent users
+
+TOOLS/ Tech
+Node backend
+react front end
+cloud hosted
+NoSQL database - simple database as data not complicated
+Automated backup of database
+
+
 ---
 
 ## 💡 Interview Tips for System Design Questions

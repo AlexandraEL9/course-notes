@@ -1,0 +1,161 @@
+# JavaScript Basics
+
+## Table of Contents
+
+- [Introduction to JavaScript](#introduction-to-javascript)
+- [Your Tools](#your-tools)
+- [Strings and Output](#strings-and-output)
+- [Comments](#comments)
+- [Constants](#constants)
+- [Concatenation](#concatenation)
+- [Interpolation (Template Literals)](#interpolation-template-literals)
+- [Data Types](#data-types)
+- [User Input with `prompt()`](#user-input-with-prompt)
+- [Casting Data Types](#casting-data-types)
+
+## Introduction to JavaScript
+
+- JavaScript is one of the most popular programming languages.
+
+- Used to **make websites interactive**.
+
+- Offers many career opportunities.
+
+- JS = JavaScript (not Java).
+
+- Super fun and widely supported!
+
+---
+
+## Your Tools
+
+You’ll be using:
+
+- Chrome (or Chromium-based browser)
+
+- CodePen (web-based editor – great for sharing and experimenting)
+
+- Instructor-provided links for live coding and demos
+
+
+---
+
+## Strings and Output
+
+`console.log`
+- Used to print output to the console.
+
+- Strings are placed in double quotes "like this".
+
+**Example**
+```js
+console.log("Hello, world!");
+```
+
+**Run the console in VSCode:**
+```bash
+node part1.js # runs console in terminal
+#OR
+#In Debug Console
+#Run > Start Debugging> Node.js
+```
+
+**Debugging**
+- Mistakes happen! Use the console to check for syntax errors and typos
+
+---
+
+## Comments
+
+- Comments are ignored by the browser - they're for humans reading the code:
+
+**Example:**
+```js
+// This is a single-line comment
+
+/*
+This is a
+multi-line comment
+*/
+```
+
+---
+
+## Contstants
+
+- A constant **stores a value that doesn't change**.
+
+- Use `const` to declare it.
+
+**Example**
+```js
+const greeting = "Hello there!"; /* Creates the greeting */
+console.log(greeting); /* Show the 'greeting' in the console */
+```
+- You can only assign a value to a constant once.
+
+---
+
+## Concatenation
+
+- Concatenation = joining strings together with `+`
+
+**Example**
+```js
+const name = "Alex"; /* Create the const variable */
+console.log("Hello, " + name + "!"); /* Log the greeting and name to the console */
+```
+
+---
+
+## Interploation *(Template Literals)*
+
+- Easier and cleaner way to **insert values into strings**.
+
+- Uses **template literals**: backticks `, ${} for variables.
+
+- Uses `backticks instead of quotes
+- Uses `${variable}` to insert values
+
+```js
+const name = "Alex";
+console.log(`Hello, ${name}!`);
+```
+
+---
+
+## Data Types
+
+- String: "text"
+
+- Number: 42, 3.14
+
+- Boolean: `true`, `false`
+
+- Operators behave differently with different types!
+
+## User Input with `prompt()
+`prompt()` pops up a box to get input from the user:
+
+**Example:**
+```js
+const name = prompt("What's your name?");
+console.log(`Hello, ${name}!`);
+```
+---
+
+## Casting Data Types
+
+- Casting = **changing a value's type.**
+
+**Example:**
+
+```js
+const input = prompt(Enter a number);
+const result = Number(input) + 1;
+console.log(result);
+```
+
+- `Number(value)` converts to a number
+- `String(value)` converts to a string
+
