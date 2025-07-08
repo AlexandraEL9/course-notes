@@ -962,7 +962,6 @@ const game = {
 game.start();
 ```
 
-
 ### Number Methods (and Math)
 JavaScript numbers don’t have many methods, but you use the Math object for common tasks.
 | Method / Property | What it does                        | Example                          |
@@ -974,7 +973,35 @@ JavaScript numbers don’t have many methods, but you use the Math object for co
 | `Math.random()`   | Random number between 0 and 1       | `Math.random()` → `0.36` (etc.)  |
 | `Math.max(…)`     | Finds highest                       | `Math.max(1,5,3)` → `5`          |
 
+Math is like a library or toolbox of methods built in to javaScript.
 
+#### Math.floor
+✅ Purpose:
+Rounds a number down to the nearest whole integer.
+
+🧪 Syntax:
+```js
+Math.floor(number)
+```
+
+**Anatomy / Breakdown:**
+| Part     | Technical Role                                       | Layman’s Phrase                       |
+| -------- | ---------------------------------------------------- | ------------------------------------- |
+| `Math`   | Built-in JavaScript object for math operations       | "Look in the **Math toolbox**"        |
+| `.floor` | Method that rounds a number **down**                 | "Use the **'round-down' tool**"       |
+| `( )`    | Runs the method with the given input (function call) | "Tell it what number to round"        |
+| `6.5`    | The argument (input) passed to the method            | "Here's the **number to round down**" |
+
+
+**Example:**
+```js
+console.log(Math.floor(4.7)); // 4
+console.log(Math.floor(9.99)); // 9
+console.log(Math.floor(-3.2)); // -4
+```
+📝 Notes:
+- Always rounds towards negative infinity (down), even for negative numbers.
+- It’s a method of the Math object, so you always write Math.floor() — not just floor().
 
 ---
 
@@ -1550,6 +1577,119 @@ console.log(book.title); // "Invisible Women"
 
 ---
 
+### Access Properties in Objects
+🔹 1. Object Basics: Key–Value Pairs
+Objects store data in key–value pairs.
+```js
+const person = {
+  name: "Alex",
+  age: 40
+};
+```
+In this object:
+
+"name" is a key
+
+"Alex" is its value
+
+"age" is another key, and 40 is its value
+
+#### Accessing Values — Two Ways
+**Dot Notation (most common)**
+**Bracket notation**
+
+#### Dot Notation
+```js
+console.log(person.name); // Alex
+console.log(person.age);  // 40
+```
+- Use when the key is a valid identifier (no spaces or symbols like -).
+- Clean and easy to read.
+
+#### Bracket Notation
+```js
+console.log(person["name"]); // Alex
+console.log(person["age"]);  // 40
+```
+Use bracket notation when:
+- The key has spaces or hyphens
+- The key is stored in a variable
+
+**Example:**
+```js
+const key = "name";
+console.log(person[key]); // Alex
+```
+
+#### Accessing All Keys or Values
+You can use special built-in methods:
+```js
+const keys = Object.keys(student);   // ["name", "grades", "contact"]
+const values = Object.values(student); // ["Mei", [70, 85, 92], {…}]
+```
+Useful when looping over an object
+
+### Add and Delete Properties in Objects
+🧠 Mini Lesson: Adding a New Property
+**Syntax:**
+```js
+objectName.newProperty = value;
+```
+
+**Example:**
+```js
+car.colour = "red";
+```
+That adds a new colour property to the car object.
+
+**Further Example:**
+```js
+const kettle = {
+  brand: "morphy richards",
+  boil: function() {
+    console.log(`Boiling water with the ${kettle.brand} kettle...`);
+  }
+};
+kettle.colour = "silver"; // add new property
+
+console.log(kettle); // check the full object
+
+// Output example
+{
+  brand: "morphy richards",
+  boil: ƒ,
+  colour: "silver"
+}
+```
+
+🧹 Deleting a Property from an Object
+✅ Syntax:
+```js
+delete objectName.propertyName;
+```
+This removes the property from the object — permanently.
+
+🔍 Example:
+```js
+const cat = {
+  name: "Luna",
+  age: 3,
+  colour: "grey"
+};
+
+delete cat.age;
+
+console.log(cat);
+
+// Output example
+{
+  name: "Luna",
+  colour: "grey"
+}
+
+```
+
+
 ### Nested Objects
 
 Objects can contain other objects or arrays.
@@ -1566,6 +1706,34 @@ let girl = {
   }
 };
 console.log(girl.address.city); // "London"
+```
+
+#### Accessing Nested Objects' Data
+
+Objects can contain:
+
+- Other objects
+- Arrays
+- Or both
+
+You can **chain dot and bracket notation** as needed.
+
+🔸 **Example:**
+```js
+const student = {
+  name: "Mei",
+  grades: [70, 85, 92],
+  contact: {
+    email: "mei@example.com",
+    phone: "123-4567"
+  }
+};
+```
+✅ Access nested data:
+```js
+console.log(student.grades[1]);       // 85
+console.log(student.contact.email);   // "mei@example.com"
+console.log(student["contact"]["phone"]); // "123-4567"
 ```
 
 ---
