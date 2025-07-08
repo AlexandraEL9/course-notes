@@ -126,7 +126,6 @@ You’ll be using:
 
 - Instructor-provided links for live coding and demos
 
----
 
 ---
 

@@ -124,5 +124,4 @@ kettle.colour = "silver"; // add new property
 
 // Log the entire object to the console to check your changes
 console.log(kettle); // check the full object
-
 ```
