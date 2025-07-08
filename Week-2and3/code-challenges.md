@@ -440,6 +440,47 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
+**Example Challenge**
+ChatGPT said:
+Absolutely! Here's a mini challenge that uses the “Loop with Index” pattern:
+
+👟 Mini Challenge: Compare Running Times
+🧠 Goal:
+You’re given two arrays:
+
+One with the running times of Team A
+
+One with the running times of Team B
+
+Write a function that returns how many times Team A was faster (i.e., had a lower time) than Team B at the same index.
+```js
+let teamA = [12, 15, 10, 13];
+let teamB = [14, 15, 11, 14];
+
+// Output: 2
+// (Team A was faster at index 0 and index 2)
+function countFasterRuns(teamA, teamB) {
+  // your code here
+  let count = 0; // count tracks the times team a is faster
+
+  for (let i = 0; i < teamA.length; i++) {
+  // use arr[i]
+    if (teamA[i] < teamB[i]) {
+        count += 1;
+    }
+  }
+  return count;
+}
+console.log(countFasterRuns(teamA, teamB)); // logs 3 (team A faster 3 times)
+```
+| Concept                    | ✅ Used it for...                     |
+| -------------------------- | ------------------------------------ |
+| `for` loop with index `i`  | Compare items at matching positions  |
+| `if (teamA[i] < teamB[i])` | Check condition using array index    |
+| `count += 1`               | Tally how many comparisons were true |
+| `return count`             | Send the result back                 |
+
+
 ### BONUS TIPS / Things to remember
 | Pattern               | When to Use                              |
 | --------------------- | ---------------------------------------- |
