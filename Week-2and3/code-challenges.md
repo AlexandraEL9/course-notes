@@ -10,6 +10,7 @@
 ---
 
 ### 🎯 Patterns and Mini Challenges
+![Coding Patterns Poster](/images/challenge-patterns-poster.png)
 
 - [1. Counting Things in Arrays](#1-counting-things-in-arrays)
   - [1.1 Mini Challenge: Count the Number 7s](#11-mini-challenge-count-the-number-7s)

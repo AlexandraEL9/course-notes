@@ -1,6 +1,6 @@
 # Data-Type Methods
 JavaScript data types like strings, arrays, objects, and numbers come with built-in methods — these are like mini-tools you can use to work with the data.
-
+![Method Types Poster](/images/method-types-poster.png)
 ---
 # 📚 Table of Contents
 
@@ -49,6 +49,7 @@ JavaScript data types like strings, arrays, objects, and numbers come with built
 
 ### String methods
 Strings are sequences of characters. Methods help you inspect, change, or extract parts of strings.
+
 
 | Method           | What it does                            | Example                                   |
 | ---------------- | --------------------------------------- | ----------------------------------------- |

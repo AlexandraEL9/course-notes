@@ -44,6 +44,8 @@ for (let i = 0; i < 3; i++) {
 | `while` loop | Keep looping **while a condition is true**               |
 | `do...while` | Like `while`, but always runs the code **at least once** |
 
+![Types of Loops Poster](/images/loops-poster.png)
+
 
 ### For Loops
 
