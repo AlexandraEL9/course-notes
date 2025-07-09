@@ -281,6 +281,17 @@ const updated = sentence.replace("cats", "dogs");
 console.log(updated); // "Some people love dogs, and some people fear cats."
 ```
 
+**To clean a string of spaces and punctuation:**
+```js
+let cleanedString = lowerCase.replace(/[^a-z]/g, "");
+```
+*Explanation:*
+- /[^a-z]/g means:
+
+- [^a-z] = match anything not a letter (a to z)
+
+- g = global flag (replace all matches)
+
 
 ### `.indexOf()`
 Purpose: Find the position (index) of the first occurrence of a character or substring in a string.

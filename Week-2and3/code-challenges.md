@@ -27,6 +27,8 @@
   - [3.1 Mini Challenge: Word Tally](#31-mini-challenge-word-tally)
   - [3.2 Most Frequent Number](#32-most-frequent-number)
   - [3.3 Tally Votes](#33-tally-votes)
+  - [3.4 Highest Frequency Word](#34-highest-frequency-word)
+  - [3.5 First Non-Repeating Character](#35-first-non-repeating-character)
 
 - [4. Find the Maximum or Longest](#4-find-the-maximum-or-longest)
   - [4.1 Mini Challenge: Tallest Person](#41-mini-challenge-tallest-person)
@@ -43,6 +45,8 @@
   - [7.2 Count a Specific Letter "a"](#72-count-a-specific-letter-a)
   - [7.3 Count the word "really" in Wannabe](#73-count-the-word-really-in-wannabe)
   - [7.4 Count xs and os and compare](#74-count-xs-and-os-and-compare)
+  - [7.5 Balanced Brackets](#75-balanced-brackets)
+  - [7.6 Most Common Letter in a String](#76-most-common-letter-in-a-string)
 
 - [8. Build a New Array](#8-build-a-new-array)
   - [8.1 Double the Numbers](#81-double-the-numbers)
@@ -596,6 +600,111 @@ function colourTally(coloursArray) {
 console.log("Tally:", colourTally(coloursArray));
 ```
 
+#### 3.4 Highest Frequency Word
+```js
+// Write a function that returns the word that appears most often in a sentence.
+
+// Input: "I love love love coding coding"
+
+let input = "I love love love coding coding";
+
+// function
+function mostFrequent(input) {
+  // Step 1: Split the sentence into words
+  let words = input.split(" "); // ["I", "love", "love", "love", "coding", "coding"]
+  // create empty object
+  let countMap = {};
+  // count how many times each number appears
+  for (let word of words) {
+    if (countMap[word]) {
+      countMap[word] += 1;
+    } else {
+      countMap[word] = 1;
+    }
+  }
+  //find number with highest frequency
+  let maxCount = 0;
+  let mostFrequentWord = null; // intentionally absent
+
+  // loop through new object
+  for (let word in countMap) {
+    if (countMap[word] > maxCount) {
+      maxCount = countMap[word];
+      mostFrequentWord = word;
+    }
+  }
+  return mostFrequentWord;
+}
+console.log(mostFrequent(input));
+```
+| Concept               | Purpose                                             |
+| --------------------- | --------------------------------------------------- |
+| `.split(" ")`         | Split the sentence into an array of words           |
+| `object as counter`   | Track how many times each word appears (`countMap`) |
+| `for...of` loop       | Loop through each word in the array                 |
+| `for...in` loop       | Loop through keys (words) in the object             |
+| `max tracker pattern` | Track which word has the highest frequency          |
+
+#### 3.5 First Non-Repeating Character
+```js
+//Challenge: First Non-Repeating Character
+// Write a function that returns the first character in a string that doesn’t repeat.
+//Ignore case
+// Ignore spaces and punctuation
+//Return null if every character repeats
+// input: let input = "stress";
+// expected output: "t" // (because 's' and 'r' repeat, but 't' is the first that doesn't)
+
+// input
+let input = "Stress!";
+
+// function
+function findFirstNonRepeat(input) {
+  // Clean string to lowercase and remove punctuation/spaces
+  let lowerCased = input.toLowerCase();
+  let cleanedString = lowerCased.replace(/[^a-z]/g, "");
+
+  // Step 1: Count frequency of each character
+  let countMap = {};
+  for (let letter of cleanedString) {
+    if (countMap[letter]) {
+      countMap[letter] += 1;
+    } else {
+      countMap[letter] = 1;
+    }
+  }
+
+  // Step 2: Find the first character with a count of 1
+  for (let letter of cleanedString) {
+    // for each letter in the cleaned string
+    // Check the count of this letter in the countMap object
+    if (countMap[letter] === 1) {
+      // If this letter appears exactly once, return it immediately
+      // (This is the first non-repeating letter in the string)
+      return letter;
+    }
+  }
+
+  // Step 3: If no unique character found, return null
+  return null;
+}
+
+// call
+console.log(findFirstNonRepeat(input)); // "t"
+console.log(findFirstNonRepeat("aabbcc"));  // null
+console.log(findFirstNonRepeat("Swiss"));   // "w"
+```
+| **Pattern / Skill**               | **Used For / Explanation**                                                        |
+| --------------------------------- | --------------------------------------------------------------------------------- |
+| **String cleaning**               | `.toLowerCase()` and `.replace(/[^a-z]/g, "")` used to normalize input            |
+| **Split string into characters**  | Implicit via `for...of` loop to iterate over each character                       |
+| **Frequency Map / Tally Counter** | Used to count how many times each character appears using an object `{}`          |
+| **for...of loop**                 | To iterate over characters in the cleaned string                                  |
+| **Conditionals (`if/else`)**      | To tally character counts and check for first unique character                    |
+| **Early Return**                  | Returns the first character found with count `=== 1`, ending the loop immediately |
+| **Return `null` as fallback**     | If no character has a unique count, the function returns `null` at the end        |
+| **Object lookup**                 | Using `countMap[letter]` to retrieve frequency in constant time                   |
+
 
 ### 4. Find the Maximum or Longest
 Used when: You're trying to find the biggest number, longest word, etc.
@@ -968,6 +1077,84 @@ function ExOh(input) {
 
 console.log(ExOh(input)); // Expected: true
 ```
+
+#### 7.5 Balanced Brackets
+```js
+//Challenge: Balanced Brackets (Easy–Medium)
+//Write a function that takes a string of only "(" and ")" and returns true if the brackets are balanced, or false if not.
+//A string is balanced if every open ( has a matching close ) in the correct order.
+let input = "(())";
+
+function balancedBrackets(input) {
+  // split string into characters
+  let characters = input.split("");
+  console.log(characters);
+
+  // set up variables for "(" and ")"
+  let countOpen = 0;
+  let countClosed = 0;
+
+  // loop through array for...of
+  for (let char of characters) {
+    if (char === "(") {
+      countOpen += 1;
+    } else if (char === ")") {
+      countClosed += 1;
+    }
+  }
+  return countOpen === countClosed;
+}
+console.log(balancedBrackets(input));
+```
+
+#### 7.6 Most Common Letter in a String
+```js
+// Most Common Letter (Ignore Case)
+// Write a function that takes a string and returns the letter that appears the most often (case-insensitive). Ignore spaces and punctuation.
+// Input: "Hello, how are you?"
+// Output: "o"  // because "o" appears 3 times
+
+let string = "Hello, how are you?";
+
+function mostFrequentLetter(string) {
+  // Step 1: Lowercase everything for case-insensitive comparison
+  let lowerCase = string.toLowerCase();
+
+  // Step 2: Remove punctuation and spaces
+  let cleanedString = lowerCase.replace(/[^a-z]/g, "");
+
+  // Step 3: Count each letter (frequency map)
+  let countMap = {};
+  for (let letter of cleanedString) {
+    if (countMap[letter]) {
+      countMap[letter] += 1;
+    } else {
+      countMap[letter] = 1;
+    }
+  }
+
+  // Step 4: Find letter with the highest frequency
+  let maxCount = 0;
+  let mostFrequent = null;
+
+  for (let letter in countMap) {
+    if (countMap[letter] > maxCount) {
+      maxCount = countMap[letter];
+      mostFrequent = letter;
+    }
+  }
+
+  // Step 5: Return the most frequent letter
+  return mostFrequent;
+}
+
+console.log(mostFrequentLetter(string)); // o
+```
+| Step | Pattern Name             | Explanation                             |
+| ---- | ------------------------ | --------------------------------------- |
+| 1    | 🧹 Clean and Normalize   | `.toLowerCase()`, `.replace()` to clean |
+| 2    | 🔁 Frequency Map (Tally) | `{}` object with `for...of` loop        |
+| 3    | 🔍 Max Tracker Pattern   | Compare and track highest count         |
 
 
 ### 8. Build a New Array
