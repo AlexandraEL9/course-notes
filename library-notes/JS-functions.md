@@ -23,6 +23,7 @@
   - [Comparison: Function Declaration vs Expression](#comparison-function-declaration-vs-expression)
   - [Example: Function Expression that greets a user](#example-function-expression-that-greets-a-user)
   - [TASK: Write your own function expression](#task-write-your-own-function-expression)
+- [Arrow Functions](#arrow-functions)
 
   ---
 
@@ -381,3 +382,142 @@ let result = doubleIt(6);
 console.log(result);
 ```
 ---
+
+## Arrow Functions
+✅ What is an Arrow Function?
+- An arrow function is a shorter way to write a function expression using the => arrow syntax.
+- It still lets you:
+- Store a function in a variable
+- Take parameters
+- Return values
+
+### Syntax comparison
+| Task                     | Function Expression                             | Arrow Function                                   |
+| ------------------------ | ----------------------------------------------- | ------------------------------------------------ |
+| No parameters            | `const greet = function() { return "Hi"; };`    | `const greet = () => "Hi";`                      |
+| One parameter            | `const square = function(n) { return n * n; };` | `const square = n => n * n;`                     |
+| Multiple parameters      | `const add = function(a, b) { return a + b; };` | `const add = (a, b) => a + b;`                   |
+| With multiple statements | Use `{}` and `return`                           | Must use `{}` and `return`                       |
+| No `this` binding        | Uses traditional `this`                         | Arrow functions **do not** have their own `this` |
+
+
+### Basic Syntax
+Function Expression:
+```js
+const greet = function(name) {
+  return `Hello, ${name}!`;
+};
+```
+Arrow Function (equivalent):
+```js
+const greet = (name) => {
+  return `Hello, ${name}!`;
+};
+```
+
+### Anatomy of an Arrow Function
+| Part             | Explanation                         | Layman’s Phrasing                       |
+| ---------------- | ----------------------------------- | --------------------------------------- |
+| `const greet =`  | Store function in a variable        | *This is the name I’ll use to call it*  |
+| `(name)`         | Function **parameter(s)**           | *This is the info the function expects* |
+| `=>`             | Arrow function syntax               | *Do this when called...*                |
+| `{ return ... }` | Function **body** with return value | *Give this back when called*            |
+
+#### Shorter Version for One-Liner Returns
+If the function just returns something in one line, you can:
+- Remove the {} and return
+- Keep everything inline
+```js
+const greet = (name) => `Hello, ${name}!`;
+```
+⚠️ Only works if you're returning one thing on the same line.
+
+#### Rules and Notes
+| Rule                                         | Example                               |
+| -------------------------------------------- | ------------------------------------- |
+| No parameters? Use empty `()`                | `() => "Hi"`                          |
+| One parameter? Drop the brackets             | `name => "Hello " + name`             |
+| Multiple parameters? Use `()`                | `(a, b) => a + b`                     |
+| More than 1 statement? Use `{}` and `return` | `(x) => { let y = x * 2; return y; }` |
+
+#### Special Cases
+1. No Parameters
+You must use empty parentheses:
+```js
+const sayHello = () => "Hello!";
+```
+
+2. One Parameter
+You can omit the parentheses:
+```js
+const double = x => x * 2;
+```
+
+3. Multiple Parameters
+Use parentheses around them:
+```js
+const add = (a, b) => a + b;
+```
+
+4. Function Body with Logic
+Use curly braces and return:
+```js
+const checkEvenOdd = (num) => {
+  if (num % 2 === 0) {
+    return "Even";
+  } else {
+    return "Odd";
+  }
+};
+```
+
+#### Arrow Function vs Regular Function
+| Feature                 | Arrow Function         | Regular Function                         |
+| ----------------------- | ---------------------- | ---------------------------------------- |
+| Syntax                  | Shorter, cleaner       | Longer                                   |
+| `this` keyword behavior | ❗ Inherits from parent | Own value (context bound)                |
+| Hoisting                | ❌ Not hoisted          | ✅ Declarations are hoisted               |
+| Good for                | Short callbacks, logic | Complex methods or `this`-dependent code |
+
+#### Examples
+```js
+const square = x => x * x;
+console.log(square(5)); // 25
+
+const shout = message => message.toUpperCase() + "!";
+console.log(shout("hello")); // "HELLO!"
+```
+
+**More Examples**
+1. Greet Someone
+```js
+const greet = name => `Hello, ${name}!`;
+console.log(greet("Asha")); // "Hello, Asha!"
+```
+
+2. Add Two Numbers
+```js
+const add = (a, b) => a + b;
+console.log(add(3, 5)); // 8
+```
+
+3. Double a Number (with block body)
+```js
+const double = number => {
+  return number * 2;
+};
+```
+
+#### Task: Try it yourself!
+Write an arrow function called isOdd that:
+- Takes a number
+- Returns true if it’s odd, false if it’s even
+- Call it with 7 and log the result
+```js
+const isOdd = number => {
+  return number % 2 !== 0;
+};
+console.log(isOdd(7));  // true
+```
+- number % 2 !== 0 checks if the number leaves a remainder when divided by 2 (which means it’s odd).
+- return sends back true or false.

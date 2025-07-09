@@ -148,3 +148,65 @@ const product = nums.reduce(function(accumulator, current) {
 });
 console.log(product); // 24 (2 * 3) 6    (6 * 4)  24
 ```
+
+---
+📘 1. Explain in Your Own Words
+What’s the difference between .map() and .filter() in terms of what they return and when you would use each?
+  **map creates a new array once an action has been done to items in the array, whereas filter does not change items, it filters out only the entries matching a condition**
+
+2. Fix the Bug – .reduce() Issue
+Here’s a broken attempt at combining words:
+```js
+const words = ["keep", "it", "sweet"];
+
+const sentence = words.reduce(function(word) {
+  return word + " ";
+});
+
+console.log(sentence);
+```
+What’s wrong with this code, and how would you fix it?
+  **only gave one parameter (word), but .reduce() needs two:  accumulator (running total/result) and  current (current word)
+  ```js
+  const sentence = words.reduce(function(acc, word) {
+  return acc + " " + word;
+});
+  ```
+
+3. Mini Table – Match the Tool to the Task
+Match each task to the best method: `forEach`, `map`, `filter`, or `reduce`.
+| Task                                      | Best Method |
+| ----------------------------------------- | ----------- |
+| Print each item in a list                 |  `forEach`  |
+| Turn an array of numbers into a total sum | `reduce`    |
+| Double each number in an array            | `map`       |
+| Keep only even numbers from an array      | `filter`    |
+
+4. Stretch Challenge – Combine Helpers
+You have this array:
+```js
+const nums = [1, 2, 3, 4, 5, 6];
+```
+Write code that:
+- Filters to keep only even numbers
+- Doubles each of those numbers
+- Adds them all together with .reduce()
+```js
+const nums = [1, 2, 3, 4, 5, 6];
+
+// Filters to keep only even numbers
+const evens = nums.filter(function(num) {
+  return num % 2 === 0;
+});
+//Doubles each of those numbers
+const doubled = evens.map(function(num) {
+  return num * 2;
+});
+//Adds them all together with .reduce()
+const total = doubled.reduce(function(accumulator, current) {
+  return accumulator + current;
+});
+console.log(evens); // [2, 4, 6]
+console.log(doubled); // [4, 8, 12]
+console.log(total); // 24
+```

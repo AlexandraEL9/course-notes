@@ -205,3 +205,83 @@ const greetUser = function(name) {
 let greeting = greetUser("Roman");
 console.log(greeting);
 ```
+
+---
+
+✅ 1. Fill in the Gaps (Retrieval Practice)
+Say or write your answers before checking:
+
+A function declared with function is a **function declaration**.
+A function stored in a variable is called an **function expression**.
+Function expressions are not **hoisted**, so you must define them before use.
+The return keyword gives **a value** back to where the function was called.
+
+✅ 2. Code Reading
+What does this code log?
+```js
+const makeGreeting = function(name) {
+  return `Hi, ${name}!`;
+};
+
+let greeting = makeGreeting("Iman");
+console.log(greeting); // "Hi, Iman!"
+```
+
+✅ 3. Debug the Bug
+There’s a small bug in this function expression. Fix it!
+```js
+const shoutLoud = function message {
+  return "HEY!";
+};
+
+console.log(shoutLoud());
+```
+Should message be within parentheses as a parameter
+```js
+const shoutLoud = function () {
+  return "HEY!";
+};
+
+console.log(shoutLoud()); // HEY!
+```
+
+✅ 4. True or False?
+A function expression can be passed into another function. 
+  **TRUE- Functions are values — they can be passed**
+
+You can define a function expression after it is called.  
+  **FALSE - Not hoisted**
+
+The name of a function expression must match the variable it’s assigned to. 
+  **FALSE - You can use anonymous functions**
+
+Every function must return a value. 
+  **FALSE - Functions can return nothing (undefined)**
+
+
+✅ 5. Code Task
+Write a function expression called isEven that:
+- Takes a number
+- Returns true if it’s even, false if it’s odd
+- Call it with the number 8 and store the result in output
+- Log output
+```js
+// function declaration version
+function isEven (number) {
+  if (number % 2 === 0) {
+    console.log(`The number ${number} is even`)
+  } else {
+    console.log(`The number ${number} is odd`)
+  }
+}
+isEven(8);
+```
+```js
+// function expression version
+const isEven = function (number) {
+  return number % 2 === 0;
+};
+
+let output = isEven(7);
+console.log(output); // true
+```

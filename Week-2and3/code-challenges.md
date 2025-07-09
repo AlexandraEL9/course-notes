@@ -2,6 +2,73 @@
 
 ---
 
+## 📚 Code Challenges — Contents
+
+### 🔑 Common Patterns and Tips
+- `.split('')`, `Math.floor()`, `.length`, `return`, `console.log()`
+
+---
+
+### 🎯 Patterns and Mini Challenges
+
+- [1. Counting Things in Arrays](#1-counting-things-in-arrays)
+  - [1.1 Mini Challenge: Count the Number 7s](#11-mini-challenge-count-the-number-7s)
+  - [1.2 Mini Challenge:Count the Odds](#12-mini-challenge-count-the-odds)
+  - [1.3 Mini Challenge: Count Even Numbers](#13-mini-challenge-count-even-numbers)
+  - [1.4 Count the word "really" in Wannabe](#14-count-the-word-really-in-wannabe)
+  - [1.5 Compare number of xs and os in an array](#15-compare-the-number-of-xs-and-os-in-an-array)
+
+- [2. Sum All Numbers in an Array](#2-sum-all-numbers-in-an-array)
+  - [2.1 Mini Challenge: Total Shopping Bill](#21-mini-challenge-total-shopping-bill)
+  - [2.2 Total Up All Numbers](#22-total-up-all-numbers)
+  - [2.3 Sum of Even Numbers](#23-sum-of-even-numbers)
+
+- [3. Frequency Map (Tally Counter)](#3-frequency-map-tally-counter)
+  - [3.1 Mini Challenge: Word Tally](#31-mini-challenge-word-tally)
+  - [3.2 Most Frequent Number](#32-most-frequent-number)
+  - [3.3 Tally Votes](#33-tally-votes)
+
+- [4. Find the Maximum or Longest](#4-find-the-maximum-or-longest)
+  - [4.1 Mini Challenge: Tallest Person](#41-mini-challenge-tallest-person)
+  - [4.2 Find the Longest Word](#42-find-the-longest-word)
+
+- [5. Track State with a Variable](#5-track-state-with-a-variable)
+  - [5.1 Mini Challenge: Net Elevation](#51-mini-challenge-net-elevation)
+
+- [6. Check for a Condition](#6-check-for-a-condition)
+  - [6.1 Mini Challenge: Print Only Long Words](#61-mini-challenge-print-only-long-words)
+
+- [7. Split a String into Characters](#7-split-a-string-into-characters)
+  - [7.1 Mini Challenge: Count the Letter "e"](#71-mini-challenge-count-the-letter-e)
+  - [7.2 Count a Specific Letter "a"](#72-count-a-specific-letter-a)
+  - [7.3 Count the word "really" in Wannabe](#73-count-the-word-really-in-wannabe)
+  - [7.4 Count xs and os and compare](#74-count-xs-and-os-and-compare)
+
+- [8. Build a New Array](#8-build-a-new-array)
+  - [8.1 Double the Numbers](#81-double-the-numbers)
+  - [8.2 Mini Challenge: Word Lengths](#82-mini-challenge-word-lengths)
+
+- [9. Check for a Palindrome](#9-check-for-a-palindrome)
+  - [9.1 Mini Challenge: Palindrome Checker](#91-mini-challenge-palindrome-checker)
+  - [9.2 Reverse Words in a String](#92-reverse-words-in-a-string)
+  - [9.3 Reverse Words in a Sentence](#93-reverse-words-in-a-sentence)
+
+- [10. Loop with Index](#10-loop-with-index)
+  - [10.1 Mini Challenge: Compare Running Times](#101-mini-challenge-compare-running-times)
+  - [10.2 Count Letter "a"](#102-count-letter-a)
+
+---
+
+### Bigger Challenges
+
+- [11. Pair the Socks](#11-pair-the-socks)
+- [12. Palindrome Checker](#12-palindrome-checker)
+- [13. Photo Checker](#13-photo-checker)
+- [14. A&E Wait Times](#14-a-e-wait-times)
+
+
+---
+
 ## Common Challenge Patterns
 ### BONUS TIPS / Things to remember
 | Pattern               | When to Use                              |
@@ -12,8 +79,31 @@
 | `return`              | To send a result back from a function    |
 | `console.log()`       | To debug and see what your code is doing |
 
+### Common Challenge Patterns
+- focus on challenges that use:
+  - Loops with conditions
+  - Arrays and string manipulation
+  - Object/counting patterns (like tally counters)
+  - Index-based comparisons
+  - Basic logic (palindrome, sums, etc.)
 
-### Counting Things in an Array
+### Key Skills Checklist
+Make sure solid on:
+- for and for...of loops
+- if, %, ===, !==
+- .length, .push(), .split(), .join(), .reverse(), .replace()
+- Creating counters/objects to track frequency
+
+### Challenge Strategy
+For each problem:
+- Restate it clearly in your own words.
+- Write pseudocode first as comments (this earns marks!)
+- Start simple — don’t overbuild logic.
+- Test early — log progress after each step.
+
+## Challenge Patterns
+
+### 1. Counting Things in Arrays
 Used when: You need to count how often something appears (like sock colors, letters, or even numbers)
 ```js
 let count = 0;
@@ -27,7 +117,7 @@ for (let item of arr) {
 
 **Example Challenge:**
 
-🎯 Mini Challenge: Count the Number 7s
+#### 1.1 Mini Challenge: Count the Number 7s
 🧠 Goal:
 Write a function that counts how many times the number 7 appears in an array of numbers.
 ```js
@@ -61,6 +151,195 @@ console.log(output);    // logs the outputs
 | `return`         | Return the final count from the function     |
 | `console.log()`  | Show the result so you can check your output |
 
+#### 1.2 Mini Challenge: Count the Odds
+Task:
+Write a function that counts how many odd numbers are in an array.
+```js
+// Write a function that counts how many odd numbers are in an array.
+// Input: [1, 2, 3, 4, 5]
+// Output: 3 (odd numbers: 1, 3, 5)
+
+// RESTATE: How many odd numbers are in the array?
+// set array and log.
+let array = [1, 2, 3, 4, 5];
+console.log(array); //[1,2,3,4,5]
+// set up function
+function countOdds(array) {
+  // set up count variable to track how many odd numbers
+  let oddCount = 0;
+  console.log(oddCount);
+  // loop through numbers in array for...of
+  for (let number of array) { // loop through each number
+    // logic to check odd (% !== 0)
+    if (number % 2 !== 0) { // check it is not divisible by 2 with not 0 remainders
+      oddCount += 1;  // if it is, add 1 to the counter
+    }
+  }
+  return oddCount;  // return the final count
+}
+// set up output variable
+let output = countOdds(array);   // set output as called function with the array inputted
+// log  Output: 3
+console.log(output);  // logs 3
+```
+📘 Concepts Covered
+  ✅ Looping with for...of
+  ✅ Using % (modulus) to test for odd numbers
+  ✅ Incrementing a count with += 1
+  ✅ Returning values from a function
+  ✅ Logging for debugging
+  ✅ Writing clear comments & pseudocode
+
+
+### 1.3 Mini Challenge: Count Even Numbers
+Concepts: loop + if + modulus (%)
+
+Task:
+Write a function that counts how many even numbers are in an array.
+```js
+// Input: [2, 3, 4, 5, 6]
+// Output: 3 (because 2, 4, and 6 are even)
+
+function countEvens(arr) {
+  // your code here
+  // set count variable to track even numbers
+  let count = 0;
+  // loop through array - for...of to go through each number in the array
+  for (let num of arr) {
+    if (num % 2 === 0) {    // check the number is even
+        count += 1; // if it is, add it to the running total
+    }
+  }
+  return count; //return the final count from the function
+}
+let output = countEvens([2, 3, 4, 5, 6]); // call the countEven function, pass it the array as the argument, function runs and stores result in 'output'
+console.log(output);    // logs the outputs
+```
+
+#### 1.4 Count the word "really" in Wannabe
+```js
+// Spice Girls ("Wannabe")
+// '''
+// Yo, I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+// I wanna really, really, really wanna zigazig ah"
+// '''
+// Count how many times the word "really" appears in the Spice Girls lyrics.
+// NB: it is entirely up to you whether to write function or just write script
+// in the console.
+
+// set lyrics
+let lyrics = `
+Yo, I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+I wanna really, really, really wanna zigazig ah"
+`;
+//console.log(lyrics);
+
+// function
+function countReallys(lyrics) {
+  // split into words - .split
+  let words = lyrics.split(" ");
+  //console.log(words);
+  // set up count to track
+  let count = 0;
+
+  //loop through lyrics
+  for (let word of words) {
+    // Remove punctuation (commas, quotes, brackets, etc.)
+    let cleanWord = word.replace(/[^\w]/g, ""); // keep only letters and numbers
+    if (cleanWord === "really") {
+      count += 1;
+    }
+  }
+  return count;
+}
+console.log(countReallys(lyrics)); // 11
+```
+| 💡 **Skill / Concept**           | ✅ **How it was used**                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| `split(" ")` (String method)     | Broke the lyrics into an array of **individual words** based on spaces                |
+| `for...of` loop                  | Allowed you to loop through each **word** in the lyrics                               |
+| `if (word === "really")`         | Checked whether each word was **exactly** `"really"`                                  |
+| `let count = 0` and `count += 1` | Tracked how many times the word `"really"` appeared                                   |
+| `return`                         | Returned the final count from the function                                            |
+| `console.log()`                  | Printed the result so you could check your output                                     |
+| Template literal (`` `...` ``)   | Stored a **multi-line string** (the lyrics) easily in the `lyrics` variable           |
+| String cleanup (optional step)   | You might use `.replace(/[^\w]/g, "")` to remove punctuation when needed              |
+| Manual debugging                 | You manually **counted occurrences** to verify the code’s output matched expectations |
+
+#### 1.5 Compare number of xs and os in an array
+```js
+// Create a function which reads an array of xs and os, counts them,
+// then returns true if the same amount or false if not.
+
+let input = ["x", "o", "x", "o", "x", "x", "o", "o"];
+console.log(input);
+
+function ExOh(input) {
+  let countX = 0;
+  let countO = 0;
+
+  for (let letter of input) {
+    if (letter === "x") {
+      countX += 1;
+    } else if (letter === "o") {
+      countO += 1;
+    }
+  }
+
+  return countX === countO; // comparison oporator to test if true - are they both the same?
+}
+
+console.log(ExOh(input)); // Expected: true
+```
+
+**Version with case sensitivity:**
+- use `.toLowerCase`
+```js
+// Create a function which reads an array of xs and os of different cases and counts them,
+// then returns true if the same amount or false if not.
+
+let input = ["x", "X", "O", "o"];
+console.log(input); // ["x", "X", "O", "o"]
+
+function ExOh(input) {
+  // set up counters
+  let countX = 0;
+  let countO = 0;
+
+  // loop through each letter in the array
+  for (let letter of input) {
+    // convert letter to lowercase so it's case-insensitive
+    let lower = letter.toLowerCase();
+
+    if (lower === "x") {
+      countX += 1;
+    } else if (lower === "o") {
+      countO += 1;
+    }
+  }
+
+  // return true if counts match
+  return countX === countO;
+}
+
+console.log(ExOh(input)); // true
+```
+| Concept          | Description                                  |
+| ---------------- | -------------------------------------------- |
+| `.toLowerCase()` | Ensures case doesn’t affect comparison       |
+| `for...of` loop  | Iterates through each character in the array |
+| `if / else if`   | Checks and counts x’s and o’s                |
+| `===` comparison | Compares final counts                        |
+| `return`         | Gives back `true` or `false`                 |
+
 
 ### 2. Sum All Numbers in an Array
 
@@ -74,7 +353,8 @@ for (let num of arr) {
 ```
 
 **Example Challenge:**
-💰 Mini Challenge: Total Shopping Bill
+
+#### 2.1 Mini Challenge: Total Shopping Bill
 🧠 Goal:
 Write a function that returns the total cost of all items in a shopping basket (represented as an array of prices).
 ```js
@@ -104,9 +384,76 @@ console.log(output); // 12.74
 | `return total`        | To return the final result from the function |
 | `console.log(output)` | To show the total in the console             |
 
+### 2.2 Total Up All Numbers
+Concepts: loop + accumulator variable
 
-### Frequency Map (Tally Counter)
+Task:
+Return the sum of all numbers in an array.
+```js
+// Input: [3, 5, 2]
+// Output: 10
+let arr = [3, 5, 2];
+function sumNumbers(arr) {
+  // your code here
+  // create variable to store total
+  let total = 0;
 
+  // loop through each number in the array
+  for (let num of arr) {
+    total += num; // add each number to the total
+  }
+  // return the total
+  return total;
+}
+// call the function and log the result
+console.log(sumNumbers(arr)); // output 10
+```
+| Concept               | How You Used It                        |
+| --------------------- | -------------------------------------- |
+| Accumulator (`total`) | To keep a running total of the sum     |
+| `for...of` loop       | To go through each number in the array |
+| `+=` operator         | To add each number to the total        |
+| `return`              | To send back the final total           |
+| `console.log()`       | To display the result in the console   |
+
+### 2.3 Sum of Even Numbers
+Task:
+Write a function that returns the sum of all even numbers in an array.
+```js
+// Write a function that returns the sum of all even numbers in an array.
+// Input: [1, 2, 3, 4, 5, 6]
+// Output: 12  (2 + 4 + 6)
+
+// set array
+let arrayNumbers = [1, 2, 3, 4, 5, 6];
+
+// create function
+function sumOfEvens(arrayNumbers) {
+  //set total
+  let total = 0;
+  // loop through numbers in array (for...of)
+  for (let num of arrayNumbers) {
+    // logic for is even
+    if (num % 2 === 0) {
+      // if the remainder when /by 2 is )
+      total += num; // add to the total running count
+    }
+  }
+  return total;
+}
+console.log(sumOfEvens(arrayNumbers)); // 12
+```
+✅ Pattern Used: "Sum if Condition is Met"
+| Concept         | What You Did                                      |
+| --------------- | ------------------------------------------------- |
+| `for...of` loop | Loop through each number in the array             |
+| `num % 2 === 0` | Check if a number is even (no remainder when ÷ 2) |
+| `total += num`  | Add even numbers to the total                     |
+| `return`        | Return the final total from the function          |
+| `console.log()` | Display the result for testing                    |
+
+
+### 3. Frequency Map (Tally Counter)
 Used when: You want to count how many times each unique item appears (e.g., {10: 2, 20: 3})
 ```js
 let countMap = {};
@@ -121,7 +468,8 @@ for (let item of arr) {
 ```
 
 **Example Challenge:**
-🔢 Mini Challenge: Word Tally
+
+#### 3.1 Mini Challenge: Word Tally
 🧠 Goal:
 Write a function that counts how many times each word appears in an array of words.
 ```js
@@ -163,8 +511,93 @@ console.log(countWords(words));
 | `+= 1` or `= 1`       | Increment or set the count                |
 | `return`              | Send back the final count object          |
 
+#### 3.2 Most Frequent Number
+Task:
+Write a function that returns the number that appears most often in the array.
+```js
+// Write a function that returns the number that appears most often in the array.
+// Input: [1, 2, 2, 3, 3, 3, 1]
+// Output: 3 (because 3 appears 3 times)
 
-### Find the Maximum or Longest
+// Step 0: Set up input array
+let input = [1, 2, 2, 3, 3, 3, 1];
+
+// Step 1: Create the function
+function mostFrequent(input) {
+  // Step 2: Create an empty object to store frequency of each number
+  let countMap = {};
+
+  // Step 3: Count how many times each number appears in the array
+  for (let number of input) {
+    // If the number is already in countMap, add 1 to its count
+    if (countMap[number]) {
+      countMap[number] += 1;
+    } else {
+      // If it's the first time we see the number, start its count at 1
+      countMap[number] = 1;
+    }
+  }
+
+  // Step 4: Find the number with the highest frequency
+  let maxCount = 0;            // tracks the highest count seen so far
+  let mostFrequentNum = null; // will store the number with that highest count
+
+  // Step 5: Loop through the frequency map (countMap)
+  for (let number in countMap) {
+    // If this number’s count is higher than the current max, update both
+    if (countMap[number] > maxCount) {
+      maxCount = countMap[number];         // update max count
+      mostFrequentNum = Number(number);    // convert string key back to number
+    }
+  }
+
+  // Step 6: Return the number that appeared the most
+  return mostFrequentNum;
+}
+
+// Step 7: Call the function and print the result
+console.log(mostFrequent(input)); // Output: 3
+```
+
+**Key Concepts Covered:**
+- *Frequency Map (Tally Counter)*: Using an object to count how many times each number appears.
+- `for...of` loop: Iterating over values in an array.
+- `for...in` loop: Iterating over keys in an object.
+- *Tracking a maximum:* Keeping track of the highest count seen so far.
+- *Type conversion:* Object keys are strings, so we convert them back to numbers with Number().
+
+#### 3.3 Tally Votes
+```js
+//Write a function that takes an array of strings (votes) and returns an object tallying how many times each option appears.
+
+// Input: ["blue", "red", "blue", "green", "blue", "red"]
+// Output: { blue: 3, red: 2, green: 1 }
+
+// set array
+let coloursArray = ["blue", "red", "blue", "green", "blue", "red"];
+console.log(coloursArray);
+
+// create function
+function colourTally(coloursArray) {
+  // set countMap
+  let countMap = {};
+  //Count how many times each number appears in the array
+  for (let colour of coloursArray) {
+    // logic for adding to colours
+    if (countMap[colour]) {
+      countMap[colour] += 1;
+    } else {
+      countMap[colour] = 1;
+    }
+  }
+  return countMap;
+}
+// call function with parameter
+console.log("Tally:", colourTally(coloursArray));
+```
+
+
+### 4. Find the Maximum or Longest
 Used when: You're trying to find the biggest number, longest word, etc.
 ```js
 let max = arr[0];
@@ -177,7 +610,8 @@ for (let item of arr) {
 ```
 
 **Example Challenge**
-🦒 Mini Challenge: Tallest Person
+
+#### 4.1 Mini Challenge: Tallest Person
 🧠 Goal:
 Write a function that returns the tallest height from an array of numbers representing people's heights (in cm).
 
@@ -212,8 +646,39 @@ console.log(findTallest(heights)); // 181
 | `return max`       | Give back the result                       |
 | `console.log()`    | Display the output in the console          |
 
+#### 4.2 Find the Longest Word
+Concepts: loop + string methods + comparison
 
-### Track State with a Variable
+Task:
+Write a function that returns the longest word in an array.
+```js
+// Input: ['cat', 'elephant', 'bat']
+// Output: 'elephant'
+let words = ["cat", "elephant", "bat"];
+function longestWord(words) {
+  // your code here
+  let maxWord = words[0];
+
+  for (let word of words) {
+    // compare lengths of words
+    if (word.length > maxWord.length) {
+      maxWord = word;
+    }
+  }
+  return maxWord;
+}
+let output = longestWord(words);
+console.log(output);
+```
+| Concept               | How Used                                  |
+| --------------------- | ----------------------------------------- |
+| `for...of` loop       | To look at each word in the array         |
+| `.length`             | To compare word lengths                   |
+| Variable reassignment | `maxWord = word` to track the longest one |
+| `return`              | To give the result back to the caller     |
+
+
+### 5. Track State with a Variable
 Used when: You need to remember or follow a changing value, like elevation in counting valleys
 ```js
 let state = 0;
@@ -228,7 +693,8 @@ for (let step of steps) {
 ```
 
 **Example Challenge**
-🧗‍♂️ Mini Challenge: Net Elevation
+
+#### 5.1 Mini Challenge: Net Elevation
 🧠 Goal:
 Write a function that takes a sequence of 'U' (uphill) and 'D' (downhill) steps and returns the final elevation relative to sea level (0).
 
@@ -271,7 +737,7 @@ console.log(finalElevation(path));  // output 0
 | Function parameter `path` | Makes your function reusable for any input |
 
 
-### Check for a Condition
+### 6. Check for a Condition
 Used when: You only want to do something if a rule is met (inside a loop or function)
 ```js
 if (condition) {
@@ -280,7 +746,8 @@ if (condition) {
 ```
 
 **Example Challenge**
-✅ Mini Challenge: Print Only Long Words
+
+### 6.1 Mini Challenge: Print Only Long Words
 🧠 Goal:
 Write a function that goes through an array of words and prints only the ones longer than 5 letters.
 
@@ -311,14 +778,15 @@ printLongWords(words);
 | `console.log(word)` | Print the word if the condition is true |
 
 
-### Split a String into Characters
+### 7. Split a String into Characters
 Used when: You want to treat each letter like an array item
 ```js
 let chars = str.split('');  // turns "hello" into ['h', 'e', 'l', 'l', 'o']
 ```
 
 **Example Challenge**
-🔤 Mini Challenge: Count the Letter "e"
+
+#### 7.1 Mini Challenge: Count the Letter "e"
 🧠 Goal:
 Write a function that counts how many times the letter "e" appears in a given string.
 ```js
@@ -351,8 +819,158 @@ console.log(countEs(str)); // output: 6
 | `count += 1`        | Increased the counter                       |
 | `return count`      | Sent back the result                        |
 
+#### 7.2 Count a Specific Letter "a"
+```js
+// Write a function that counts how many times the letter "a" appears in a string.
+// // Input: "javascript is amazing"
+// Output: 4
 
-### Build a New Array
+// set string
+let str = "javascript is amazing";
+
+//create function
+function countA(str) {
+  // split string into characters
+  let characters = str.split("");
+  // set up counter to track
+  let aCount = 0;
+
+  // loop through each character (now an array of characters)
+  for (let char of characters) {
+    if (char === "a") {
+      aCount += 1;
+    }
+  }
+  //return final count
+  return aCount;
+}
+console.log(countA(str)); // 4
+```
+
+#### 7.3 Count the word "really" in Wannabe
+```js
+// Spice Girls ("Wannabe")
+// '''
+// Yo, I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I'll tell you what I want, what I really, really want
+// So tell me what you want, what you really, really want
+// I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+// I wanna really, really, really wanna zigazig ah"
+// '''
+// Count how many times the word "really" appears in the Spice Girls lyrics.
+// NB: it is entirely up to you whether to write function or just write script
+// in the console.
+
+// set lyrics
+let lyrics = `
+Yo, I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I'll tell you what I want, what I really, really want
+So tell me what you want, what you really, really want
+I wanna, (ha) I wanna, (ha) I wanna, (ha) I wanna, (ha)
+I wanna really, really, really wanna zigazig ah"
+`;
+//console.log(lyrics);
+
+// function
+function countReallys(lyrics) {
+  // split into words - .split
+  let words = lyrics.split(" ");
+  //console.log(words);
+  // set up count to track
+  let count = 0;
+
+  //loop through lyrics
+  for (let word of words) {
+    // Remove punctuation (commas, quotes, brackets, etc.)
+    let cleanWord = word.replace(/[^\w]/g, ""); // keep only letters and numbers
+    if (cleanWord === "really") {
+      count += 1;
+    }
+  }
+  return count;
+}
+console.log(countReallys(lyrics)); // 11
+```
+| 💡 **Skill / Concept**           | ✅ **How it was used**                                                                 |
+| -------------------------------- | ------------------------------------------------------------------------------------- |
+| `split(" ")` (String method)     | Broke the lyrics into an array of **individual words** based on spaces                |
+| `for...of` loop                  | Allowed you to loop through each **word** in the lyrics                               |
+| `if (word === "really")`         | Checked whether each word was **exactly** `"really"`                                  |
+| `let count = 0` and `count += 1` | Tracked how many times the word `"really"` appeared                                   |
+| `return`                         | Returned the final count from the function                                            |
+| `console.log()`                  | Printed the result so you could check your output                                     |
+| Template literal (`` `...` ``)   | Stored a **multi-line string** (the lyrics) easily in the `lyrics` variable           |
+| String cleanup (optional step)   | You might use `.replace(/[^\w]/g, "")` to remove punctuation when needed              |
+| Manual debugging                 | You manually **counted occurrences** to verify the code’s output matched expectations |
+
+#### 7.4 Count xs and os and compare
+```js
+// Create a function which reads a string of xs and os, counts them,
+// then returns true if the same amount or false if not.
+
+let input = "xoxoxxoo";
+console.log(input);
+
+function ExOh(input) {
+  // split string into characters
+  let chars = input.split("");
+  console.log(chars);
+  // set up variables for x and o
+  let countX = 0;
+  let countO = 0;
+
+  for (let letter of chars) {
+    if (letter === "x") {
+      countX += 1;
+    } else if (letter === "o") {
+      countO += 1;
+    }
+  }
+
+  return countX === countO; // comp logic - are they the same? t/F
+}
+
+console.log(ExOh(input)); // Expected: true
+```
+
+**version with capitals and lc**
+- add `.toLowerCase` step
+```js
+// Create a function which reads a string of xs and os Of different cases and  counts them,
+// then returns true if the same amount or false if not.
+
+let input = "XoxoxxOo";
+console.log(input);
+
+function ExOh(input) {
+  // lowercase the entire string
+  let lowercased = input.toLowerCase();
+  console.log(lowercased);
+  // split string into characters
+  let chars = lowercased.split("");
+  console.log(chars);
+  // set up variables for x and o
+  let countX = 0;
+  let countO = 0;
+
+  for (let letter of chars) {
+    if (letter === "x") {
+      countX += 1;
+    } else if (letter === "o") {
+      countO += 1;
+    }
+  }
+
+  return countX === countO; // ✅ This line must be *after* the loop
+}
+
+console.log(ExOh(input)); // Expected: true
+```
+
+
+### 8. Build a New Array
 Used when: You’re transforming one array into another (e.g., doubling numbers)
 ```js
 let result = [];
@@ -364,7 +982,7 @@ for (let num of arr) {
 
 **Example Challenge**
 
-🔄 Mini Challenge: Word Lengths
+#### 8.2 Mini Challenge: Word Lengths
 🧠 Goal:
 Write a function that takes an array of words and returns a new array with the length of each word.
 ```js
@@ -398,161 +1016,7 @@ console.log(wordLengths(words)); // ✅ Call with 'words', not 'result'
 | `return result`    | Sent the new array back from the function |
 | `console.log(...)` | Displayed the result in the console       |
 
-
-### Check for a Palindrome
-Used when: You want to know if something reads the same forward/backward
-```js
-function isPalindrome(str) {
-  return str === str.split('').reverse().join('');
-}
-```
-
-**Example Task**
-🔁 Mini Challenge: Palindrome Checker
-🧠 Goal:
-Write a function that checks whether a given word is a palindrome (reads the same forwards and backwards).
-
-```js
-//EXAMPLES
-//isPalindrome("racecar"); // ✅ true  
-//isPalindrome("apple");   // ❌ false  
-//isPalindrome("madam");   // ✅ true 
-
-let str = "racecar";
-function isPalindrome(str) {
-  // your code here
-  return str === str.split('').reverse().join('');
-}
-```
-| Step            | What it Does                                       | Example with `"racecar"`                                   |
-| --------------- | -------------------------------------------------- | ---------------------------------------------------------- |
-| `str.split('')` | Turns the string into an array of characters       | `["r", "a", "c", "e", "c", "a", "r"]`                      |
-| `.reverse()`    | Reverses the array in place                        | `["r", "a", "c", "e", "c", "a", "r"]` (same in this case!) |
-| `.join('')`     | Joins the characters back into a string            | `"racecar"`                                                |
-| `str === ...`   | Compares the original string with the reversed one | `"racecar" === "racecar"` → ✅ `true`                       |
-
-
-### Loop with Index
-Used when: You need to compare items at positions (like comparing front row and back row heights)
-```js
-for (let i = 0; i < arr.length; i++) {
-  // use arr[i]
-}
-```
-
-**Example Challenge**
-ChatGPT said:
-Absolutely! Here's a mini challenge that uses the “Loop with Index” pattern:
-
-👟 Mini Challenge: Compare Running Times
-🧠 Goal:
-You’re given two arrays:
-
-One with the running times of Team A
-
-One with the running times of Team B
-
-Write a function that returns how many times Team A was faster (i.e., had a lower time) than Team B at the same index.
-```js
-let teamA = [12, 15, 10, 13];
-let teamB = [14, 15, 11, 14];
-
-// Output: 2
-// (Team A was faster at index 0 and index 2)
-function countFasterRuns(teamA, teamB) {
-  // your code here
-  let count = 0; // count tracks the times team a is faster
-
-  for (let i = 0; i < teamA.length; i++) {
-  // use arr[i]
-    if (teamA[i] < teamB[i]) {
-        count += 1;
-    }
-  }
-  return count;
-}
-console.log(countFasterRuns(teamA, teamB)); // logs 3 (team A faster 3 times)
-```
-| Concept                    | ✅ Used it for...                     |
-| -------------------------- | ------------------------------------ |
-| `for` loop with index `i`  | Compare items at matching positions  |
-| `if (teamA[i] < teamB[i])` | Check condition using array index    |
-| `count += 1`               | Tally how many comparisons were true |
-| `return count`             | Send the result back                 |
-
-
-### BONUS TIPS / Things to remember
-| Pattern               | When to Use                              |
-| --------------------- | ---------------------------------------- |
-| `.split('')`          | To turn a string into an array           |
-| `Math.floor(num / 2)` | To count full pairs (e.g., socks)        |
-| `.length`             | To check size of a string or array       |
-| `return`              | To send a result back from a function    |
-| `console.log()`       | To debug and see what your code is doing |
-
-
----
-
-## Mini Challenges
-*A selection of mini challenges*
-
-### MINI CHALLENGE 1: Count Even Numbers
-Concepts: loop + if + modulus (%)
-
-Task:
-Write a function that counts how many even numbers are in an array.
-```js
-// Input: [2, 3, 4, 5, 6]
-// Output: 3 (because 2, 4, and 6 are even)
-
-function countEvens(arr) {
-  // your code here
-  // set count variable to track even numbers
-  let count = 0;
-  // loop through array - for...of to go through each number in the array
-  for (let num of arr) {
-    if (num % 2 === 0) {    // check the number is even
-        count += 1; // if it is, add it to the running total
-    }
-  }
-  return count; //return the final count from the function
-}
-let output = countEvens([2, 3, 4, 5, 6]); // call the countEven function, pass it the array as the argument, function runs and stores result in 'output'
-console.log(output);    // logs the outputs
-```
-
-### MINI CHALLENGE 2: Find the Longest Word
-Concepts: loop + string methods + comparison
-
-Task:
-Write a function that returns the longest word in an array.
-```js
-// Input: ['cat', 'elephant', 'bat']
-// Output: 'elephant'
-let words = ["cat", "elephant", "bat"];
-function longestWord(words) {
-  // your code here
-  let maxWord = words[0];
-
-  for (let word of words) {
-    // compare lengths of words
-    if (word.length > maxWord.length) {
-      maxWord = word;
-    }
-  }
-  return maxWord;
-}
-let output = longestWord(words);
-console.log(output);
-```
-| Concept               | How Used                                  |
-| --------------------- | ----------------------------------------- |
-| `for...of` loop       | To look at each word in the array         |
-| `.length`             | To compare word lengths                   |
-| Variable reassignment | `maxWord = word` to track the longest one |
-| `return`              | To give the result back to the caller     |
-
-### MINI CHALLENGE 3: Double the Numbers
+#### 8.1 Double the Numbers
 Concepts: loop + arithmetic
 
 Task:
@@ -581,7 +1045,164 @@ console.log(doubleNumbers(arr)); // output [2, 4, 6]
 | `return`             | To give back the full array            |
 | `console.log()`      | To display the output                  |
 
-### MINI CHALLENGE 4: Count the Letter "a"
+
+### 9. Check for a Palindrome
+Used when: You want to know if something reads the same forward/backward
+```js
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
+}
+```
+
+**Example Task**
+
+#### 9.1 Mini Challenge: Palindrome Checker
+🧠 Goal:
+Write a function that checks whether a given word is a palindrome (reads the same forwards and backwards).
+
+```js
+//EXAMPLES
+//isPalindrome("racecar"); // ✅ true  
+//isPalindrome("apple");   // ❌ false  
+//isPalindrome("madam");   // ✅ true 
+
+let str = "racecar";
+function isPalindrome(str) {
+  // your code here
+  return str === str.split('').reverse().join('');
+}
+```
+| Step            | What it Does                                       | Example with `"racecar"`                                   |
+| --------------- | -------------------------------------------------- | ---------------------------------------------------------- |
+| `str.split('')` | Turns the string into an array of characters       | `["r", "a", "c", "e", "c", "a", "r"]`                      |
+| `.reverse()`    | Reverses the array in place                        | `["r", "a", "c", "e", "c", "a", "r"]` (same in this case!) |
+| `.join('')`     | Joins the characters back into a string            | `"racecar"`                                                |
+| `str === ...`   | Compares the original string with the reversed one | `"racecar" === "racecar"` → ✅ `true`                       |
+
+#### 9.2 Reverse Words in a String
+Task:
+Write a function that reverses the order of words (not the letters) in a string.
+```js
+// Write a function that reverses the order of words (not the letters) in a string.
+// Input: "I love coding"
+// Output: "coding love I"
+
+// RESTATE: re order the WORDS (keep as words, NOT split into letters)
+// create words variable
+let sentence = "I love coding";
+console.log(sentence);
+// create function
+function reverseSentence(sentence) {
+  // split sentence into words array with split(" ")
+  let wordsArray = sentence.split(" ");
+  console.log("After split:", wordsArray); // ["I", "love", "coding"]
+  // reverse array
+  let reversedArray = wordsArray.reverse();
+  console.log("After reverse:", reversedArray);
+  // join back together with .join(" ")
+  let reversedSentence = reversedArray.join(" ");
+  console.log(reversedSentence);
+}
+reverseSentence(sentence);
+```
+| Concept         | Description                                           |
+| --------------- | ----------------------------------------------------- |
+| `.split(" ")`   | Converts string into an array of words                |
+| `.reverse()`    | Reverses the array in-place                           |
+| `.join(" ")`    | Turns the array back into a single string with spaces |
+| `console.log()` | Used to debug and show output at each step            |
+✅ What to Add (Optional):
+- to make the function return the reversed sentence (not just log it):
+```js
+return reversedSentence;
+```
+Then do:
+```js
+let result = reverseSentence(sentence);
+console.log("Final result:", result);
+```
+
+#### 9.3 Reverse Words in a Sentence
+- With a return
+```js
+//Reverse Words in a Sentence
+//Write a function that reverses the order of words (not letters) in a sentence.
+// Input: "Bootcamp is fun"
+// Output: "fun is Bootcamp"
+
+//sentence variable
+let sentence = "Bootcamp is fun";
+console.log(sentence);
+
+// create function
+function reverseSentence(sentence) {
+  // split sentence into words (split "space")
+  let wordsArray = sentence.split(" ");
+  console.log("After split:", wordsArray);
+  // reverse array
+  let reversedArray = wordsArray.reverse();
+  console.log("After reverse:", reversedArray);
+  // join sentence back together
+  let reversedSentence = reversedArray.join(" ");
+  return reversedSentence;
+}
+// Call function
+let output = reverseSentence(sentence);
+console.log("Reversed Sentence:", output);
+```
+| Concept          | What You Did                                          |
+| ---------------- | ----------------------------------------------------- |
+| `.split(" ")`    | Turn a sentence into an array of words                |
+| `.reverse()`     | Reverse the order of items in the array               |
+| `.join(" ")`     | Combine the words back into a sentence                |
+| Function calling | Passed an argument to a function and returned a value |
+| `console.log()`  | Used to trace each step and verify the output         |
+
+
+### 10. Loop with Index
+Used when: You need to compare items at positions (like comparing front row and back row heights)
+```js
+for (let i = 0; i < arr.length; i++) {
+  // use arr[i]
+}
+```
+
+**Example Challenge**
+
+#### 10.1 Mini Challenge: Compare Running Times
+🧠 Goal:
+You’re given two arrays:
+- One with the running times of Team A
+- One with the running times of Team B
+- Write a function that returns how many times Team A was faster (i.e., had a lower time) than Team B at the same index.
+```js
+let teamA = [12, 15, 10, 13];
+let teamB = [14, 15, 11, 14];
+
+// Output: 2
+// (Team A was faster at index 0 and index 2)
+function countFasterRuns(teamA, teamB) {
+  // your code here
+  let count = 0; // count tracks the times team a is faster
+
+  for (let i = 0; i < teamA.length; i++) {
+  // use arr[i]
+    if (teamA[i] < teamB[i]) {
+        count += 1;
+    }
+  }
+  return count;
+}
+console.log(countFasterRuns(teamA, teamB)); // logs 3 (team A faster 3 times)
+```
+| Concept                    | ✅ Used it for...                     |
+| -------------------------- | ------------------------------------ |
+| `for` loop with index `i`  | Compare items at matching positions  |
+| `if (teamA[i] < teamB[i])` | Check condition using array index    |
+| `count += 1`               | Tally how many comparisons were true |
+| `return count`             | Send the result back                 |
+
+#### 10.2 Count Letter "a"
 Concepts: loop + if + string indexing
 
 Task:
@@ -618,44 +1239,24 @@ console.log(countA(str)); // output: 3
 | Counter variable | To keep track of how many `'a'`s you found |
 | `return`         | To give the answer back                    |
 
+---
 
-### MINI CHALLENGE 5: Total Up All Numbers
-Concepts: loop + accumulator variable
 
-Task:
-Return the sum of all numbers in an array.
-```js
-// Input: [3, 5, 2]
-// Output: 10
-let arr = [3, 5, 2];
-function sumNumbers(arr) {
-  // your code here
-  // create variable to store total
-  let total = 0;
+### BONUS TIPS / Things to remember
+| Pattern               | When to Use                              |
+| --------------------- | ---------------------------------------- |
+| `.split('')`          | To turn a string into an array           |
+| `Math.floor(num / 2)` | To count full pairs (e.g., socks)        |
+| `.length`             | To check size of a string or array       |
+| `return`              | To send a result back from a function    |
+| `console.log()`       | To debug and see what your code is doing |
 
-  // loop through each number in the array
-  for (let num of arr) {
-    total += num; // add each number to the total
-  }
-  // return the total
-  return total;
-}
-// call the function and log the result
-console.log(sumNumbers(arr)); // output 10
-```
-| Concept               | How You Used It                        |
-| --------------------- | -------------------------------------- |
-| Accumulator (`total`) | To keep a running total of the sum     |
-| `for...of` loop       | To go through each number in the array |
-| `+=` operator         | To add each number to the total        |
-| `return`              | To send back the final total           |
-| `console.log()`       | To display the result in the console   |
 
 ---
 
 ## Bigger Challenges
 
-## Pair the Socks
+#### 11. Pair the Socks
 
 **Key Skills**
 | Concept            | What it Does                                     |
@@ -709,5 +1310,172 @@ console.log(sockMerchant(ar.length, ar));  // Output: 3
 ```
 
 ---
+
+#### 12. Palindrome Checker
+```js
+// 🧪 INPUT
+let str = "banana";
+
+// ✅ FUNCTION to find the longest palindromic substring
+function longestPalindrome(str) {
+  // 📌 Step 1: Create a variable to track the longest palindrome we find
+  let longest = "";
+
+  // 🔁 Outer loop: go through each character as a possible start point
+  for (let start = 0; start < str.length; start++) {
+    // 🔁 Inner loop: go through each character as a possible end point
+    // We start at start + 1 so that we get at least 1 character in the substring
+    for (let end = start + 1; end <= str.length; end++) {
+      // ✂️ Step 2: Slice out a substring from start to end
+      let substring = str.slice(start, end);
+
+      // 🔍 Step 3: Check if the substring is a palindrome
+      // We reverse the substring and compare with the original
+      let reversed = substring.split("").reverse().join("");
+
+      if (substring === reversed) {
+        // ✅ It's a palindrome — now check if it's the longest we've seen
+        if (substring.length > longest.length) {
+          // 🆕 Update the longest variable
+          longest = substring;
+        }
+      }
+    }
+  }
+
+  // 🔚 Return the longest palindrome found
+  return longest;
+}
+
+// ✅ TEST CASES
+console.log(longestPalindrome("banana")); // "anana"
+console.log(longestPalindrome("racecar")); // "racecar"
+console.log(longestPalindrome("hello")); // "ll"
+console.log(longestPalindrome("abc")); // "a" (or "b" or "c", any 1-letter palindrome)
+```
+**Explanation**
+| Line                                     | What's happening                         |
+| ---------------------------------------- | ---------------------------------------- |
+| `for (let start = 0...)`                 | Start index of the substring             |
+| `for (let end = start + 1...)`           | End index (exclusive)                    |
+| `str.slice(start, end)`                  | Creates a substring to check             |
+| `.split('').reverse().join('')`          | Checks if that substring is a palindrome |
+| `if (substring.length > longest.length)` | Updates if it's the longest seen so far  |
+
+#### 13. Photo Checker
+```js
+// Function to check if one group can stand behind the other based on height
+
+// Input: two arrays of student heights (same length)
+// Output: true if each student in one row is strictly taller than the one in front
+
+function classPhoto(purpleHeights, blackHeights) {
+  // Step 1: Sort both arrays in ascending order so we can compare positions easily
+  purpleHeights.sort((a, b) => a - b);
+  blackHeights.sort((a, b) => a - b);
+
+  // Step 2: Decide who stands in the back row by comparing tallest students
+  let backRow = [];
+  let frontRow = [];
+
+  // If purple’s tallest student is taller than black’s tallest, purple goes in the back
+  if (purpleHeights[purpleHeights.length - 1] > blackHeights[blackHeights.length - 1]) {
+    backRow = purpleHeights;
+    frontRow = blackHeights;
+  } else {
+    backRow = blackHeights;
+    frontRow = purpleHeights;
+  }
+
+  // Step 3: Compare each student in both rows
+  for (let i = 0; i < backRow.length; i++) {
+    // If anyone in the back is NOT taller than the person in front → return false
+    if (backRow[i] <= frontRow[i]) {
+      return false;
+    }
+  }
+
+  // If we made it through the loop without returning false, it’s a valid photo
+  return true;
+}
+
+// Test input
+let purpleHeights = [5, 8, 1, 3, 4];
+let blackHeights = [6, 9, 2, 4, 5];
+
+console.log(classPhoto(purpleHeights, blackHeights)); // ✅ true
+```
+| Step | What It Does                                       | Code / Concept                   |
+| ---- | -------------------------------------------------- | -------------------------------- |
+| 1️⃣  | Sort both arrays by height (ascending)             | `.sort((a, b) => a - b)`         |
+| 2️⃣  | Decide who stands in back based on tallest student | `if (last purple > last black)`  |
+| 3️⃣  | Compare each position to check back > front        | `if (backRow[i] <= frontRow[i])` |
+| ✅    | Return true if all back-row students are taller    | `return true`                    |
+| ❌    | Return false as soon as one comparison fails       | `return false`                   |
+
+| Concept / Pattern                 | Description                                                            | Example in Code                                      |
+| --------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------- |
+| **Sorting Arrays**                | Sort arrays in ascending order to allow easy comparison                | `.sort((a, b) => a - b)`                             |
+| **Comparing Largest Elements**    | Use the last item in a sorted array to determine who should go in back | `if (arr1[arr1.length - 1] > arr2[arr2.length - 1])` |
+| **Assigning Roles**               | Use conditional logic to assign who’s in front and who’s in back       | `backRow = purpleHeights; frontRow = blackHeights;`  |
+| **Loop with Index (`for`)**       | Needed to compare corresponding elements in both arrays                | `for (let i = 0; i < backRow.length; i++)`           |
+| **Element-by-element Comparison** | Check that every student in the back row is taller than the front      | `if (backRow[i] <= frontRow[i]) return false;`       |
+| **Early Return**                  | Stop the function and return false if any invalid case is found        | `return false;`                                      |
+| **Boolean Return**                | Function returns a single true or false value based on all checks      | `return true;`                                       |
+
+#### 14. A&E Wait Times
+```js
+// A&E Waiting Time Challenge
+
+// Goal: Return the minimum total waiting time for all patients.
+// Strategy: Use a greedy approach — treat shorter appointments first.
+
+function minimumWaitingTime(times) {
+  // Step 1: Sort consultation times in ascending order
+  let sortedTimes = times.sort((a, b) => a - b);
+  console.log("Sorted times:", sortedTimes);
+
+  // Step 2: Set up total waiting time tracker
+  let totalWait = 0;
+
+  // Step 3: Loop through each patient's consultation
+  for (let i = 0; i < sortedTimes.length; i++) {
+    let time = sortedTimes[i]; // current consultation time
+
+    // Step 4: Count how many people are still to be seen after this patient
+    let patientsAfter = sortedTimes.length - (i + 1);
+
+    // Step 5: Add this patient's wait impact to the total wait time
+    totalWait += time * patientsAfter;
+  }
+
+  // Step 6: Return final total waiting time
+  return totalWait;
+}
+
+// Test case
+let times = [3, 2, 1, 2, 6];
+console.log("Minimum total waiting time:", minimumWaitingTime(times)); // Expected: 17
+```
+| Patient (index) | Time | Patients After | Wait Added (time × after) |
+| --------------- | ---- | -------------- | ------------------------- |
+| 0               | 1    | 4              | 1 × 4 = 4                 |
+| 1               | 2    | 3              | 2 × 3 = 6                 |
+| 2               | 2    | 2              | 2 × 2 = 4                 |
+| 3               | 3    | 1              | 3 × 1 = 3                 |
+| 4               | 6    | 0              | 6 × 0 = 0                 |
+| **Total**       | —    | —              | **17**                    |
+
+| Pattern / Skill                  | Where It Was Used                                   | Purpose / Description                                                      |
+| -------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Sorting (Greedy Strategy)**    | `sortedTimes = times.sort((a, b) => a - b);`        | Ensures shortest consultations come first to reduce total wait time.       |
+| **Loop with Index (`for` loop)** | `for (let i = 0; i < sortedTimes.length; i++)`      | Allows us to calculate how many patients come **after** each one.          |
+| **Array Access**                 | `let time = sortedTimes[i];`                        | Accessing the current consultation time from the sorted array.             |
+| **Subtraction (Math Logic)**     | `let patientsAfter = sortedTimes.length - (i + 1);` | Counts how many patients will wait after the current one.                  |
+| **Multiplication for impact**    | `totalWait += time * patientsAfter;`                | Multiplies time by how many patients it affects — this is the “wait cost.” |
+| **Running Total / Accumulator**  | `let totalWait = 0;` and `totalWait += ...`         | Accumulates the total waiting time as we process each patient.             |
+| **Return Value**                 | `return totalWait;`                                 | Returns the final result of the total waiting time.                        |
+| **Testing with Input**           | `console.log(minimumWaitingTime([3, 2, 1, 2, 6]));` | Checks if the function behaves correctly for a known case.                 |
+| **Console Logging**              | `console.log("Sorted times:", sortedTimes);`        | Debugging step to ensure sorting is correct.                               |
 
 
