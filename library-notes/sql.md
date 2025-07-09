@@ -512,6 +512,7 @@ Group weekly sales and sort ascending/descending
 ### Joins, Unions & Subqueries
 
 #### Understanding SQL JOINs
+![Joins Poster](/images/joins-image.png)
 
 - SQL JOIN combines rows from two or more tables using a related column.
 
