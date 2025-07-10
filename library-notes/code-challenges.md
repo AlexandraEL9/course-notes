@@ -48,6 +48,7 @@
   - [7.4 Count xs and os and compare](#74-count-xs-and-os-and-compare)
   - [7.5 Balanced Brackets](#75-balanced-brackets)
   - [7.6 Most Common Letter in a String](#76-most-common-letter-in-a-string)
+  - [7.7 Alphabet Challenge - has whole alphabet](#77-alphabet-challenge-has-whole-alphabet)
 
 - [8. Build a New Array](#8-build-a-new-array)
   - [8.1 Double the Numbers](#81-double-the-numbers)
@@ -70,6 +71,7 @@
 - [12. Palindrome Checker](#12-palindrome-checker)
 - [13. Photo Checker](#13-photo-checker)
 - [14. A&E Wait Times](#14-a-e-wait-times)
+- [15. Find matching Data in an Object](#15-find-matching-data-in-an-object)
 
 
 ---
@@ -1157,6 +1159,40 @@ console.log(mostFrequentLetter(string)); // o
 | 2    | 🔁 Frequency Map (Tally) | `{}` object with `for...of` loop        |
 | 3    | 🔍 Max Tracker Pattern   | Compare and track highest count         |
 
+#### 7.7 Alphabet Challenge - has whole alphabet
+Create a function which checks a string and:
+- returns true if it has at least every letter of the alphabet at least once
+- returns false if it is missing letters of the alphabet
+```js
+function hasAllLetters(str) {
+  // Step 1: clean the string (lowercase + remove non-letters)
+  let cleanedString = str.toLowerCase().replace(/[^a-z]/g, "");
+
+  // Step 2: model alphabet
+  let modelAlphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+
+  // Step 3: loop through each letter in the model alphabet
+  for (let letter of modelAlphabet) { // for each letter in the model alphabet
+    // Check if each letter exists in the cleaned string
+    if (!cleanedString.includes(letter)) { //If the cleaned string does not contain this letter
+      return false; // as soon as one letter is missing, return false
+    }
+  }
+
+  // Step 4: if all letters were found, return true
+  return true;
+}
+console.log(hasAllLetters("The quick brown fox jumps over the lazy dog")); // true
+console.log(hasAllLetters("Hello world")); // false
+```
+| Pattern                          | How it’s used                                           |
+| -------------------------------- | ------------------------------------------------------- |
+| **Split a string**               | `.split("")` if needed — or `for...of` on modelAlphabet |
+| **Clean input**                  | `.toLowerCase()` + `.replace(/[^a-z]/g, "")`            |
+| **Check for condition**          | `if (!cleanedString.includes(letter))`                  |
+| **Loop through reference array** | `for (let letter of modelAlphabet)`                     |
+
+
 
 ### 8. Build a New Array
 Used when: You’re transforming one array into another (e.g., doubling numbers)
@@ -1427,6 +1463,26 @@ console.log(countA(str)); // output: 3
 | Counter variable | To keep track of how many `'a'`s you found |
 | `return`         | To give the answer back                    |
 
+#### 10.3 Slice and check keys - data
+🔍 Challenge: Slice & Check Keys
+You are given an object representing sensor data from different zones in a building. Each key is a zone name, and the value is an array of numbers.
+
+Your task:
+- Write a function that:
+- Extracts the values from index 10 to 15 (inclusive of 10, up to but not including 16) for each array.
+- Returns an array of zone names (keys) where the extracted slice includes the number 42.
+
+```js
+// DATA
+let sensorData = {
+  "zoneA": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 42, 44, 45, 46, 47, 48, 49],
+  "zoneB": [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+  "zoneC": [11, 12, 13, 14, 15, 42, 17, 18, 19, 20, 21, 22, 23, 24],
+  "zoneD": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 42, 14, 15],
+};
+
+```
+
 ---
 
 
@@ -1666,4 +1722,39 @@ console.log("Minimum total waiting time:", minimumWaitingTime(times)); // Expect
 | **Testing with Input**           | `console.log(minimumWaitingTime([3, 2, 1, 2, 6]));` | Checks if the function behaves correctly for a known case.                 |
 | **Console Logging**              | `console.log("Sorted times:", sortedTimes);`        | Debugging step to ensure sorting is correct.                               |
 
+### 15. Find matching Data in an Object
+```js
+// Write a function that:
+// Extracts values from index 10 to 15 for each array,
+// Returns an array of zone names where the slice includes 42.
 
+let sensorData = {
+  zoneA: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 42, 44, 45, 46, 47, 48, 49],
+  zoneB: [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+  zoneC: [11, 12, 13, 14, 15, 42, 17, 18, 19, 20, 21, 22, 23, 24],
+  zoneD: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 42, 14, 15]
+};
+
+function extractsData(sensorData) {
+  // Array to hold zones where the slice includes 42
+  let matchingZones = [];
+
+  // Loop through each zone name in the object
+  for (let zone in sensorData) {
+    let readings = sensorData[zone];             // Get that zone's array
+    let slice = readings.slice(10, 16);          // Extract index 10–15
+    if (slice.includes(42)) {                    // Check if slice contains 42
+      matchingZones.push(zone);                  // If yes, add zone name
+    }
+  }
+
+  return matchingZones; // Return result
+}
+
+console.log(extractsData(sensorData)); // ✅ ["zoneA", "zoneD"]
+```
+**Pattern Used**
+- Loop through object (for...in)
+- Array slicing (.slice(10, 16))
+- Condition check (.includes(42))
+- Building a new array (.push())
