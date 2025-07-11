@@ -70,7 +70,7 @@ console.log(x); // 30
 
 ## Comparison Operators
 
-Use these to compare values:
+Use these to compare values: Each expression returns either `true` or `false`.
 
 | Operator | Description                    | Example        | Result   |
 |----------|--------------------------------|----------------|----------|
@@ -83,6 +83,80 @@ Use these to compare values:
 | `>=`     | Greater than or equal          | `5 >= 5`       | `true`   |
 | `<=`     | Less than or equal             | `4 <= 5`       | `true`   |
 
+
+### 🔍 Equality: `==` vs `===`
+
+####  `==` (Loose Equality)
+Compares values **after type conversion**.
+
+```js
+console.log(5 == '5'); // true — values are equal after coercion
+```
+#### `===` (Strict Equality)
+Compares value and type. No coercion.
+```js
+console.log(5 === '5'); // false — number !== string
+```
+#### Inequality: `!=` vs `!==`
+!= checks loose inequality (ignores type)
+
+!== checks strict inequality (type-sensitive)
+
+```js
+
+console.log(3 != '3');   // false
+console.log(3 !== '3');  // true
+```
+
+#### Greater / Less Than
+These work with numbers, and also lexicographically with strings.
+
+```js
+console.log(7 > 3);    // true
+console.log(5 <= 4);   // false
+```
+
+#### Lexicographical Comparison (Alphabetical)
+Strings are compared letter by letter using Unicode values.
+
+```js
+console.log("apple" < "banana");   // true
+console.log("Zebra" < "apple");    // true (uppercase < lowercase)
+console.log("cat" > "car");        // true ('t' > 'r')
+```
+💡 Notes:
+- Uppercase letters come before lowercase ones
+- It's case-sensitive
+- Useful in sorting and filtering strings
+
+##### Mini Tasks
+```js
+console.log("dog" > "cat"); // true
+console.log(10 == "10"); // true
+console.log(10 === "10"); // false
+
+let score = 75;
+console.log(score >= 70); //true
+
+let loggedIn = true;
+console.log(loggedIn !== false); // true
+```
+
+🧠 Stretch Task
+Sort these words alphabetically using comparison logic:
+
+"peach", "pear", "Plum", "pineapple"
+```js
+console.log("Plum" < "peach" && "peach" < "pear" && "pear" < "pineapple");
+```
+💡 Bonus Tip (Sorting in Code)
+You could sort them like this:
+
+```js
+let words = ["peach", "pear", "Plum", "pineapple"];
+console.log(words.sort());
+// ["Plum","peach","pear","pineapple"]
+```
 ---
 
 ## Logical Operators

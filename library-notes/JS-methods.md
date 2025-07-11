@@ -31,6 +31,7 @@ JavaScript data types like strings, arrays, objects, and numbers come with built
   - [.find() / .findIndex()](#find-/-findindex)
   - [.join()](#join)
   - [.reverse()](#reverse)
+  - [.sort()](#sort)
 - [Object Methods](#object-methods)
   - [Object.keys()](#objectkeys)
   - [Object.values()`](#`objectvalues)
@@ -1025,6 +1026,37 @@ console.log(reversed); // ["h","o","r","s","e"]
 let optput = reversed.join("");
 console.log(output); // "horse"
 ```
+
+#### `.sort()`
+The `.sort()` method is used to **sort the elements of an array.**
+
+By default:
+- It converts all elements to strings
+- Then compares them lexicographically (like a dictionary)
+- It’s also case-sensitive (uppercase letters come before lowercase)
+
+**Syntax:**
+```js
+array.sort()
+```
+Optionally, you can pass a custom compare function:
+```js
+array.sort((a, b) => a - b); // for numbers
+```
+***Example:**
+```js
+let fruits = ["banana", "apple", "cherry"];
+fruits.sort();
+console.log(fruits); // ["apple", "banana", "cherry"]
+```
+**Example with case sensitivity:**
+```js
+let words = ["apple", "Zebra", "banana"];
+words.sort();
+console.log(words); // ["Zebra", "apple", "banana"]
+```
+- Because "Z" comes before "a" in Unicode, uppercase letters sort first.
+
 
 
 ### Object Methods

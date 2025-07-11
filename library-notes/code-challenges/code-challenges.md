@@ -18,6 +18,12 @@
   - [1.3 Mini Challenge: Count Even Numbers](#13-mini-challenge-count-even-numbers)
   - [1.4 Count the word "really" in Wannabe](#14-count-the-word-really-in-wannabe)
   - [1.5 Compare number of xs and os in an array](#15-compare-the-number-of-xs-and-os-in-an-array)
+### Variations/ adaptations
+  - [1.6 Count the Vowels in a string](#16-count-the-vowels-in-a-string)
+  - [1.7 Count Words with more than 3 letters](#17-count-words-with-more-than-3-letters)
+  - [1.8 Count Something in Multiple Arrays](#18-count-something-in-multiple-arrays)
+  - [1.9 Count Unique Values](#18-count-unique-values)
+
 
 - [2. Sum All Numbers in an Array](#2-sum-all-numbers-in-an-array)
   - [2.1 Mini Challenge: Total Shopping Bill](#21-mini-challenge-total-shopping-bill)
