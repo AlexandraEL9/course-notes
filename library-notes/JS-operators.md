@@ -157,6 +157,43 @@ let words = ["peach", "pear", "Plum", "pineapple"];
 console.log(words.sort());
 // ["Plum","peach","pear","pineapple"]
 ```
+
+**Example: Compare words alphabetically**
+Let’s say we want to compare two words and check which one should come first in an alphabetical list.
+```js
+let word1 = "apple";
+let word2 = "banana";
+
+if (word1 < word2) {
+  console.log(`${word1} comes before ${word2}`);
+} else {
+  console.log(`${word2} comes before ${word1}`);
+}
+
+// apple comes before banana
+```
+
+**Example with uppercase:**
+```js
+let a = "Zebra";
+let b = "apple";
+
+if (a < b) {
+  console.log(`${a} comes before ${b}`);
+} else {
+  console.log(`${b} comes before ${a}`);
+}
+// "Zebra comes before apple"
+```
+
+**Mini Task - Predict the Output:**
+```js
+let a = "cat";
+let b = "car";
+
+console.log(a < b);  // FALSE
+```
+
 ---
 
 ## Logical Operators

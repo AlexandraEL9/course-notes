@@ -313,4 +313,4 @@ console.log(countWord(sentences, target)); // 2 (fox appears twice)
 **Improvements:**
 
 - allow "foxes" to also be valid
-    - use `startsWith(target)` (string Method) instead of `===`
+    - use `startsWith(target)` *(string Method)* instead of `===`
