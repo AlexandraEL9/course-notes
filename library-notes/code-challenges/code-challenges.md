@@ -11,7 +11,7 @@
 
 ### 🎯 Patterns and Mini Challenges
 ![Coding Patterns Poster](/images/challenge-patterns-poster.png)
-
+## Counting Things in Arrays
 - [1. Counting Things in Arrays](#1-counting-things-in-arrays)
   - [1.1 Mini Challenge: Count the Number 7s](#11-mini-challenge-count-the-number-7s)
   - [1.2 Mini Challenge:Count the Odds](#12-mini-challenge-count-the-odds)
@@ -43,6 +43,7 @@
 
 - [5. Track State with a Variable](#5-track-state-with-a-variable)
   - [5.1 Mini Challenge: Net Elevation](#51-mini-challenge-net-elevation)
+  - [Track Temperature](#51-mini-challenge-net-elevation)
 
 - [6. Check for a Condition](#6-check-for-a-condition)
   - [6.1 Mini Challenge: Print Only Long Words](#61-mini-challenge-print-only-long-words)
