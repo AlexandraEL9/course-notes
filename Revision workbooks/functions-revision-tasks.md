@@ -285,3 +285,65 @@ const isEven = function (number) {
 let output = isEven(7);
 console.log(output); // true
 ```
+
+---
+
+✅ 1. Fill in the Gaps (Retrieval Practice)
+Say or write your answers first:
+
+An arrow function is a shorter version of a **function expression**.
+Arrow functions use the **=>** symbol.
+If the function body is one line, you can **remove** the curly braces and return.
+Arrow functions do not have their own **function call??**.
+  ❌ They do not have their own this
+→ This is important when you work with objects and methods.
+
+✅ 2. Code Reading
+What does this arrow function return?
+```js
+const multiply = (a, b) => a * b;
+console.log(multiply(3, 4));  // 12
+```
+
+✅ 3. Debug the Bug
+What’s wrong with this code?
+```js
+const sayHello = name => {
+  "Hello, " + name;
+};
+
+console.log(sayHello("Zara"));
+```
+This doesn’t return anything — the string is just sitting there.
+No return KW
+
+✅ 4. True or False?
+Arrow functions can return strings or numbers.
+  TRUE
+Arrow functions can be used as constructors with new.
+  FALSE - They cannot be used with new
+Arrow functions can be written without parentheses if they take one parameter.
+  TRUE
+
+Arrow functions are always hoisted like function declarations.
+  FALSE - Function expressions (including arrow functions) are not hoisted
+
+  `new` is used for making objects from constructors
+
+Arrow functions must be defined before you use them
+
+✅ 5. Code Task
+Write an arrow function called shoutName that:
+- Takes a name as a parameter
+- Returns the name in ALL CAPS with an exclamation mark (e.g. "ROMAN!")
+- Call it with your name and log the result
+```js
+const shoutName = name => name.toUpperCase() + "!";
+console.log(shoutName("Roman")); // ROMAN!
+// OR
+// with interpolation
+const shoutName = name => `${name.toUpperCase()}!`;
+console.log(shoutName("Roman")); // ROMAN!
+```
+
+---

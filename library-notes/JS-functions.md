@@ -24,6 +24,7 @@
   - [Example: Function Expression that greets a user](#example-function-expression-that-greets-a-user)
   - [TASK: Write your own function expression](#task-write-your-own-function-expression)
 - [Arrow Functions](#arrow-functions)
+- [.this](#this)
 
   ---
 
@@ -521,3 +522,7 @@ console.log(isOdd(7));  // true
 ```
 - number % 2 !== 0 checks if the number leaves a remainder when divided by 2 (which means it’s odd).
 - return sends back true or false.
+
+---
+
+### .this
