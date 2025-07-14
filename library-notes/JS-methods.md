@@ -32,6 +32,8 @@ JavaScript data types like strings, arrays, objects, and numbers come with built
   - [.join()](#join)
   - [.reverse()](#reverse)
   - [.sort()](#sort)
+  - [.some()](#some)
+  - [.every()](#every)
 - [Object Methods](#object-methods)
   - [Object.keys()](#objectkeys)
   - [Object.values()`](#`objectvalues)
@@ -1653,3 +1655,88 @@ console.log(`Highest Price: £${highest.toFixed(2)}`);
 ```
 
 ---
+
+### `some()`
+## Condition Checking Methods
+
+- These are both condition-checking methods that return either true or false.
+- They don’t return arrays — they return a Boolean (true/false).
+
+### `some()`
+- Returns true if any element passes the test.
+- Returns false if none do.
+**Example**
+```js
+let numbers = [3, 7, 10, 15];
+
+function isEven(num) {
+  return num % 2 === 0;
+}
+
+let result = numbers.some(isEven);
+console.log(result); // true
+```
+Because 10 is even, .some() returns true.
+
+### `every()`
+- Returns true if all elements pass the test.
+- Returns false if any fail.
+```js
+let ages = [25, 30, 40];
+
+function isAdult(age) {
+  return age >= 18;
+}
+
+let result = ages.every(isAdult);
+console.log(result); // true
+```
+- If one age was 17, it would return false.
+
+**Compare `some()` vs `every()`**
+| Method     | Returns `true` if...         | Good For...                    |
+| ---------- | ---------------------------- | ------------------------------ |
+| `.some()`  | At least **one** item passes | Checking if **any** match      |
+| `.every()` | **All** items must pass      | Validating the **whole array** |
+
+**Example**
+```js
+let items = [10, 20, 30];
+
+function over15(num) {
+  return num > 15;
+}
+
+console.log(items.some(over15));  // true (20 and 30)
+console.log(items.every(over15)); // false (10 fails)
+```
+
+**TASK: Predict the output**
+```js
+let temperatures = [21, 19, 23, 25];
+
+function isHot(temp) {
+  return temp > 22;
+}
+
+console.log(temperatures.some(isHot));   // true
+console.log(temperatures.every(isHot));  // false
+```
+
+**TASK: Write own:**
+```js
+let names = ["Alice", "Anna", "Alex"];
+
+function startsWithA(name) {
+  return name.startsWith("A");
+}
+
+function startsWithZ(name) {
+  return name.startsWith("Z");
+}
+
+// Use .every() to check if all names start with A
+console.log(names.every(startsWithA));  // true
+// Use .some() to check if any name starts with Z
+console.log(names.some(startsWithZ));   // true
+```

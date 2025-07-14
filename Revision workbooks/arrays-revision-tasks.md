@@ -188,3 +188,48 @@ let index = animals.findIndex(isRabbit);
 console.log(index); //2
 
 ```
+
+---
+🔁 1. Quick Recall (No Notes)
+Answer from memory:
+
+a. What’s the difference between .slice() and .splice()?
+   Slice returns a poertion of an array whereas splice can add, remove, or replace items in an array
+b. What does .reduce() do?
+   reduce will reduce array item to a single value eg summing all of the entries in an array of numbers.
+
+   🔎 2. Predict the Output
+```js
+let letters = ["a", "b", "c", "d"];
+let removed = letters.splice(1, 2);
+
+console.log(removed); // "b", "c"
+console.log(letters); // "a", "d"
+```
+What will be logged?
+
+✏️ 3. Write Your Own Code
+Using this array:
+
+```js
+let numbers = [2, 4, 6, 8];
+```
+Write a program that:
+- Uses .map() to double each number
+- Uses .reduce() to add all the numbers together
+- Logs both results
+
+✅ Use regular function syntax (no arrow functions)
+```js
+let numbers = [2, 4, 6, 8];
+const doubled = numbers.map(function (num) {
+  return num * 2;
+});
+const total = doubled.reduce(function (accumulator, current) {
+  return accumulator + current;
+});
+console.log(doubled); // [4,8,12,16]
+console.log(total); // 40
+```
+
+---
