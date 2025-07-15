@@ -210,3 +210,53 @@ console.log(evens); // [2, 4, 6]
 console.log(doubled); // [4, 8, 12]
 console.log(total); // 24
 ```
+
+---
+## DAILY LOOP - WHILE loop
+📘 1. Explain in Your Own Words
+What is a while loop and when would you use it instead of a for loop?
+
+  A while loop only runs for as long as a condition is met or true whereas a for loop will run a specific number of times. While loops are better for when you are unsure how often a loop will need to run
+
+   🔨 2. Mini Coding Task
+Write a while loop that prints the numbers 1 to 5.
+```js
+let count = 1;
+while (count <= 5) {
+  console.log(count);
+  count++;
+}
+```
+
+🧠 3. Spot the Mistake
+What's wrong with this while loop? What will happen if you run it?
+   It has no update statement so it will just run forever!!
+```js
+let i = 1;
+while (i <= 5) {
+  console.log(i);
+}
+```
+Fix it so it works properly. 
+```js
+let i = 1;
+while (i <= 5) {
+  console.log(i);
+  i++;
+}
+```
+
+💡 4. Bonus Challenge
+Write a while loop that counts down from 5 to 1.
+```js
+let i = 5;
+while (i >= 1) {
+  console.log(i);
+  i--;
+}
+```
+
+---
+
+
+
