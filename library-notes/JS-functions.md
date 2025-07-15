@@ -526,3 +526,53 @@ console.log(isOdd(7));  // true
 ---
 
 ### .this
+In JavaScript, `this` refers to the context in which code is running.
+- Think of `this` as a keyword that points to an object — which object it points to depends on how and where the function is called.
+
+**“What object is calling the function?” — that’s usually what `this` refers to.**
+
+*EXAMPLE: Global:*
+```js
+console.log(this); // in browser: refers to the global window object
+```
+
+*EXAMPLE: Inside an Object Method:*
+```js
+const person = {
+  name: "Roman",
+  greet: function() {
+    console.log("Hello, my name is " + this.name);
+  }
+};
+
+person.greet(); // Hello, my name is Roman
+```
+Here, `thi`s refers to the **object person**, because it’s the one calling the function.
+
+*EXAMPLE: In a regular function:*
+```js
+function show() {
+  console.log(this);
+}
+
+show(); // In browser: logs the window object
+```
+In a regular function call (not attached to an object), `this` still refers to the global object (in non-strict mode).
+In strict mode, this would be undefined.
+
+**Summary**
+| Where is `this` used?            | What `this` refers to                             |
+| -------------------------------- | ------------------------------------------------- |
+| In the global scope              | The global object (`window` in browsers)          |
+| Inside a method (`obj.method()`) | The object that owns the method                   |
+| Inside a regular function        | The global object (or `undefined` in strict mode) |
+| Inside a constructor             | The new object being created                      |
+
+**Common Misconceptions**
+Sometimes this doesn't do what you expect — especially inside:
+
+- nested functions
+- event listeners
+- callbacks
+- arrow functions (we'll cover next!)
+
