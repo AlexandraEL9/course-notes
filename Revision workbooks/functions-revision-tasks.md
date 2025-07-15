@@ -347,3 +347,89 @@ console.log(shoutName("Roman")); // ROMAN!
 ```
 
 ---
+
+FUNCTION OF THE DAY
+Write a function called describeWeather that:
+- Takes two parameters: temperature (a number) and condition (a string like "sunny", "rainy", "snowy")
+- Returns a sentence like:
+"It's 15°C and sunny today." or "It's 3°C and snowy today."
+- Use a template string to build the sentence
+- Call the function and log the result
+```js
+function describeWeather(temperature, condition) {
+  let tempNote = "";
+  // temperature logic
+  if (temperature <= 5) {
+    tempNote = "wrap up Warm!";
+  } else if (temperature >= 20) {
+    tempNote = "bust out the Hawaian Shirt!";
+  } else {
+    tempNote = "have a lovely day!";
+  }
+  return `Today it's ${temperature} degrees and ${condition} - ${tempNote}`;
+}
+let output = describeWeather(22, "cloudy");
+console.log(output); // "Today it's 22 degrees and cloudy"
+```
+
+✅ 1. Fill in the Blanks (Retrieval Practice)
+A function that gives a result back to be used later should use the  **return** keyword.
+A function with logic like if...else is making a **decision**.
+You call a function by writing its **name** followed by parentheses.
+If you forget to use return, the function will return **undefined** by default.
+
+✅ 2. Code Reading Challenge
+What will this log?
+```js
+function moodMessage(mood) {
+  if (mood === "happy") {
+    return "Smile on!";
+  } else if (mood === "tired") {
+    return "Take a rest.";
+  } else {
+    return "Have a good day.";
+  }
+}
+
+console.log(moodMessage("tired"));  // "Take a rest."
+```
+
+✅ 3. Debug the Bug
+Fix the logic and syntax in this function:
+```js
+function isHot(temp) {
+  if (temp > 30) { // no brackets
+    return "Too hot!";
+  } else {
+    return "Not too hot.";
+  }
+}
+console.log(isHot(32)); // "Too hot!"
+```
+No function call/ output
+No brackets
+
+✅ 4. True or False?
+- Every if must have an else. FALSE
+
+- A function can return different values depending on the input.  TRUE
+
+- `return` immediately ends the function and sends back a value. TRUE
+
+- A function can contain other functions. TRUE
+
+✅ 5. Quick Code Task
+Write a function called isTeenager that:
+- Takes an age as a parameter
+- Returns true if the age is between 13 and 19 (inclusive), otherwise false
+- Call it with the value 15 and log the result
+```js
+function isTeenager(age) {
+  if (age >= 13 && age <= 19) {
+    return true;
+  } else {
+    return false;
+  }
+}
+console.log(isTeenager(15));  // true
+```
