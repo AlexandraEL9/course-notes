@@ -112,3 +112,66 @@ If age is 18 or over, access = "Granted"; otherwise, "Denied"
 let access = age >= 18 ? "Granted" : "Denied";
 ```
 ---
+## Daily Revision: Comparison Operators
+
+🔁 1. Quick Recall — Fill in the blanks
+The === operator checks both **value** and **type**.
+
+"5" == 5 is true because of **the values are the same but not the type**.
+
+The result of 4 != "4" is **false — != allows type coercion → 4 != "4" is false**.
+
+The result of 4 !== "4" is **true**.
+
+"apple" < "Banana" evaluates to **false - uppercase letters have precedence over lowercase**.
+
+🤔 2. What’s the Output?
+Predict the result of each block without running the code.
+
+A.
+```js
+console.log(5 > 3 && 3 < 1);    // false
+```
+B.
+```js
+let a = "Zoo";
+let b = "apple";
+console.log(a < b); // true due to capital Z
+```
+C.
+```js
+let score = 82;
+let grade = score >= 70 ? "Pass" : "Fail";
+console.log(grade); // "Pass"
+```
+D.
+```js
+console.log("ant" > "anchor");  // true
+```
+
+✅ 3. True or False?
+Write true or false:
+
+- "7" === 7 FALSE
+
+- "a" < "z" TRUE
+
+- "Zebra" < "ant"   TRUE
+
+- 10 !== "10"   TRUE
+
+- "cat" > "car" TRUE
+
+💡 4. Mini Challenge
+Write a condition using >= and === that checks if:
+- A user’s age is 18 or over, and
+- Their role is exactly "member"
+- If true, set access = "Allowed", otherwise "Denied" (use a ternary operator).
+```js
+let age = 17;
+let role = "member";
+
+let access = age >= 18 && role === "member" ? "Allowed" : "Denied";
+console.log(access); // ➜ "Denied"
+```
+---
