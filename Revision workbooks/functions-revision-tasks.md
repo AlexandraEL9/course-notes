@@ -433,3 +433,82 @@ function isTeenager(age) {
 }
 console.log(isTeenager(15));  // true
 ```
+
+---
+
+## Function of the day
+Write a function called getDiscountedPrice that:
+- Takes two parameters:
+- originalPrice (a number)
+- discountPercent (a number from 0 to 100)
+- Calculates the discounted price
+- Call the function with 20 and 30
+- Log the result
+```js
+function getDiscountedPrice(originalPrice, discountPercent) {
+  let discountedPrice = originalPrice - (originalPrice * discountPercent) / 100;
+  return `The discounted price is £${discountedPrice.toFixed(2)}`;
+}
+
+let result = getDiscountedPrice(20, 30);
+console.log(result); // "The discounted price is £14.00"
+```
+
+✅ 1. Quick-Fill Retrieval (Say or Write First)
+The return keyword sends a **value** back to where the function was called.
+
+You can use **logic** to make decisions inside a function.
+
+Functions can take one or more **parameters** as input.
+
+A function with no return gives back **undefined** by default.
+
+.toFixed(2) formats a number to **2** decimal places.
+
+
+✅ 2. Code Reading Challenge
+What does this function return?
+```js
+function convertToPounds(kg) {
+  let pounds = kg * 2.20462;
+  return `That's ${pounds.toFixed(1)} lbs.`;
+}
+
+console.log(convertToPounds(5));
+// Thats 11.0 lbs
+```
+
+✅ 3. Debug the Bug
+What’s wrong with this function?
+```js
+function sayHi(name) {
+  return "Hi " + name
+}
+
+console.log(sayHi("Sam"))
+```
+- Missing semi colon at end of return statement and console.log
+
+✅ 4. True or False?
+- A function must always return a string. **false**
+
+- if...else is often used inside functions to control the return value. **false**
+
+You can store the result of a function in a variable. **true**
+
+The console.log() inside a function replaces the need for return. **true**
+
+✅ 5. Code Task
+Write a function called makeGreeting that:
+- Takes a name and a timeOfDay (e.g., "morning", "evening")
+- Returns a message like: "Good evening, Jamie!"
+- Call it with "Jamie" and "evening", and log the result
+```js
+function makeGreeting(name, timeOfDay) {
+  return `Good ${timeOfDay}, ${name}!`;
+}
+let result = makeGreeting("Jamie", "evening");
+console.log(result);
+```
+
+---

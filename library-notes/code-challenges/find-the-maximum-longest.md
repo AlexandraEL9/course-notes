@@ -5,6 +5,8 @@
   - [4.1 Mini Challenge: Tallest Person](#41-mini-challenge-tallest-person)
   - [4.2 Find the Longest Word](#42-find-the-longest-word)
   - [Most Expensive Product](#most-expensive-product)
+  - [Fastest Runner](#fastest-runner)
+  - [Heaviest Fruit](#heaviest-fruit)
 
 ---
 
@@ -30,14 +32,18 @@ return max;
 ```
 
 **Adaptations**
-
 - Use .length for string length comparisons.
-
 - Use item.property if working with objects.
-
 - Can compare earliest/latest, smallest/largest, etc.
-
 - The pattern can even be adapted to return the index, or the whole object, not just the max value.
+
+| Data Type | Example Use Case                      |
+| --------- | ------------------------------------- |
+| Numbers   | Tallest height, most expensive item   |
+| Strings   | Longest name, shortest sentence       |
+| Objects   | Most expensive product, longest title |
+| Dates     | Latest or earliest date               |
+
 
 #### 4.1 Mini Challenge: Tallest Person
 🧠 Goal:
@@ -162,3 +168,68 @@ console.log(findMostExpensive(input)); // "Face Cream"
 | `mostExpensive = product`    | Reassign if a new max is found                             |
 | `return mostExpensive.name`  | Return specific part of the object (just the `name` field) |
 
+#### Fastest Runner
+- You're given an array of runners. 
+- Each has a name and a time (in seconds).
+- Write a function that **returns the name of the fastest runner** (i.e., the lowest time).
+```js
+let runners = [
+  { name: "Alice", time: 12.5 },
+  { name: "Bob", time: 11.8 },
+  { name: "Charlie", time: 13.2 },
+  { name: "Diana", time: 11.6 }
+];
+
+function findFastest(runners) {
+  // Start by assuming the first runner is the fastest
+  let fastest = runners[0];
+
+  // Loop through each runner
+  for (let runner of runners) {
+    // If the current runner has a lower time, update fastest
+    if (runner.time < fastest.time) {
+      fastest = runner;
+    }
+  }
+
+  // Return the name of the fastest runner
+  return fastest.name;
+}
+
+console.log(findFastest(runners)); // "Diana"
+```
+
+#### Heaviest Fruit
+```js
+let fruits = [
+  { name: "Apple", weight: 180 },
+  { name: "Banana", weight: 120 },
+  { name: "Mango", weight: 200 },
+  { name: "Orange", weight: 160 }
+];
+
+function findHeaviest(fruits) {
+  // ✅ Start by assuming the first fruit is the heaviest
+  let heaviest = fruits[0];
+
+  // ✅ Loop through each fruit object
+  for (let fruit of fruits) {
+    // ✅ Compare weights
+    if (fruit.weight > heaviest.weight) {
+      heaviest = fruit;
+    }
+  }
+
+  // ✅ Return just the name of the heaviest fruit
+  return heaviest.name;
+}
+
+console.log(findHeaviest(fruits)); // "Mango"
+```
+| Concept                               | Used For                          |
+| ------------------------------------- | --------------------------------- |
+| `let heaviest = fruits[0]`            | Start with a baseline object      |
+| `for...of`                            | Loop through values (not indexes) |
+| `if (fruit.weight > heaviest.weight)` | Compare current with current max  |
+| `heaviest = fruit`                    | Reassign if we find a new max     |
+| `return heaviest.name`                | Return just the name              |

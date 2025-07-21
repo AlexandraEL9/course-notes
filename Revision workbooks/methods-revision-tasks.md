@@ -131,3 +131,67 @@ console.log(`Most Expensive: £${Math.max(4.75, 8.99, 2.5, 10.25).toFixed(2)}`);
 2.5 - I want to make £2.50- adde toFixed
 
 ---
+
+## String Methods Revision
+🔡 1. Multiple Choice: includes()
+What will this log?
+```js
+let message = "The secret code is hidden";
+console.log(message.includes("Code"));
+```
+A. true
+**B. false** - due to capital C in console.log "Code".
+C. "true"
+D. Error
+
+✂️ 2. Coding Task: Slice the Word
+You’re given the string:
+```js
+let insect = "Caterpillar";
+```
+🧠 Task:
+Use .slice() to extract just the "pillar" part and log it.
+```js
+let insect = "Caterpillar";
+console.log(insect.slice(5, 11));
+```
+
+✨ 3. Transform & Clean
+Given this string:
+```js
+let messy = "   Warning! Malware detected!   ";
+```
+Write code to:
+- Remove the extra spaces from both ends.
+- Convert it to all uppercase.
+- Log the final cleaned string.
+```js
+let messy = "   Warning! Malware detected!   ";
+let trimmed = messy.trim();
+let final = trimmed.toUpperCase();
+
+console.log(final);
+```
+
+📍 4. Predict the Output: .indexOf()
+What will this return?
+```js
+let sentence = "I love pancakes and waffles";
+console.log(sentence.indexOf("waffles"));
+// 20
+```
+🔧 5. Mini Challenge: String Repair
+You're given a sentence with a small typo:
+```js
+let typo = "Please do not ajust the volume";
+```
+🧠 Task:
+Use a string method to correct "ajust" to "adjust" and log the fixed sentence.
+```js
+let typo = "Please do not ajust the volume";
+// use .replace()
+let fixed = typo.replace("ajust", "adjust");
+console.log(fixed); // "Please do not adjust the volume"
+```
+
+---

@@ -175,3 +175,74 @@ let access = age >= 18 && role === "member" ? "Allowed" : "Denied";
 console.log(access); // ➜ "Denied"
 ```
 ---
+## String Operators Revision
+
+🔤 1. What Are String Operators?
+JavaScript doesn’t have special string operators — it reuses symbols like + and += to work with strings.
+
+✅ Most Common String Operators:
+| Operator | Use                       | Example              | Result                      |
+| -------- | ------------------------- | -------------------- | --------------------------- |
+| `+`      | Concatenate (combine)     | `"Hello" + " World"` | `"Hello World"`             |
+| `+=`     | Append (combine + assign) | `greeting += "!"`    | `greeting = greeting + "!"` |
+
+🧪 2. Syntax Examples
+A. Concatenation with +
+```js
+let firstName = "Ada";
+let lastName = "Lovelace";
+let fullName = firstName + " " + lastName;
+console.log(fullName); // "Ada Lovelace"
+```
+
+B. Using += to Append
+```js
+let message = "I love ";
+message += "JavaScript!";
+console.log(message); // "I love JavaScript!"
+```
+
+🔁 3. Automatic Conversion
+When you combine a string and a number, JavaScript converts the number to a string:
+```js
+let result = "Score: " + 100;
+console.log(result); // "Score: 100"
+```
+✅ This is called type coercion.
+
+
+✏️ 4. Mini Tasks — Predict the Output
+Task A:
+```js
+console.log("Hello" + " there");
+// "Hello there"
+```
+
+Task B:
+```js
+let mood = "Happy";
+mood += " Birthday!";
+console.log(mood);
+// Happy Birthday
+```
+Task C:
+```js
+let result = "5" + 5;
+console.log(result);
+// "55"
+```
+
+🧠 5. Challenge Task
+Write a line of code that takes:
+- let food = "cake";
+- let number = 3;
+- ➡️ and stores the result "3 slices of cake" in a new variable called order.
+```js
+let food = "cake";
+let number = 3;
+
+let order = `${number} slices of ${food}`;
+console.log(order);
+```
+---
+

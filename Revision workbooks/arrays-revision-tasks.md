@@ -233,3 +233,80 @@ console.log(total); // 40
 ```
 
 ---
+🔁 1. Quick Recall (No Notes)
+Answer from memory:
+a. What does .some() return? When is it useful?
+- Spme returns true if any/ at least one element passes a test/ condition. or false if not.
+
+b. What’s the difference between .filter() and .map()?
+  - filter just returns parts of an array that match a condition whereas map will create a new array out of actions done to the old array.
+
+🔎 2. Predict the Output
+```js
+let prices = [5, 12, 18, 25];
+
+function isExpensive(price) {
+  return price > 20;
+}
+
+let result1 = prices.filter(isExpensive);
+let result2 = prices.some(isExpensive);
+let result3 = prices.every(isExpensive);
+
+console.log(result1); // [25]
+console.log(result2); // true
+console.log(result3); // false
+```
+
+✏️ 3. Write Your Own Code
+Given this array:
+```js
+let users = [
+  { name: "Alice", age: 22 },
+  { name: "Bob", age: 17 },
+  { name: "Charlie", age: 30 },
+  { name: "Daisy", age: 19 }
+];
+```
+Write:
+- A .filter() to return all users aged 18+
+- A .map() to return just their names
+- A .some() to check if anyone is under 18
+- A .reduce() to return the total age of all users
+✅ Use regular functions (no arrow functions)
+```js
+let users = [
+  { name: "Alice", age: 22 },
+  { name: "Bob", age: 17 },
+  { name: "Charlie", age: 30 },
+  { name: "Daisy", age: 19 }
+];
+
+function oldEnough(users) {
+  return users.age >= 18;
+}
+
+function getName(user) {
+  return user.name;
+}
+
+function tooYoung(user) {
+  return user.age < 18;
+}
+
+function addAges(accumulator, user) {
+  return accumulator + user.age;
+}
+
+let filtered = users.filter(oldEnough);
+let mapped = filtered.map(getName);
+let somed = users.some(tooYoung);
+let reduced = users.reduce(addAges, 0);
+
+console.log(filtered);
+console.log(mapped);
+console.log(somed);
+console.log(reduced);
+```
+
+---

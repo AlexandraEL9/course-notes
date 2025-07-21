@@ -10,6 +10,8 @@
     - [Glossary 2](#glossary-2)
     - [Basic Structure: Headings & Paragraphs](#basic-structure-headings-paragraphs)
     - [Text Formatting Tags](#text-formatting-tags)
+    - [Boilerplate](#boilerplate)
+      - [File Addresses & Relative Paths](#file-addresses-relative-paths)
 
 - [Links, Images & Lists](#links-images-lists)
     - [Glossary 3](#glossary-3)
@@ -49,6 +51,14 @@
 ## What is HTML?
 
 HTML stands for **HyperText Markup Language**. It’s the standard language used to structure content on the web—think of it as *the skeleton of a webpage*.
+
+- It structures websites like a skeleton.
+- Uses tags to add:
+  - Images
+  - Text
+  - Headings
+  - Other basic elements (unstyled by default)
+- HTML builds the foundation; CSS adds the style.
 
 ### Glossary 1
 | Term        | Definition                                                                        |
@@ -118,6 +128,16 @@ You can use different heading levels:
 | `<br>`     | Line break (no closing tag needed)   | `Line one<br>Line two`           |
 | `<hr>`     | Horizontal line to separate sections | `Content above<hr>Content below` |
 
+Each tag has:
+- **Opening tag** (e.g. `<h1>`)
+- **Content** (e.g. `HTML for Beginners`)
+- **Closing tag** (e.g. `</h1>`)
+
+Example:
+```html
+<h1>HTML for Beginners</h1>
+```
+
 **Example Usage:**
 ```html
 <h1>Welcome to My Page</h1>
@@ -132,6 +152,65 @@ You can use different heading levels:
 
 <p>New section begins here.</p>
 ```
+**EXERCISE: 1st HTML tab
+- Open a suitable IDE (e.g. VS Code, Atom).
+- Create a file: MyFirstWebsite.html
+- Add an <h1> tag with your name.
+- Open the file in a browser.
+- Try changing or removing parts of the tag to see what happens.
+```html
+```
+
+### Boilerplate
+
+- Boilerplate = reusable, standard code
+- HTML boilerplate includes code required at the start of every HTML document.
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyFirstWebsite</title>
+  </head>
+  <body>
+    <!-- Content goes here -->
+  </body>
+</html>
+```
+**Tags to know:**
+- `<!DOCTYPE html>` — Declares the document is HTML
+
+- `<html>` — Root element of the page
+
+- `<head>` — Metadata, links, and title
+
+- `<title>` — Title shown in the browser tab
+
+- `<body>` — Visible content
+
+**Exercise: Add Boilerplate**
+Add the following to your HTML file:
+- <!DOCTYPE html>
+- <html>
+- <head> with a <title>
+- <body>
+- Google anything you're unsure about!
+*Exercise 2: Add Text*
+Use the following tags:
+- <h1> to <h6> — Headings
+- <p> — Paragraph
+*Add this info:*
+- Your name
+- Your city
+- Your favourite book
+- Your favourite film
+```html
+```
+
+#### File Addresses & Relative Paths
+
+- Files often reference other files (e.g. images, stylesheets).
+- Absolute path: starts from the root (e.g. C:/Users/YourName/Documents/...)
+- Relative path: starts from the current file's location (e.g. ../images/myphoto.png)
 
 ---
 

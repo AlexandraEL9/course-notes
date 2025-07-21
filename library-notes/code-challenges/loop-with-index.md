@@ -5,11 +5,13 @@
   - [10.1 Mini Challenge: Compare Running Times](#101-mini-challenge-compare-running-times)
   - [10.2 Count Letter "a"](#102-count-letter-a)
   - [Count Letter "a" in multiple words](#count-letter-a-in-multiple-words)
+  - [Product Price Comparison](#product-price-comparison)
 
 ---
 
 ### Pattern Review
 Used when: You need to compare or reference elements at specific positions (like comparing front row and back row heights) in an array (or similar data structures like strings or objects). 
+- access or compare elements at specific positions in an array (or string). The index (i) is key to accessing the correct position in the array.
 
 *You often use this when:*
 
@@ -177,3 +179,29 @@ console.log(countA(words)); // Output: [3, 1, 1, 1]
 - The inner loop counts how many times the letter "a" appears in each word.
 - The result is stored in an array, which is returned.
 
+---
+
+### Product Price Comparison
+You have two arrays representing the prices of the same products in two different stores. Write a function that compares the prices and returns how many times Store A is cheaper than Store B at the same index.
+```js
+let storeA = [15, 20, 10, 25];
+let storeB = [18, 22, 12, 20];
+// Output: 2
+// (Store A is cheaper at index 0, index 1, and index 2)
+function compareA(storeA, storeB) {
+  //set up count
+  let count = 0;
+
+  // set up loop
+  for (let i = 0; i < storeA.length; i++) {
+    // logic
+    if (storeA[i] < storeB[i]) {
+      count += 1;
+    }
+  }
+  return count;
+}
+console.log(compareA(storeA, storeB)); // 3
+```
+
+---

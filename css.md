@@ -101,6 +101,30 @@ HTML creates the structure of a page, but CSS adds the style — things like:
 </html>
 ```
 
+### How to add as an external file:
+- Create a CSS file: style.css
+- Save it in the same folder as your HTML.
+- Add this line inside the <head> of your HTML:
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+### How it Works
+- CSS targets **elements** using `selectors`.
+- Curly braces `{}` contain the **style rules**.
+- Each rule is an `attribute` and `value` pair.
+
+![CSS Syntax](/images/css-syntax.png)
+
+**Example:**
+```css
+p {
+  color: red;
+  font-style: italic;
+}
+```
+This makes all <p> tags red and italic.
+
 ---
 
 ## CSS Selectors
@@ -124,6 +148,29 @@ p {
 }
 ```
 - Styles all <p> elements.
+
+*Change your website by:*
+
+Making one heading red:
+```css
+h1 {
+  color: red;
+}
+```
+
+Making all paragraphs italic:
+```css
+p {
+  font-style: italic;
+}
+```
+
+Underlining one heading:
+```css
+h2 {
+  text-decoration: underline;
+}
+```
 
 #### Class Selector
 ```css

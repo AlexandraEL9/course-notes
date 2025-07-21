@@ -257,6 +257,42 @@ while (i >= 1) {
 ```
 
 ---
+## For Loop revision
+📘 1. Explain in Your Own Words
+What is a for loop used for, and how is it different from a while loop?
+  - A for loop will run a specific number of times whereas a while loop will run as long as a condition in met.
 
+🔨 2. Mini Coding Task – Count Up
+Write a for loop that prints numbers from 1 to 5.
+```js
+for (let i = 1; i <= 5; i++) {
+  console.log(i);
+}
+```
 
+🧠 3. Spot the Mistake
+What’s wrong with this loop? What will it do if you run it?
+  - it will only run once as there is no update statement (i++) also wil only run to 4
+```js
+for (let i = 1; i < 5; ) {
+  console.log(i);
+}
+```
+Fix it so it behaves like a standard count-up loop.
+```js
+for (let i = 1; i < 5; i++) {
+  console.log(i);
+}
+```
+
+💡 4. Bonus Challenge – Count by 2s
+Write a for loop that prints even numbers from 2 to 10.
+```js
+for (let i = 1; i <= 10; i++) {
+  if (i % 2 === 0) {
+    console.log(i);
+  }
+}
+```
+---
 
