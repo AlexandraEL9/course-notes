@@ -167,3 +167,59 @@ Can I remember how to use LIKE, IN, BETWEEN without copying? NOPE
 Do I know when to use AND vs OR? PERHAPS
 
 Can I filter for missing or known values? Not yet
+
+---
+## Mon SQL Day 1: Core SELECT Skills
+🔹 Task 1: Basic SELECT + FROM
+Challenge:
+Get the name and population of all cities from the city table.
+```sql
+select Name, Population 
+from city;
+```
+
+🔹 Task 2: DISTINCT Values
+Challenge:
+Get a list of all unique districts from the city table.
+```sql
+SELECT DISTINCT district
+FROM city;
+```
+💬 Think: Do you need DISTINCT? Which column and table?
+
+🔹 Task 3: ORDER BY
+Challenge:
+Show all cities sorted alphabetically by name.
+```sql
+SELECT Name
+FROM city
+ORDER BY Name ASC;
+```
+⏱️ Bonus: Then sort by population descending.
+```sql
+SELECT Name
+FROM city
+ORDER BY Population DESC;
+```
+
+🔹 Task 4: Table Aliases
+Challenge:
+Use alias ct for the city table. Select the name and population of each city.
+💬 Think: What part of the query does the alias affect?
+```sql
+SELECT ct.Name, ct.Population
+FROM city ct;
+```
+
+🔹 Task 5: LIMIT and OFFSET
+Challenge:
+Show the 6th to 10th most populated cities.
+```sql
+SELECT ct.Name, ct.Population 
+FROM city ct
+ORDER BY ct.Population
+LIMIT 5 OFFSET 5;
+```
+🧠 Do you need to sort first? What numbers go in LIMIT and OFFSET?
+
+---

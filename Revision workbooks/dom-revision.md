@@ -117,3 +117,87 @@ document.getElementById("colorBtn").addEventListener("click", function () {
   text.style.backgroundColor = "lavender";
 });
 ```
+
+---
+📚 DOM Basics Revision Plan (30–40 mins)
+✅ Part 1: Flash Recall (No Code — Just You)
+Try to answer these without checking notes.
+
+1. What method do we use to select an element by its ID?
+✍️ getElementById()
+
+2. What’s the difference between .textContent and .innerHTML?
+✍️ text content uses only plain text wheras innerHTML inserts HTML (could do with a bit more detail if I'm honest_)
+| Feature                             | `.textContent` | `.innerHTML`    |
+| ----------------------------------- | -------------- | --------------- |
+| Strips HTML?                        | ✅ Yes          | ❌ No            |
+| Safer for user content?             | ✅ Yes          | ❌ No (XSS risk) |
+| Shows all text, even hidden by CSS? | ✅ Yes          | ❌ Depends       |
+| Renders HTML tags?                  | ❌ No           | ✅ Yes           |
+```js
+el.textContent = "<strong>Hello</strong>"; // Displays: <strong>Hello</strong>
+el.innerHTML = "<strong>Hello</strong>";   // Displays: **Hello** (bolded)
+```
+
+3. How do you change the background color of the page using JavaScript?
+✍️ document.body.style.backgroundColor = "red";
+
+4. True or False: getElementById returns multiple elements
+✍️ FLASE - Id should only be one element - class or querySelectorAll return multiple.s.
+
+5. What method do you use to create a new HTML element in JS?
+✍️ createElement()
+
+🔄 Part 2: Core Practice Tasks
+📌 Task A: Fix the Typos
+
+Correct this JavaScript:
+```js
+let heading = getelementById("title");
+heading.textContent = "<strong>Hello!</strong>";
+```
+✏️ Identify two bugs
+- textContent = "<strong>Hello!</strong>" - will also add the tags
+- typo in ` getelementById("title");` needs capital E for element
+✍️ Write the fixed version
+```js
+llet heading = document.getElementById("title");
+heading.textContent = "Hello!";
+```
+
+📌 Task B: Create and Insert
+- Write JS to do the following:
+    - Create a new <p> element
+    - Set its text to "DOMs are fun!"
+    - Add it to the <body>
+✍️
+```js
+let paragraph = document.createElement("p");
+paragraph.textContent = "DOMs are fun!";
+document.body.appendChild(paragraph);
+```
+
+📌 Task C: Toggle Text (From Scratch)
+
+HTML:
+```html
+<p id="status">Inactive</p>
+<button id="toggleBtn">Toggle</button>
+```
+Write JS so that when the button is clicked:
+- If the text is "Inactive", change it to "Active ✅"
+- If it's "Active ✅", change it back to "Inactive"
+```js
+document.getElementById("toggleBtn").addEventListener("click", function () {
+    // Step 1: Get the current status
+  let status = document.getElementById("status");
+  // Step 2: Check if it's Inactive
+  if (status.textContent === "Inactive") {
+    // Step 3: Change to Active or back to Inactive
+    status.textContent = "Active ✅";
+  } else {
+    status.textContent = "Inactive";
+  }
+});
+
+```
