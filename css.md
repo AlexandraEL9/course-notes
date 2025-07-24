@@ -115,7 +115,6 @@ HTML creates the structure of a page, but CSS adds the style — things like:
 - Each rule is an `attribute` and `value` pair.
 
 ![CSS Syntax](/images/css-syntax.png)
-
 **Example:**
 ```css
 p {
@@ -141,6 +140,7 @@ This makes all <p> tags red and italic.
 | **Descendant Selector** | Targets elements inside another element (`div p`).               |
 
 ### Basic Examples
+
 #### Element Selector
 ```css
 p {
@@ -171,6 +171,12 @@ h2 {
   text-decoration: underline;
 }
 ```
+
+### Problem:
+What if we only want to style *some* paragraph tags?
+
+### Solution:
+Use `class` or `id` attributes in HTML and target them in CSS.
 
 #### Class Selector
 ```css

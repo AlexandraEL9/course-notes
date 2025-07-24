@@ -1,0 +1,15 @@
+body {
+    background-color: whitesmoke;
+}
+
+#title {
+    text-decoration: underline;
+    font-weight: bold;
+    color: navy;
+}
+
+.info {
+    color: purple;
+    font-style: italic;
+}
+
