@@ -1,0 +1,149 @@
+# Design Notes
+
+## Lesson 7: Design & Styling
+
+## Agenda
+1. What is UX / UI
+2. Design heuristics (Norman)
+3. Information Overload
+4. Influences on human attention
+5. How spoken language affects design
+6. Design heuristics (Nielsen)
+
+---
+
+## Why is Design So Important?
+- Development aims to create valuable products that solve user frustrations (e.g., Facebook connects people across the world).
+- A product must be intuitive and avoid "naive psychology" (assuming users see the world as we do).
+- Good design ensures excellent user experience by following principles and heuristics.
+
+> “Good design is actually a lot harder to notice than poor design, in part because good designs fit our needs so well that the design is invisible.”  
+> — Donald A. Norman, *The Design of Everyday Things*
+
+---
+
+## Norman’s Design Principles / Heuristics
+1. **Use both knowledge in the world and in the head** – Reduce mental load by leveraging user familiarity (e.g., language scanning patterns).
+2. **Simplify the structure of the task** – Minimize the number of steps required.
+3. **Make things visible** – Show essential components/functions, hide clutter.
+4. **Get the mappings right** – Ensure controls clearly map to their effects (e.g., left arrow for back).
+5. **Exploit constraints (natural & artificial)** – Guide users naturally with consistent layouts (e.g., back buttons in top-left).
+6. **Design for error** – Plan for mistakes and create recovery options.
+7. **Standardize when all else fails** – Use common icons and industry conventions.
+
+---
+
+## Information Overload
+- When too much information confuses users, leading to poor decision-making.
+- Coined by Professor Bertram Gross – users have limited cognitive capacity.
+- Even without confusion, overloaded users are more likely to make bad decisions.
+
+---
+
+## Influences on Human Attention
+- Eye-tracking research shows that directed gazes (e.g., from characters) influence user focus.
+- Good design allows intuitive navigation, almost guiding the user subconsciously.
+- Users scan sites in **F-pattern** or **Z-pattern** due to efficiency and cognitive foraging.
+
+---
+
+## Eye Scanning Patterns
+- **Evolutionary basis**: Eyes "jump" for wide scanning vs. "track" for detail.
+- **Language-dependence**: Right-to-left languages (e.g., Farsi) may require layout changes.
+
+---
+
+## Nielsen’s Design Heuristics
+1. **Visibility of system status** – Keep users informed of what’s happening.
+2. **Match between system and real world** – Use familiar language and concepts.
+3. **User control and freedom** – Allow undo/redo or easy navigation.
+4. **Consistency and standards** – Follow established conventions (Jakob’s Law).
+5. **Error prevention** – Design safeguards to minimize mistakes.
+6. **Recognition over recall** – Reduce memory load by showing options.
+7. **Flexibility and efficiency of use** – Provide shortcuts for expert users.
+8. **Aesthetic and minimalist design** – Minimize distractions and clutter.
+9. **Help users recover from errors** – Use clear, actionable error messages.
+10. **Help and documentation** – Provide guidance when needed.
+
+---
+
+## Summary
+- Design influences everything – from products to doors – and often works invisibly.
+- Principles and heuristics ensure effective, intuitive design.
+- Apply these concepts to your projects for better user experience.
+
+---
+
+# Lesson 8: Design Workshop
+
+## Agenda
+1. Introduction to Affordance
+2. What is Wireframing?
+3. Wireframing Exercise
+4. Project Work
+
+---
+
+## What is Affordance?
+
+- Objects naturally suggest how they should be used.
+  - Example: Scissors afford being held in a certain way; steering wheels afford turning, not pushing.
+- These hints are known as **affordances**.
+- A well-designed object guides the user correctly; a poorly designed one misleads (e.g., a door that looks like it should be pushed but actually needs to be pulled).
+
+---
+
+## What is Wireframing?
+
+- **Wireframing** is the process of creating the basic structure of a prototype.
+- No code or styling—just layout and core functionality.
+- It acts as a **sketching environment** to test ideas and practice design heuristics before coding.
+- Recommended tool: [Draw.io](https://draw.io)
+
+---
+
+## Exercise 1: Wireframe a Prototype
+
+**Requirements:**
+- A book collection available on a website.
+- Users must be able to choose a book to borrow.
+- Borrowing requires creating an appointment (date, time, location).
+- Wireframe a prototype that meets these needs.
+
+**Instructions:**
+- Work in groups.
+- Use tools like draw.io.
+- Present your design, explaining:
+  - Layout choices
+  - Colour schemes
+  - Functionality
+  - Design decisions
+
+---
+
+## Exercise 2: Present and Review
+
+- Each team presents their wireframe.
+- Others provide feedback:
+  - What was usable?
+  - What was confusing?
+  - Any improvements?
+
+---
+
+## Project Work
+
+- Continue working on your group project.
+- **Create a wireframe first**—it’s crucial for planning and client communication.
+- Once wireframing is complete, move on to implementing your design in code.
+
+---
+
+## Summary
+
+- **Wireframing** is a way to design a prototype before coding.
+  - Helps with client feedback and easier changes.
+- **Affordances** are cues in design that guide users naturally.
+- Early design work maximises usability and efficiency.
+
+---
