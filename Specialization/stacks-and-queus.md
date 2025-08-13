@@ -68,6 +68,12 @@ const q = new Deque();
 q.pushBack(1);  // enqueue
 q.popFront();   // dequeue
 ```
+```js
+const Deque = require('@datastructures-js/deque');
+const q = new Deque();
+q.pushBack(1);  // enqueue
+q.popFront();   // dequeue
+```
 
 ### Python
 ```python
@@ -122,6 +128,37 @@ const Deque = require('@datastructures-js/deque');
 const s = new Deque();
 s.pushBack(1);  // push
 s.popBack();    // pop
+```
+```js
+// example from class
+class StackList{
+
+  constructor(size) {
+
+    this.container = Array(size)
+    this.capacity = size
+    this.top = -1
+  }
+
+  push(x) {
+    if (this.top + 1 === this.capacity){
+      console.log("Stack is full. Cancelling execution")
+      throw "stop execution"
+    }
+    this.top = this.top + 1
+    this.container[this.top] = x
+  }
+  // take off top object
+  pop(){
+    if (this.top + 1 === 0) {
+     console.log("This stack is empty")
+     throw "stop execution" 
+    }
+    const top = this.container[this.top]
+    this.top = this.top - 1
+    return top
+  }
+}
 ```
 
 ### Python

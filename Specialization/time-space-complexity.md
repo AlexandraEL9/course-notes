@@ -10,6 +10,7 @@
 ## Why Learn This?
 Many interview processes have **unreasonable expectations** – you might be asked to solve problems you'd never encounter in the job (e.g., inverting a binary tree).  
 However:
+- Considering this *helps write better code*.
 - These topics are **common in technical interviews** regardless of the role.
 - Useful for **career progression** when switching jobs.
 - Relevant for understanding algorithm efficiency in **real-world development**.
@@ -91,7 +92,7 @@ Example: Finding the largest number in a list (the recipe).
 **Definition:**  
 The process of determining how efficient an algorithm is.  
 This involves measuring:
-- **Time Complexity:** How fast the algorithm runs
+- **Time Complexity:** How fast the algorithm runs - How many operations does the algorith need to perform
 - **Space Complexity:** How much auxiliary memory it uses
 
 Why it matters:
@@ -103,8 +104,8 @@ Why it matters:
 ## Time vs Space Complexity
 
 2️⃣ **Time Complexity** = How long it takes
-Time complexity *measures how the execution time grows as the input size increases*.
-- It’s not about the exact seconds it takes, but how the time scales.
+- Time complexity *measures how the execution time grows as the input size increases*.
+- It’s **not about the exact seconds it takes**, but how the time scales.
 - We use Big O notation to describe this.
 
 3️⃣ **Space Complexity** = How much memory it uses
@@ -116,8 +117,8 @@ Space complexity *measures how much extra memory (RAM) the algorithm needs* beyo
 
 | Term             | Meaning |
 |------------------|---------|
-| **Time Complexity** | A measure of **execution time** growth relative to input size |
-| **Space Complexity** | A measure of **memory usage** growth relative to input size |
+| **Time Complexity** | A measure of **execution time** growth **relative to input size** |
+| **Space Complexity** | A measure of **memory usage** growth **relative to input size** |
 
 Both are expressed in **Big O notation**.
 
@@ -242,6 +243,7 @@ function printFive() {
 - Runtime does not change → O(1).
 
 #### Decision Checklist!
+
 Is it O(1)? Quick Questions to Ask Yourself
 Does the number of steps change if the input size changes?
 
