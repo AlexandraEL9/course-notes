@@ -2,11 +2,45 @@
 
 ## 1. Introduction to Linked Lists
 
-A **linked list** is a data structure similar to arrays in that it can store data, but its elements are not stored in contiguous memory locations.
+A **linked list** is a data structure similar to arrays in that it can store data, but its elements are *not stored in contiguous memory locations*.
+
+In memory, **"contiguous"** means that *items are stored right next to each other*, in consecutive memory addresses — like numbered seats in a row.
+
+- **Arrays:** All elements sit next to each other in memory.
+
+    - If the first element is at memory address 1000 and each element takes 4 bytes, the second will be at 1004, the third at 1008, and so on.
+
+    - This is why arrays can do instant O(1) access — the computer can jump straight to start_address + (index × element_size).
+
+- **Linked lists:** The elements (nodes) are scattered across memory.
+
+    - Each node can be anywhere, because when you create a node, it’s stored wherever there’s free space in memory.
+
+    - Nodes are connected by pointers (memory addresses) that tell the computer where the next node is.
 
 Each linked list node contains:
 - **Data** (value stored in the node)
 - **Memory reference (pointer)** to the next node (the last node points to `null`)
+
+**Visual Examples**
+Array (contiguous)
+``css
+[Data1][Data2][Data3][Data4]
+ ^1000   ^1004   ^1008   ^1012   (memory addresses in order)
+```
+
+Linked List (non-contiguous)
+```css
+[Data1|Next=7008]   [Data2|Next=3020]   [Data3|Next=NULL]
+   ^1000                ^7008               ^3020
+```
+Here, the Next part of each node stores the memory address of the next node.
+
+In short:
+
+Contiguous (arrays): Stored in one block → faster access but harder to resize.
+
+Non-contiguous (linked lists): Scattered in memory → slower access but easy to insert/remove nodes.
 
 ### Key Differences from Arrays
 - **Array Access:** O(1) time complexity to access an element by index.
