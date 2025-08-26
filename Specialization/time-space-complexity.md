@@ -173,7 +173,7 @@ function processArrayAndString(arr, str) {
 
 #### Complexities in more detail:
 
-#### Constant
+#### Constant `O(1)`
 When we say Constant time in the context of time complexity, we’re talking about *algorithms whose execution time does not depend on the size of the input*.
 **That means:**
 - Whether you have 10 items or 10 million items, the operation still takes about the same amount of time.
@@ -185,6 +185,10 @@ When we say Constant time in the context of time complexity, we’re talking abo
     - But having a literal constant (like the number 5 in code) doesn’t automatically make the algorithm O(1).
 
 **Examples:**
+```js
+// Constant time O(1)
+console.log(array[3])
+```
 ```js
 // Accessing the first element of an array
 let arr = [10, 20, 30, 40, 50];
@@ -289,6 +293,262 @@ Are you creating or copying data based on input size?
 
 ---
 
+#### Linear TIME `O(n)`
+**What it means:**
+Runtime grows proportionally with input size. Double the input → roughly double the work.
+
+**Key characteristics**
+
+- Exactly one pass (or a constant number of passes) over the data.
+- Each iteration does O(1) work on average.
+- Forms like `n`, `2n`, `n/2`, `3n + 10` are all O(n).
+- Often paired with *O(1)* space (e.g., running totals) or *O(n)* space (e.g., frequency maps).
+
+**When you’ll see it**
+- Scans, filters, maps, reduces.
+- Two-pointer scans (palindrome, merging, partitioning).
+- Sliding window with fixed window size.
+- Building a `Set/Map` from an array (average).
+- Tree traversal when there are n nodes (e.g., DFS/BFS on a tree): visit each node once.
+
+**Examples:**
+```js
+// Linear time O(n)
+array.forEach((n) => {
+  console.log(n)
+  console.log(n)
+})
+```
+```js
+// Linear time O(n)
+array.forEach((n) => {
+  console.log(n)
+  console.log(n)
+})
+```
+```js
+// Linear search in unsorted array — O(n) time, O(1) space
+function includes(arr, target) {
+  for (const x of arr) if (x === target) return true;
+  return false;
+}
+```
+```js
+// Frequency map — O(n) time, O(n) space
+function freq(arr) {
+  const count = new Map();
+  for (const x of arr) count.set(x, (count.get(x) || 0) + 1);
+  return count;
+}
+```
+```js
+// Two pointers (palindrome-like) — O(n) time, O(1) space
+function isPalindrome(s) {
+  let l = 0, r = s.length - 1;
+  while (l < r) {
+    if (s[l++] !== s[r--]) return false;
+  }
+  return true;
+}
+```
+```js
+// Sliding window (fixed size k) — O(n) time, O(1) space
+function maxWindowSum(arr, k) {
+  if (arr.length < k) return 0;
+  let win = 0;
+  for (let i = 0; i < k; i++) win += arr[i];
+  let best = win;
+  for (let i = k; i < arr.length; i++) {
+    win += arr[i] - arr[i - k];
+    if (win > best) best = win;
+  }
+  return best;
+}
+```
+```js
+// Remove duplicates — O(n) time avg, O(n) space
+const unique = (arr) => [...new Set(arr)];
+```
+
+**Non- O(n) vs O(n)**
+```js
+// ❌ Not O(n): nested scan from includes() inside a loop → O(n²)
+function firstDupe_bad(arr) {
+  const seen = [];
+  for (const x of arr) {
+    if (seen.includes(x)) return x; // includes is O(n)
+    seen.push(x);
+  }
+  return -1;
+}
+
+// ✅ O(n): use a Set for O(1) avg lookups
+function firstDupe_good(arr) {
+  const seen = new Set();
+  for (const x of arr) {
+    if (seen.has(x)) return x;
+    seen.add(x);
+  }
+  return -1;
+}
+```
+```js
+let array = [0, 1, 2, 3, 4, 5,6]
+
+const doubleArray = (input) => {
+    let output= []
+  input.forEach((num) => {
+    output.push(num * 2)
+  })
+  return output
+}
+
+const answer = doubleArray(array)
+```
+#### Decision checklist — Is it O(n)?
+
+- Do you touch each element a constant number of times? → likely O(n).
+- Are there k separate passes where k is constant? (`pass 1`, `pass 2`) → O(n).
+- Is the loop bound proportional to input (e.g., `i += 2`, `i < n/2`)? Constants don’t matter → O(n).
+- Does each iteration do only O(1) work (no inner linear search, no sort)? → O(n).
+- Can it early exit sometimes? Best case may be O(1), but worst case still O(n).
+- Are you copying/building a structure proportional to input size? → O(n) time (and O(n) space).
+
+**Common gotchas**
+- Sorting + scan is O(n log n), not O(n).
+- Array `.includes/.indexOf` inside a loop → typically O(n²).
+- Graph DFS/BFS: time O(V + E). For a tree, `E = V - 1` → O(n).
+- Recursion with depth proportional to `n` → time O(n), stack O(n).
+
+**Why it matters**
+
+Linear algorithms are the practical *sweet spot for large inputs* —scales predictably, easy to reason about, and often *memory-friendly*. If you can turn a quadratic solution into a linear one, you’ve probably made the biggest win you’ll need.
+
+---
+
+## Quadratic TIME `O(n^2)
+
+**What it means:**
+Work grows roughly with the square of input size. Double n → ~four times the work.
+
+**Key characteristics**
+
+- Nested loops where each loop iterates ~n times.
+- Or one loop of ~`n` and an inner loop that averages ~`n/2` → still O(n²) (constants drop).
+- Summations like `1 + 2 + ... + (n-1)` = `n(n-1)/2` → O(n²).
+- If loops iterate over different inputs of sizes `n` and `m`, complexity is O(n·m).
+
+**When you’ll see it**
+
+- Comparing all pairs: duplicates by pairwise check, closest pair brute force, two-sum without hashing.
+- Quadratic sorts: bubble, insertion, selection (worst/avg).
+- Operations on dense n×n structures (e.g., adjacency matrix scans).
+- Naïve substring search: for each start position, scan forward.
+
+**Examples**
+```js
+// Quadratic time O(n^2)
+array.forEach((a) => {
+  array.forEach((b) => {
+    console.log(a, b)
+  })
+})
+```
+```js
+// All pairs — O(n²) time, O(1) space
+function printPairs(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      console.log(arr[i], arr[j]);
+    }
+  }
+}
+```
+```js
+// Upper triangle only — still O(n²)
+function uniquePairs(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      // (arr[i], arr[j]) each pair once
+    }
+  }
+}
+```
+```js
+// Selection sort — O(n²) time, O(1) space
+function selectionSort(a) {
+  for (let i = 0; i < a.length - 1; i++) {
+    let min = i;
+    for (let j = i + 1; j < a.length; j++) {
+      if (a[j] < a[min]) min = j;
+    }
+    [a[i], a[min]] = [a[min], a[i]];
+  }
+  return a;
+}
+```
+```js
+// Different input sizes — O(n·m)
+function hasCommonElement(a, b) {
+  for (const x of a) {
+    for (const y of b) {
+      if (x === y) return true;
+    }
+  }
+  return false;
+}
+```
+```js
+// Accidental O(n²): linear search inside a loop
+function uniqueSlow(arr) {
+  const out = [];
+  for (const x of arr) {
+    if (!out.includes(x)) out.push(x); // includes is O(n)
+  }
+  return out; // total O(n²)
+}
+```
+
+**Non O(n^2)**
+```js
+// ✅ O(n): build a Set, single pass lookups
+function uniqueFast(arr) {
+  return [...new Set(arr)];
+}
+```
+
+#### Space notes
+- Many quadratic-time algorithms still use O(1) or O(n) extra space.
+- You hit O(n²) space when you store a 2D table (e.g., dynamic programming grids, adjacency matrices).
+
+#### Decision checklist — Is it O(n²)?
+- Do you have nested loops where the inner loop depends on n? → likely O(n²).
+
+- Are you comparing every element to every other? → O(n²).
+
+- Does the inner loop run about `n - i` times (triangular)? → still O(n²).
+
+- Are there two inputs n and m with a nested loop across both? → O(n·m).
+
+- Any linear search (`includes`, `indexOf`) inside a loop over the same collection? → often O(n²).
+
+**Common gotchas**
+
+- Sorting + linear pass is O(n log n) (sorting dominates), not O(n²).
+- Two separate non-nested loops are O(n + n) = O(n), not O(n²).
+- Adjacency list traversals of graphs are O(V + E), but an adjacency matrix scan is O(V²).
+- Dynamic programming like edit distance is O(n·m) time and can be O(n·m) space.
+
+**Why it matters**
+Quadratic algorithms become slow quickly (10k items → ~100M operations). If it’s pairwise work, look for:
+
+- Hashing to drop to O(n) (e.g., two-sum with a Set).
+- Sorting + two pointers to drop to O(n log n).
+- Divide & conquer or sweep-line patterns for geometry/string tasks.
+
+---
+
+
 ## Summary
 - **Time Complexity**: Speed of execution relative to input size
 - **Space Complexity**: Memory use relative to input size
@@ -301,4 +561,159 @@ Are you creating or copying data based on input size?
 - Try implementing algorithms with different complexities.
 - Compare `O(n)` vs `O(n^2)` solutions for the same problem.
 - Optimise code by reducing unnecessary loops or memory use.
+
+Your task: for time complexity, label each O(1), O(n), or O(n²). (Ignore space for now.)
+(A)✅
+```js
+//O(1)
+function A(arr, k) {
+  return arr[k];
+}
+// 1 action, tells exactly where to look to retrieve once.
+```
+(B)✅
+```js
+// O(n)
+function B(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+// has a loop and only one loop, logs the index of the array so is proportional
+```
+(C)✅
+```js
+// O(n^2)
+function C(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      // constant work
+    }
+  }
+}
+// has a nested loop
+```
+
+(D)✅
+```js
+//(O(n))
+function D(arr) {
+  for (let i = 0; i < arr.length; i++) {/*...*/}
+  for (let j = 0; j < arr.length; j++) {/*...*/}
+}
+// runs two passes over array (but not nested)
+// both loops are O(n) so sum out as O(n)
+```
+(E)✅
+```js
+//O(n^2)
+function E(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      // process pair (i, j) once
+    }
+  }
+}
+// nested - O(n^2)
+// BUT - only runes once - O(1)
+// Unsure to know how to work it out?
+```
+(F)
+```js
+// O(n) - (average case)
+function F(arr) {
+  const seen = new Set();
+  for (const x of arr) {
+    if (seen.has(x)) return true;
+    seen.add(x);
+  }
+  return false;
+}
+```
+**One pass through `arr`. Each step does:**
+- `seen.has(x)` → O(1) average (hash lookup)
+- `seen.add(x)` → O(1) average (hash insert)
+    - Total ≈ n * O(1) → O(n) time.
+    - Early return doesn’t change the worst/average class.
+Space is O(n) worst-case (if no duplicate until the end).
+
+(G)
+```js
+//O(n^2) TIME O(n)space
+function G(arr) {
+  const out = [];
+  for (const x of arr) {
+    if (!out.includes(x)) out.push(x); // includes scans out
+  }
+  return out;
+}
+```
+- `out.includes(x)` is a *linear scan* of `out`. As `out` grows, each check costs more.
+Total work ≈ `1 + 2 + … + n` → `n(n+1)/2` → O(n²).
+
+(H)✅
+```js
+//O(n) TIME, O(1) SPACE
+function H(arr) {
+  for (let i = 0; i < arr.length; i += 2) {
+    // constant work
+  }
+}
+```
+- `i += 2` still visits ~`n/2` indices → constants drop → O(n).
+
+(I)✅
+```js
+//O(n) TIME, O(1) SPACE
+function I(arr, target) {
+  for (const x of arr) {
+    if (x === target) return true; // may return early
+  }
+  return false;
+}
+```
+Linear scan with possible early return. Best case is O(1) (target at start), but worst case touches all elements → O(n).
+
+(J)✅
+```js
+// O(1)
+function J(stack) {
+  stack.push(1); // O(1)
+  stack.push(2); // O(1)
+  stack.pop();  // O(1)
+  return stack.length;  // O(1)
+}
+```
+Each operation (push, pop, read .length) is amortized O(1) on JS arrays used as stacks. No input-scaled loops → O(1) time, O(1) space.
+
+
+(K)✅
+```js
+// O(n^2)
+function K(arr) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j]) count++;
+    }
+  }
+  return count;
+}
+// nestd loop make it O(n^2)
+```
+Two nested loops each run ~`n` times. The inner work (`===` + maybe `count++`) is constant, so total ≈ `n * n` → O(n²) time, O(1) space.
+
+(L)
+```js
+// ????
+function L(s) {
+  let l = 0, r = s.length - 1;
+  while (l < r) {
+    if (s[l++] !== s[r--]) return false;
+  }
+  return true;
+}
+```
+Two pointers move inward; the while runs about n/2 iterations, **constant work per step → O(n) time**, *O(1) extra space.*
+Best case can return in O(1) (first mismatch), but worst/average is linear.
 

@@ -36,11 +36,11 @@ Linked List (non-contiguous)
 ```
 Here, the Next part of each node stores the memory address of the next node.
 
-In short:
+*In short:*
 
-Contiguous (arrays): Stored in one block → faster access but harder to resize.
+- Contiguous (arrays): Stored in one block → faster access but harder to resize.
 
-Non-contiguous (linked lists): Scattered in memory → slower access but easy to insert/remove nodes.
+- Non-contiguous (linked lists): Scattered in memory → slower access but easy to insert/remove nodes.
 
 ### Key Differences from Arrays
 - **Array Access:** O(1) time complexity to access an element by index.

@@ -22,7 +22,7 @@ Most programs need to **search** or **sort** data. Learning these algorithms bui
 
 ## Core Sorting Algorithms
 
-### Bubble Sort (simple, educational, small datasets)
+### Bubble Sort KEYYY!!!(simple, educational, small datasets)
 **Idea:** Repeatedly step through the list, swap adjacent elements if they are in the wrong order. Keep passing until no swaps occur.
 ```python
 def bubble_sort(a):
@@ -60,7 +60,7 @@ def selection_sort(a):
 
 ---
 
-### Insertion Sort (great on small/nearly‑sorted data)
+### Insertion Sort KEYYY1 (great on small/nearly‑sorted data)
 **Idea:** Like sorting playing cards in your hand. Grow a **sorted** left part by inserting each next element into its correct position.
 ```python
 def insertion_sort(a):
@@ -77,8 +77,8 @@ def insertion_sort(a):
 
 ---
 
-### Merge Sort (divide & conquer)
-**Idea:** Recursively split the list to single‑element sublists, then **merge** them back in order.
+### Merge Sort GOOD TO KNOW!!!   (divide & conquer)
+**Idea:** Recursively split the list to single‑element sublists, then **merge** them back in order. Traversable data 
 ```python
 def merge(left, right):
     i = j = 0
@@ -103,7 +103,7 @@ def merge_sort(a):
 
 ---
 
-### Quick Sort (partition around a pivot)
+### Quick Sort Often used together with merge sort   good BigO (partition around a pivot)
 **Idea:** Pick a **pivot**. Partition elements into \< pivot and \> pivot, then recursively sort the partitions.
 ```python
 def _partition(a, lo, hi):
