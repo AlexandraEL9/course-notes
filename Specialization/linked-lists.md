@@ -108,7 +108,7 @@ Structures like List, Tuple have fixed size. Inserting a new element in an array
 
 ### Singly Linked List
 - Each node points to the next node only.
-![Linked List 2](../images/linkedlist2.png)
+![Linked List 2](../images/linkedlists2.png)
 
 ```python
 # Singly Linked List Node
@@ -732,6 +732,167 @@ ll.display()  # Output: 1 -> 2 -> 3 -> None
 ---
 
 ## 8. Exercises
+
+**Minimal set up:**
+```js
+// Minimal setup (use once)
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+  append(data) {
+    const node = new Node(data);
+    if (!this.head) { this.head = node; return; }
+    let cur = this.head;
+    while (cur.next) cur = cur.next;
+    cur.next = node;
+  }
+}
+```
+
 - Implement **insert_at_position**
+Goal: insert a new node at a 0-based position (0 = head).
+If pos is greater than the length, we’ll append at the end.
+
+```js
+LinkedList.prototype.insertAtPosition = function (pos, data) {
+  const node = new Node(data);
+
+  // insert at head or empty list
+  if (pos <= 0 || !this.head) {
+    node.next = this.head;
+    this.head = node;
+    return;
+  }
+
+  // traverse to (pos - 1)
+  let cur = this.head;
+  let idx = 0;
+  while (cur.next && idx < pos - 1) {
+    cur = cur.next;
+    idx++;
+  }
+  // link in
+  node.next = cur.next;
+  cur.next = node;
+};
+
+// demo
+const a = new LinkedList();
+[10, 20, 40].forEach(v => a.append(v));
+a.insertAtPosition(2, 30); // 10 -> 20 -> 30 -> 40
+```
+How it works:
+- If pos === 0, point the new node’s next to the old head and move head.
+- Otherwise walk to the node just before pos and splice the new one in.
+
 - Implement **delete_node**
+Common interpretation: delete the first node with a matching value.
+```js
+LinkedList.prototype.deleteNode = function (value) {
+  if (!this.head) return;
+
+  // delete head
+  if (this.head.data === value) {
+    this.head = this.head.next;
+    return;
+  }
+
+  // find previous of target
+  let prev = this.head;
+  while (prev.next && prev.next.data !== value) {
+    prev = prev.next;
+  }
+
+  // unlink if found
+  if (prev.next) {
+    prev.next = prev.next.next;
+  }
+};
+
+// demo
+const b = new LinkedList();
+[1, 2, 3, 2, 4].forEach(v => b.append(v));
+b.deleteNode(2); // deletes the FIRST 2
+```
+
 - Detect if a list is **palindromic**
+Two approaches:
+
+A) Easy (O(n) space): copy values into an array and two-pointer check
+```js
+LinkedList.prototype.isPalindromeArray = function () {
+  const vals = [];
+  let cur = this.head;
+  while (cur) { vals.push(cur.data); cur = cur.next; }
+
+  let i = 0, j = vals.length - 1;
+  while (i < j) {
+    if (vals[i] !== vals[j]) return false;
+    i++; j--;
+  }
+  return true;
+};
+```
+
+B) In-place, O(1) extra space: reverse second half, compare, (optionally) restore
+```js
+LinkedList.prototype.isPalindrome = function () {
+  if (!this.head || !this.head.next) return true;
+
+  // 1) find middle (slow/fast)
+  let slow = this.head, fast = this.head;
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+  }
+  // for odd length, slow is middle; for even, slow is first of the second half
+
+  // 2) reverse second half starting at slow
+  const reverse = (node) => {
+    let prev = null, cur = node;
+    while (cur) {
+      const nxt = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = nxt;
+    }
+    return prev; // new head of reversed part
+  };
+  let second = reverse(slow);
+
+  // 3) compare first half and reversed second half
+  let p1 = this.head, p2 = second;
+  let isPal = true;
+  while (p2) { // second half is <= first half
+    if (p1.data !== p2.data) { isPal = false; break; }
+    p1 = p1.next; p2 = p2.next;
+  }
+
+  // 4) (optional) restore list
+  reverse(second);
+
+  return isPal;
+};
+
+// demo
+const c = new LinkedList();
+[1, 2, 3, 2, 1].forEach(v => c.append(v));
+console.log(c.isPalindrome());      // true
+console.log(c.isPalindromeArray()); // true
+```
+Quick Test:
+```js
+LinkedList.prototype.toString = function () {
+  let out = [], cur = this.head;
+  while (cur) { out.push(cur.data); cur = cur.next; }
+  return out.join(" -> ") + " -> null";
+};
+```
