@@ -636,5 +636,6 @@ g.edge = ['f','e']
 console.log(g.edges)
 
 ```
-**Graph implementation**
+
+
 
