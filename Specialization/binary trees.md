@@ -10,8 +10,13 @@ Based on the slide deck **“(Binary) Trees — Lesson 19 (CFGDegree → Full‑
 - One node is the **root**. Nodes can have **children**; a node with no children is a **leaf**.  
 - A **graph** is a more general structure (nodes + edges) that **might not have a root**.  
 - Every tree is a graph; not every graph is a tree.
+![Binary Trees 1](/images/binary-trees1.png)
 
 > Why is it called a “tree”? In CS diagrams we often draw the root at the top and the tree “grows” downward. Orientation doesn’t matter — the structure does.
+
+![Binary Trees 2](/images/binary-trees2.png)
+
+![Binary Trees 3](/images/binary-trees3.png)
 
 ---
 
@@ -19,14 +24,27 @@ Based on the slide deck **“(Binary) Trees — Lesson 19 (CFGDegree → Full‑
 
 - A **Binary Tree** is a tree where **each node has at most two children** (commonly called **left** and **right**).  
 - A **k‑ary tree** is a tree where each node has up to _k_ children; a binary tree is the case where _k = 2_.
+![Binary Trees 4](/images/binary-trees4.png)
 
 ### Common Binary Tree “Types” (descriptive labels)
-- **Perfect**: Every **internal** node has **exactly two** children **and** all leaves are at the **same depth**.  
-- **Complete**: All levels are **completely filled** except possibly the **last**, and the last level’s nodes are as **far left as possible**.  
-- **(Left-)Incomplete example**: A non-complete tree where the lowest level leaves are not as far left as possible.  
+
+- **Perfect**: Every **internal** node has **exactly two** children **and** all leaves are at the **same depth**.
+![Binary Trees 5](/images/binary-trees5.png)  
+
+- **Complete**: All levels are **completely filled** except possibly the **last**, and the last level’s nodes are as **far left as possible**. 
+![Binary Trees 6](/images/binary-trees6.png)  
+
+- **(Left-)Incomplete example**: A non-complete tree where the lowest level leaves are not as far left as possible. 
+![Binary Trees 7](/images/binary-trees7.png)  
+
 - **Balanced**: For **every** node, the heights of left vs right subtrees differ by **no more than 1**.  
+![Binary Trees 8](/images/binary-trees8.png)  
+
 - **Imbalanced**: Violates the above height condition.  
+![Binary Trees 9](/images/binary-trees9.png)  
+
 - **Full (a.k.a. proper, 2-tree)**: Every **non-leaf** node has **exactly two** children.
+![Binary Trees 10](/images/binary-trees10.png)  
 
 > These are all still binary trees — the “type” words are adjectives that describe extra properties.
 
@@ -50,6 +68,7 @@ A **BST** is a **Binary Tree with an ordering rule** on every node:
 - Values in the **left** subtree are **\<** the node’s value.  
 - Values in the **right** subtree are **≥** the node’s value.  
 - **Every** node must satisfy this property (recursively).
+![Binary Trees 11](/images/binary-trees11.png)  
 
 **Why BSTs?** When reasonably balanced, operations like **search** and **insert** run in **O(log n)** time (because the search space roughly halves at each step).
 
@@ -78,6 +97,134 @@ class Node:
     def __repr__(self):
         return f"Node({self.value!r})"
 ```
+
+### In Class Example
+```js
+/*
+NODE CLASS IMPLEMENTATION
+
+- INSERT method
+compares the value of the node to the parent node
+and decides whether to add it as a left node or right node.
+
+NB: if the node is greater than the parent node,
+it is inserted as a right node; otherwise,​ it’s inserted left.
+
+- FIND method
+while searching for a value in the tree,
+we need to traverse the node from left to right and with a parent.
+
+*/
+
+
+class TreeNode {
+  constructor(data) {
+    // value of the node
+    this.data = data
+    // left child
+    this.left = null
+    // right child
+    this.right = null
+  }
+
+  insert(data) {
+    if (this.data) {
+      if (data <= this.data) {
+        if (!this.left) {
+          this.left = new TreeNode(data)
+        } else {
+          this.left.insert(data)
+        }
+      } else if (data > this.data) {
+        if (!this.right) {
+          this.right = new TreeNode(data)
+        } else {
+          this.right.insert(data)
+        }
+      }
+    } else {
+      this.data = data
+    }
+  }
+
+  search(value) {
+    if (value < this.data) {
+      if (!this.left) {
+        return `${value} is not found`
+      }
+      return this.left.search(value)
+    } else if (value > this.data) {
+      if (!this.right) {
+        return `${value} is not found`
+      }
+      return this.right.search(value)
+    } else {
+      return `${this.data} is found`
+    }
+  }
+}
+
+class SumLeafNodes {
+  /*
+  Class for finding the sum of all leaf nodes of a binary tree
+  */
+  constructor() {
+    // initializing total to 0
+    this.total = 0
+  }
+
+  sumLeafNodes(tree) {
+    /*
+    Recursive function for finding the sum of all leaf nodes of a binary tree
+    */
+    if (!tree) {
+      return
+    } else if (!tree.left && !tree.right) {
+      // if tree has no left child and no right child then add its data to total
+      this.total = this.total + tree.data
+    } else {
+      // recursively traverse through the tree
+      this.sumLeafNodes(tree.left)
+      this.sumLeafNodes(tree.right)
+    }
+
+    return this.total
+  }
+}
+
+ function printTree(node, prefix = '', isLeft = true) {
+    if (node === null) {
+      return
+    }
+
+    // Print right child first (appears on top)
+    printTree(node.right, prefix + (isLeft ? '│   ' : '    '), false)
+
+    // Print this node
+    console.log(prefix + (isLeft ? '└── ' : '┌── ') + node.data)
+
+    // Print left child (appears below)
+    printTree(node.left, prefix + (isLeft ? '    ' : '│   '), true)
+  }
+
+tree = new TreeNode(27)
+tree.insert(14)
+tree.insert(35)
+tree.insert(31)
+tree.insert(10)
+tree.insert(9)
+tree.insert(17)
+tree.insert(15)
+
+
+
+printTree(tree)
+
+const obj = new SumLeafNodes()
+const sum = obj.sumLeafNodes(tree)
+console.log(sum)
+```
+
 
 ### Depth‑First Traversals (recursive)
 ```python
