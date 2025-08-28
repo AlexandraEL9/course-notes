@@ -1175,6 +1175,7 @@ ReactDOM.render(
 ---
 
 ## 🔍 Angular Components Breakdown
+![Angular Breakdown](/images/angular-breakdown.png)
 
 | Part | Description |
 |------|-------------|
@@ -1207,6 +1208,7 @@ Enter **Linus Torvalds**:
 ---
 
 ## 🧪 Linux Command Practice
+![Common Linux Commands](/images/linux-commands.png)
 
 - Use: [https://linuxjourney.com/](https://linuxjourney.com/)
 - Focus on "Command Line" section.
@@ -1416,11 +1418,6 @@ function WeatherWidget({ city }) {
 
 ---
 
-## 🛠 Project Time
-
-- Continue group work and ask for help when needed.
-- Think about **what APIs or features you could embed or fetch** for your project.
-
 ---
 
 # Lesson 13: Testing and Redux
@@ -1452,9 +1449,122 @@ test('matches the snapshot', () => {
 });
 ```
 
+**Other test examples:**
+
+1. Rendering a Component and Checking Text
+```js
+import { render, screen } from '@testing-library/react';
+import Greeting from './Greeting';
+
+test('renders a greeting message', () => {
+  render(<Greeting name="Alex" />);
+  
+  // Looks for text in the rendered component
+  const message = screen.getByText(/hello, alex/i); 
+  
+  expect(message).toBeInTheDocument(); // ✅ passes if found
+});
+```
+Notes:
+- render() mounts the component in a virtual DOM.
+- screen.getByText() searches for matching text.
+- toBeInTheDocument() checks if it exists in the DOM.
+
+
+2. Simulating a Button Click
+```js
+import { render, screen, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
+
+test('increments counter when button is clicked', () => {
+  render(<Counter />);
+  
+  const button = screen.getByRole('button'); // finds button by semantic role
+
+  fireEvent.click(button); // simulates click
+  fireEvent.click(button);
+
+  expect(button).toHaveTextContent('Clicked 2 times'); // checks result
+});
+```
+🧠 Notes:
+- fireEvent.click() mimics a real click.
+- Great for interactive components like counters or toggles.
+
+
+3. Testing Input and State Update
+```js
+import { render, screen, fireEvent } from '@testing-library/react';
+import NameInput from './NameInput';
+
+test('updates value when typed into input field', () => {
+  render(<NameInput />);
+  
+  const input = screen.getByPlaceholderText('Enter name');
+
+  fireEvent.change(input, { target: { value: 'Taylor' } });
+
+  expect(screen.getByText(/hello, taylor/i)).toBeInTheDocument();
+});
+```
+🧠 Notes:
+- fireEvent.change() simulates typing.
+- getByPlaceholderText() is useful when you don’t know the label or ID.
+- Confirms that React updated state correctly.
+
+
+4. Testing Conditional Rendering
+```js
+import { render, screen, fireEvent } from '@testing-library/react';
+import ToggleMessage from './ToggleMessage';
+
+test('shows and hides message when toggled', () => {
+  render(<ToggleMessage />);
+  
+  const toggleBtn = screen.getByText(/show message/i);
+
+  fireEvent.click(toggleBtn);
+
+  expect(screen.getByText('This is a secret message')).toBeInTheDocument();
+
+  fireEvent.click(toggleBtn);
+
+  expect(screen.queryByText('This is a secret message')).toBeNull(); // not in DOM
+});
+```
+🧠 Notes:
+- queryByText() returns null if not found (doesn’t throw an error).
+- Use queryBy... when expecting something not to be present.
+
+
+5. Testing Props Passed to Component
+```js
+import { render, screen } from '@testing-library/react';
+import UserCard from './UserCard';
+
+test('displays user name and age from props', () => {
+  render(<UserCard name="Sam" age={27} />);
+  
+  expect(screen.getByText(/sam/i)).toBeInTheDocument();
+  expect(screen.getByText(/27/i)).toBeInTheDocument();
+});
+```
+
+**Summary Table:**
+| Scenario                 | Tool/Method                    | Notes                           |
+| ------------------------ | ------------------------------ | ------------------------------- |
+| Check if text is present | `getByText` + `toBeInDocument` | For rendered text               |
+| Button click             | `fireEvent.click`              | Simulate user action            |
+| Form input               | `fireEvent.change`             | Simulate typing                 |
+| Conditional content      | `queryByText`                  | Use for things that disappear   |
+| Props display            | `render()` + checks            | Assert component received props |
+
+
 ---
 
 ## 2. Redux Overview
+
+![redux intro](/images/redux-intro.png)
 
 Redux provides a **global store** for state management.  
 Instead of passing props through many layers, all components can directly **dispatch** data to the store and **fetch** from it.
@@ -1474,6 +1584,7 @@ Analogy: A **bank** where components **deposit** (dispatch) and **withdraw** (fe
 - Use Redux hooks in components:
   - `useSelector` → Read from store.
   - `useDispatch` → Send actions to store.
+![redux setup](/images/redux-setup.png)
 
 ```javascript
 // index.js
@@ -1498,6 +1609,12 @@ ReactDOM.render(
 
 Actions are plain JavaScript objects describing changes to state.
 
+- Actions are effectively ‘information changes’ - an action could be increment which is simply saying increase the value held in store by 1.
+
+- An action is a plain JavaScript object
+  - It must have a type property that describes what kind of change should happen
+  - It can also have a payload - extra data needed to carry out the change
+
 **Structure:**
 ```javascript
 const action = {
@@ -1505,6 +1622,11 @@ const action = {
   payload: 1         // optional data
 };
 ```
+
+- It’s a fancy wrapper for effectively saying ‘please carry out this x data modification’).
+
+- The idea of actions is similar to postal envelopes - the envelope has a stamp (denoting the type of
+envelope and postage) and a letter (its payload).
 
 Analogy: **Envelope** with:
 - Stamp → `type`
@@ -1515,6 +1637,8 @@ Analogy: **Envelope** with:
 ## 5. Reducers
 
 Reducers decide **how the store changes** based on the action type & payload.
+- like the postmasters; they receive the action, and determine how the Store should be
+modified based on the action type and payload.
 
 ```javascript
 function counterReducer(state = { count: 0 }, action) {
@@ -1534,6 +1658,8 @@ function counterReducer(state = { count: 0 }, action) {
 ## 6. Redux Toolkit
 
 Simplifies Redux setup by reducing boilerplate.
+- making it easier to manage the state of our applications
+- provides a simplified approach to common Redux tasks
 
 ### Steps:
 1. Install:
@@ -1541,7 +1667,11 @@ Simplifies Redux setup by reducing boilerplate.
 npm install @reduxjs/toolkit react-redux
 ```
 2. Create store with `configureStore()`.
+![configure store](/images/redux-store.png)
+
 3. Wrap app in `<Provider>`.
+![redux provider](/images/redux-provider.png)
+
 4. Create state slice with `createSlice()`.
 5. Add slice reducers to store.
 6. Use `useSelector` and `useDispatch` in components.
