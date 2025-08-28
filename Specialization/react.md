@@ -13,6 +13,18 @@ In this lesson, we explore:
 ---
 
 ## 🔍 What is React?
+- React is a JS Library (a collection of helpful code and routines bundled together)
+
+- can be added to our websites in a scalable way - we can either a little bit of React (e.g. here and there in our
+HTML site) or make the entire website be React-based instead (discarding the HTML and CSS stack entirely to a
+degree)
+
+**Purpose**:
+- React is all about creating and using ‘components’ - self contained elements that we manually create through code
+  - eg create a new button ourselves that fits our vision of what it should be (e.g. perhaps we need some specific design). React allows us to contain all of this code into one ‘button’ component (like a object) that can be deployed over and over again (making it incredibly easy for us to be consistent).
+
+  - virtual DOM. Effectively it keeps a 2nd copy of our DOM which is updated when we
+make changes, and publishes / pushes this changes into the real DOM when its ready. The benefit of this is speed - instead of reloading a page 5 times, React will often batch new changes itself so the entirety of the real DOM doesn’t have to reload or change
 
 | Concept        | Description                                                                 |
 |----------------|-----------------------------------------------------------------------------|
@@ -182,6 +194,9 @@ React may feel confusing at first — but breaking it into small components and 
 
 ---
 
+
+
+
 ## React Lesson 6: Component Behaviour
 
 ## 🎯 Learning Objectives
@@ -204,19 +219,31 @@ Behaviour in React = how a component **responds to events**, like clicks or form
 🟦 In React:
 - Defined with event handler props like onClick
 - Kept inside the component — makes components self-contained
+- A primary difference to JS is that these ‘behavioural’
+functions are normally stored within the component
+file as well - effectively centralising a lot of code
+together (the component file is already .js!)
+
+![react behaviour](/images/react-behaviour.png)
+- creates a function inside Button function
+- calls the function between {} in the 'onClick'
+
+---
 
 #### What Are Props in React?
-Props (short for "properties") are how you **pass data** from one component to another in React — usually **from a parent to a child component**.
+Props (short for "properties") are how you **pass data** *from one component to another* in React — usually **from a parent to a child component**.
 
 **Think of props like:**
 Labeled packages of information passed into a component to help it behave or display in a certain way.
 
 **Key Points:**
 - Props are read-only (you cannot change them inside the child)
-
 - They allow components to be dynamic and reusable
-
 - Props are passed in like HTML attributes
+- can pass anything, and assign any ID /
+property name to the lower component - for example:
+                  nameDoesNotMatter = “Prop
+                  ‘nameDoesNotMatter’ value”
 
 ### Example breakdown:
 Parent Component:
@@ -239,6 +266,9 @@ function Button(props) {
 // The value of props.label will appear as the button's text.
 ```
 - Here, the parent passes label="Click Me" to the child. The child receives it as props.label.
+
+**Further example**
+![Add props](/images/add-props.png)
 
 **Modern Destructuring Syntax**
 Instead of writing props.label, you can destructure:
@@ -438,6 +468,8 @@ Build forms and timers with dynamic behaviours
   - Both are objects that affect rendering  
   - But props are **passed in** (like function parameters), while state is **managed internally** (like function variables).
 
+  ![Introducing State](/images/introducing-state.png)
+
 ---
 
 ## Why Do We Need State?
@@ -458,8 +490,84 @@ function MyButton() {
   return <button onClick={handleClick}>Clicked {count} times</button>; // ...but not on screen!
 }
 ```
+the value updates in memory but doesn't cause the UI to re-render.
 
-# Lesson 9: TypeScript and React State
+## This is why We Need State?
+
+State is **React's way of remembering data between renders**. Without it, your *UI won’t update when variables change* — like in the example you gave.
+
+**Here's why state matters:**
+- React components re-render when state or props change.
+- Regular variables (`let`, `const`) don’t trigger a re-render.
+- `useState` is a React Hook that lets you add state to functional components.
+
+## Walkthrough: Adding State with useState()
+Walk through a functional component with working state.
+
+### Step 1: Import the Hook
+Before you can use state, you must import the hook:
+```js
+import { useState } from 'react';
+```
+
+### Step 2: Set Up State in Your Component
+Here’s the working version of your earlier example using state:
+```js
+import { useState } from 'react';
+
+function MyButton() {
+  // Declare a state variable and its updater
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    // Update the state
+    setCount(count + 1);
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Clicked {count} times
+    </button>
+  );
+}
+
+export default MyButton;
+```
+
+### Explanation
+| Line                  | What it does                                               |
+| --------------------- | ---------------------------------------------------------- |
+| `useState(0)`         | Initializes state with a value of `0`                      |
+| `count`               | The current value of the state                             |
+| `setCount`            | A function that updates the state and causes a re-render   |
+| `setCount(count + 1)` | Increments the count by 1 on each click                    |
+| JSX uses `{count}`    | Displays the updated value automatically after each render |
+
+### Important Notes
+
+- `useState` triggers a re-render. That’s what makes the new value show on screen.
+- You must never directly modify the state variable (e.g. `count++` ❌). Always use the updater (`setCount` ✅).
+- Each call to `setCount` creates a new render of the component with updated values.
+
+### Mini Challenge
+Create a DoubleClicker component that:
+- Starts at 1
+- Doubles the value every time you click a button
+```js
+function DoubleClicker() {
+  const [value, setValue] = useState(1);
+
+  return (
+    <button onClick={() => setValue(value * 2)}>
+      Current: {value}
+    </button>
+  );
+}
+```
+
+---
+
+# TypeScript and React State
 
 ## 📋 Agenda
 
@@ -634,6 +742,7 @@ function greet(name: string): string {
 ## 🔁 Lifecycle Methods
 
 ### What Are Lifecycle Methods?
+![lifecycle methods](/images/lifecycle-methods.png)
 
 Lifecycle methods are special methods that run during different stages of a component's existence (mounting, updating, and unmounting).
 
@@ -673,6 +782,65 @@ componentWillUnmount() {
 }
 ```
 
+**Add a Lifecycle Method**
+![add a lifecycle methos](/images/add-a-lifecycle-method.png)
+
+- Use a class component
+- Add a lifecycle method that:
+- Logs when the component mounts
+- Logs the updated state value when it changes
+
+```js
+import React, { Component } from 'react';
+
+class LifecycleButton extends Component {
+  constructor(props) {
+    super(props);
+    // Initialize state with a count value
+    this.state = {
+      count: 0
+    };
+  }
+
+  // ✅ Lifecycle Method: Runs once when the component is added to the DOM
+  componentDidMount() {
+    console.log("The component now successfully exists!");
+  }
+
+  // ✅ Lifecycle Method: Runs after every update (e.g., setState)
+  componentDidUpdate(prevProps, prevState) {
+    // Only log if count has changed
+    if (prevState.count !== this.state.count) {
+      console.log("The new value is:", this.state.count);
+    }
+  }
+
+  // Method to increase the count when button is clicked
+  handleIncrement = () => {
+    this.setState((prevState) => ({
+      count: prevState.count + 1
+    }));
+  };
+
+  render() {
+    return (
+      <button onClick={this.handleIncrement}>
+        Clicked {this.state.count} times
+      </button>
+    );
+  }
+}
+
+export default LifecycleButton;
+```
+| Method               | What it does                                                   |
+| -------------------- | -------------------------------------------------------------- |
+| `constructor`        | Sets the initial state (`count = 0`)                           |
+| `componentDidMount`  | Logs when the component appears on screen                      |
+| `componentDidUpdate` | Logs the count **only if it has changed**                      |
+| `handleIncrement`    | Updates state on button click, triggering `componentDidUpdate` |
+| `render`             | Renders the current count inside a button                      |
+
 ---
 
 ## 🪝 React Hooks
@@ -682,6 +850,23 @@ componentWillUnmount() {
 Hooks give functional components the ability to use state and lifecycle logic — previously only available in class components.
 
 ### The `useState` Hook
+`useState` is a React Hook that lets you add state to functional components.
+Before hooks, only class components could manage state — now functional components can too!
+
+**What Does useState Do?**
+✅ It:
+- Declares a state variable
+- Sets its initial value
+- Provides a function to update the value
+- Automatically triggers a re-render of the component when updated
+
+**Breakdown**
+```jsx
+const [stateVariable, setStateFunction] = useState(initialValue);
+```
+- `stateVariable`: The current value stored in memory
+- `setStateFunction`: A function used to update that value
+- `initialValue`: The value that `stateVariable` will start with
 
 ```jsx
 import React, { useState } from 'react';
@@ -702,11 +887,118 @@ function Button(props) {
   const []
 }
 ```
+**What Happens When You Click the Button?**
+- The button’s `onClick` runs `setCount(count + 1)`
+- React updates the `count` state
+- React re-renders the `Counter` component
+- The updated value of `count` is shown on the screen
+
+| Concept            | Meaning                                                        |
+| ------------------ | -------------------------------------------------------------- |
+| `useState()`       | React hook to track and update values in functional components |
+| `count`            | The current value of the state                                 |
+| `setCount()`       | The only way to update `count` and trigger a re-render         |
+| `initialValue = 0` | Sets the starting point for the state                          |
+| Re-render          | React refreshes the UI to show the new value                   |
+
+![useState Hook](/images/useState-hook.png)
+
+**Other examples**
+
+1. String State
+```js
+const [name, setName] = useState("Alex");
+
+<input 
+  type="text" 
+  value={name} 
+  onChange={(e) => setName(e.target.value)} 
+/>
+<p>Hello, {name}!</p>
+```
+✅ Great for: form inputs, live text display
+
+2. Number State
+```js
+const [age, setAge] = useState(30);
+
+<button onClick={() => setAge(age + 1)}>Increase Age</button>
+```
+✅ Great for: counters, scores, pagination
+
+3. Boolean(Toggle) State
+```js
+const [isVisible, setIsVisible] = useState(false);
+
+<button onClick={() => setIsVisible(!isVisible)}>
+  {isVisible ? "Hide" : "Show"}
+</button>
+
+{isVisible && <p>This is now visible!</p>}
+```
+✅ Great for: modals, dropdowns, show/hide logic
+
+4. Array State
+```js
+const [items, setItems] = useState([]);
+
+<button onClick={() => setItems([...items, "New Item"])}>
+  Add Item
+</button>
+
+<ul>
+  {items.map((item, index) => (
+    <li key={index}>{item}</li>
+  ))}
+</ul>
+```
+✅ Great for: lists, shopping carts, todo apps
+
+5. Object State
+```js
+const [user, setUser] = useState({ name: "Alex", age: 30 });
+
+<button onClick={() => setUser({ ...user, age: user.age + 1 })}>
+  Birthday!
+</button>
+
+<p>{user.name} is now {user.age} years old</p>
+```
+✅ Great for: user profiles, grouped form data
+
+---
 
 ### The `useEffect` Hook
 
 Acts like `componentDidMount` and `componentDidUpdate` combined.
 
+`useEffect` lets you run side effects in your function components.
+It’s React’s way of saying:
+
+- “Run this bit of code when something changes — like the component mounting, updating, or unmounting.”
+
+**What is a Side Effect?**
+
+A *side effect* is any code that interacts with the outside world or isn’t purely about rendering.
+*Examples:*
+- Logging to the console
+- Fetching data from an API
+- Updating the page title
+- Setting a timeout or interval
+- Subscribing to a service (e.g. WebSocket)
+
+**Basic Syntax**
+```js
+useEffect(() => {
+  // Code to run after render
+}, [dependencies]);
+```
+| Part       | Meaning                                  |
+| ---------- | ---------------------------------------- |
+| `() => {}` | Your effect callback (runs after render) |
+| `[]`       | Dependency array: when to run the effect |
+
+**Example: Log When Message Changes**
 ```jsx
 import React, { useState, useEffect } from 'react';
 
@@ -716,8 +1008,89 @@ function Logger() {
   useEffect(() => {
     console.log("Component mounted or updated");
   }, [message]); // only runs if message changes
+
+  // rendered to ui
+  return (
+    <input 
+      type="text"
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+    />
+  );
 }
 ```
+
+1. Run Once on Mount (componentDidMount)
+```js
+useEffect(() => {
+  console.log("Component mounted");
+}, []); // ✅ Empty array = run once
+```
+✅ Great for: API calls, setting up event listeners, analytics, scroll position
+
+
+2. Run When State Changes (componentDidUpdate)
+```js
+useEffect(() => {
+  console.log("Count updated:", count);
+}, [count]); // ✅ Only runs when `count` changes
+```
+✅ Great for: reacting to form changes, dynamic validation, saving drafts
+
+
+3. Run Cleanup on Unmount (componentWillUnmount)
+```js
+useEffect(() => {
+  const interval = setInterval(() => {
+    console.log("Tick");
+  }, 1000);
+
+  return () => {
+    clearInterval(interval); // Cleanup before unmount
+    console.log("Component unmounted");
+  };
+}, []);
+```
+✅ Great for: intervals, timeouts, event listeners
+
+
+⚠️ **Common Gotchas**
+| Mistake                                             | Fix                                              |
+| --------------------------------------------------- | ------------------------------------------------ |
+| Forgetting the `[]` dependency array                | Runs on **every** render — use `[]` or `[var]`   |
+| Mutating state inside `useEffect` without condition | Can cause **infinite loops**                     |
+| Not cleaning up subscriptions                       | Use the **cleanup function** (`return () => {}`) |
+
+🧪 Mini Challenge
+
+Create a `DocumentTitleUpdater` component that updates the page title based on the user’s input:
+```js
+function DocumentTitleUpdater() {
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    document.title = title || "React App";
+  }, [title]);
+
+  return (
+    <input 
+      type="text" 
+      value={title} 
+      onChange={(e) => setTitle(e.target.value)} 
+      placeholder="Set the page title"
+    />
+  );
+}
+```
+
+✅ Summary Table
+| Concept               | Description                 |
+| --------------------- | --------------------------- |
+| `useEffect()`         | Hook to run side effects    |
+| `[]`                  | Run once on mount           |
+| `[value]`             | Re-run when `value` changes |
+| `return () => {}`     | Cleanup logic on unmount    |
+| Runs **after render** | Not during                  |
 
 ---
 
