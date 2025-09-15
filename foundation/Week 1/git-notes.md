@@ -31,6 +31,56 @@
 
 ---
 
+## Common Commands
+
+| Category          | Command                                      | What it does                             | Example                                           |
+| ----------------- | -------------------------------------------- | ---------------------------------------- | ------------------------------------------------- |
+| Setup             | `git config --global user.name "<name>"`     | Set your display name.                   | `git config --global user.name "Alex Dev"`        |
+| Setup             | `git config --global user.email "<email>"`   | Set your email.                          | `git config --global user.email alex@example.com` |
+| New repo          | `git init`                                   | Create a new repo in the current folder. | `git init`                                        |
+| Clone             | `git clone <url>`                            | Copy a remote repo.                      | `git clone https://github.com/user/app.git`       |
+| Status            | `git status`                                 | Show changed files and branch.           | `git status`                                      |
+| Stage             | `git add <file>`                             | Stage a file.                            | `git add app.py`                                  |
+| Stage (all)       | `git add -A`                                 | Stage all changes.                       | `git add -A`                                      |
+| Commit            | `git commit -m "<message>"`                  | Save staged changes.                     | `git commit -m "Add login"`                       |
+| Quick commit      | `git commit -am "<message>"`                 | Stage modified tracked files and commit. | `git commit -am "Fix typo"`                       |
+| History           | `git log`                                    | Show commit history.                     | `git log`                                         |
+| History (compact) | `git log --oneline --graph --decorate --all` | Pretty one-line graph.                   | `git log --oneline --graph --decorate --all`      |
+| Differences       | `git diff`                                   | See unstaged changes.                    | `git diff`                                        |
+| Staged diff       | `git diff --staged`                          | See staged changes.                      | `git diff --staged`                               |
+| Show commit       | `git show <ref>`                             | Show a commit or object.                 | `git show HEAD~1`                                 |
+| Branch list       | `git branch`                                 | List branches. Current is `*`.           | `git branch`                                      |
+| New branch        | `git switch -c <branch>`                     | Create and switch to a branch.           | `git switch -c feature/auth`                      |
+| Switch            | `git switch <branch>`                        | Move to another branch.                  | `git switch main`                                 |
+| Rename branch     | `git branch -m <new>`                        | Rename current branch.                   | `git branch -m main`                              |
+| Merge             | `git merge <branch>`                         | Merge a branch into current.             | `git merge feature/auth`                          |
+| Rebase ⚠️         | `git rebase <branch>`                        | Replay commits on top of another.        | `git rebase main`                                 |
+| Remote list       | `git remote -v`                              | Show remotes and URLs.                   | `git remote -v`                                   |
+| Add remote        | `git remote add origin <url>`                | Add a remote named `origin`.             | `git remote add origin https://…`                 |
+| First push        | `git push -u origin <branch>`                | Push and set upstream.                   | `git push -u origin main`                         |
+| Push              | `git push`                                   | Push current branch.                     | `git push`                                        |
+| Fetch             | `git fetch`                                  | Get remote refs without merging.         | `git fetch`                                       |
+| Pull              | `git pull`                                   | Fetch and merge.                         | `git pull`                                        |
+| Pull (rebase)     | `git pull --rebase`                          | Fetch then rebase.                       | `git pull --rebase`                               |
+| Tags              | `git tag <name>`                             | Create a lightweight tag.                | `git tag v1.0.0`                                  |
+| Tags (annotated)  | `git tag -a <name> -m "<msg>"`               | Tag with message.                        | `git tag -a v1.0.0 -m "First release"`            |
+| Push tags         | `git push origin --tags`                     | Push all tags.                           | `git push origin --tags`                          |
+| Stash             | `git stash`                                  | Save work-in-progress.                   | `git stash`                                       |
+| Stash list        | `git stash list`                             | List stashes.                            | `git stash list`                                  |
+| Stash apply       | `git stash apply [<stash>]`                  | Apply, keep stash.                       | `git stash apply stash@{0}`                       |
+| Stash pop         | `git stash pop`                              | Apply, then drop.                        | `git stash pop`                                   |
+| Restore file      | `git restore <file>`                         | Discard unstaged changes.                | `git restore app.py`                              |
+| Unstage file      | `git restore --staged <file>`                | Remove from staging.                     | `git restore --staged app.py`                     |
+| Reset file        | `git reset HEAD <file>`                      | Unstage (legacy form).                   | `git reset HEAD app.py`                           |
+| Revert commit     | `git revert <ref>`                           | New commit that undoes a commit.         | `git revert HEAD~1`                               |
+| Hard reset ⚠️     | `git reset --hard <ref>`                     | Move branch and discard changes.         | `git reset --hard origin/main`                    |
+| Clean ⚠️          | `git clean -fd`                              | Delete untracked files/dirs.             | `git clean -fd`                                   |
+| Blame             | `git blame <file>`                           | Who changed each line.                   | `git blame app.py`                                |
+| Reflog            | `git reflog`                                 | Log of branch tips (rescue tool).        | `git reflog`                                      |
+
+
+---
+
 ## Intro to Git and GitHub
 
 **Git** is a **Version Control System** (VCS)
@@ -327,6 +377,31 @@ git clone <url>       # Copy a remote repo to your machine
 ## Intro to Git and Github 2
 
 ### Git Branching
+
+| Task                             | Command                                      | What it does                          | Example                                        |
+| -------------------------------- | -------------------------------------------- | ------------------------------------- | ---------------------------------------------- |
+| List local branches              | `git branch`                                 | Shows local branches.                 | `git branch`                                   |
+| List remote branches             | `git branch -r`                              | Shows remote-tracking branches.       | `git branch -r`                                |
+| List all                         | `git branch -a`                              | Local + remote-tracking.              | `git branch -a`                                |
+| Show tracking info               | `git branch -vv`                             | Shows upstream and last commit.       | `git branch -vv`                               |
+| Create branch (stay)             | `git branch <name>`                          | Makes a branch, don’t switch.         | `git branch feature/ui`                        |
+| Create from point                | `git branch <name> <start>`                  | Makes branch from commit/branch.      | `git branch hotfix abc123`                     |
+| Create + switch                  | `git switch -c <name>`                       | Makes branch and switches.            | `git switch -c feature/auth`                   |
+| Create tracking from remote      | `git switch -c <name> --track origin/<name>` | Tracks a remote branch.               | `git switch -c feature --track origin/feature` |
+| Switch branch                    | `git switch <name>`                          | Moves to branch.                      | `git switch main`                              |
+| Switch back                      | `git switch -`                               | Goes to previous branch.              | `git switch -`                                 |
+| Legacy switch                    | `git checkout <name>`                        | Old way to switch.                    | `git checkout main`                            |
+| Rename current                   | `git branch -m <new>`                        | Renames current branch.               | `git branch -m main`                           |
+| Rename any                       | `git branch -m <old> <new>`                  | Renames a given branch.               | `git branch -m dev develop`                    |
+| Force rename ⚠️                  | `git branch -M <new>`                        | Renames, overwriting if needed.       | `git branch -M main`                           |
+| Delete merged                    | `git branch -d <name>`                       | Deletes if already merged.            | `git branch -d feature/ui`                     |
+| Force delete ⚠️                  | `git branch -D <name>`                       | Deletes even if unmerged.             | `git branch -D wip/test`                       |
+| Set upstream                     | `git branch -u origin/<remote-branch>`       | Links current to remote.              | `git branch -u origin/main`                    |
+| Unset upstream                   | `git branch --unset-upstream`                | Removes tracking link.                | `git branch --unset-upstream`                  |
+| See branches that contain commit | `git branch --contains <commit>`             | Lists branches with that commit.      | `git branch --contains abc123`                 |
+| Show merged                      | `git branch --merged`                        | Branches already merged into current. | `git branch --merged`                          |
+| Show unmerged                    | `git branch --no-merged`                     | Branches not merged into current.     | `git branch --no-merged`                       |
+
 
 #### What is a Git Branch?
 A **branch** is a separate line of development. It's like a pointer to your latest commit, allowing you to work independently without affecting the main project. Changes are only merged into the main project when you choose to.
